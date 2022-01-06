@@ -13,23 +13,20 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = activityMainBindingSetup()
-
+        mainActivitySetup()
         setContentView(binding.root)
     }
 
-    private fun activityMainBindingSetup(): ActivityMainBinding {
-        // Set the ViewModel to the Activity
+    private fun mainActivitySetup() {
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         // Setup binding object to inflate the activity
-        val binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
 
         // Bind the viewModel in the layout to the viewModel class
         binding.viewModel = viewModel
 
         // Makes LiveData update the UI correctly
         binding.lifecycleOwner = this
-        return binding
     }
 }

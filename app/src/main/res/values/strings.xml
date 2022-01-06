@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Beer2Beer</string>
+    <string name="welcomeTextView">Welcome to Brew Day!</string>
+    <string name="getStartedButton">Get Started</string>
 </resources>
