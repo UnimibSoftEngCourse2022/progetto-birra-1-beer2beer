@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.beer2beer.MainViewModel" />
+            type="com.example.beer2beer.SharedViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -7,13 +7,14 @@
 
         <variable
             name="viewModel"
-            type="com.example.beer2beer.welcome.WelcomeViewModel" />
+            type="com.example.beer2beer.SharedViewModel" />
+
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".welcome.WelcomeFragment">
+        tools:context=".fragments.WelcomeFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

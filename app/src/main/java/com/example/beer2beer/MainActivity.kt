@@ -7,18 +7,17 @@ import com.example.beer2beer.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: SharedViewModel
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         mainActivitySetup()
         setContentView(binding.root)
     }
 
     private fun mainActivitySetup() {
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this)[SharedViewModel::class.java]
 
         // Setup binding object to inflate the activity
         binding = ActivityMainBinding.inflate(layoutInflater)
