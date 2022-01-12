@@ -27,5 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         // Makes LiveData update the UI correctly
         binding.lifecycleOwner = this
+
+        viewModel.setupBottomNavigationView(this, binding)
     }
 }

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_navigation"
+    app:startDestination="@id/home">
+
+    <!-- Main Fragments -->
+    <fragment
+        android:id="@+id/home"
+        android:name="com.example.beer2beer.fragments.HomeFragment"
+        android:label="@string/home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/cart"
+        android:name="com.example.beer2beer.fragments.CartFragment"
+        android:label="@string/cart"
+        tools:layout="@layout/fragment_cart" />
+
+    <fragment
+        android:id="@+id/brew"
+        android:name="com.example.beer2beer.fragments.BrewFragment"
+        android:label="@string/brew"
+        tools:layout="@layout/fragment_brew" />
+
+    <fragment
+        android:id="@+id/recipes"
+        android:name="com.example.beer2beer.fragments.RecipesFragment"
+        android:label="@string/recipes"
+        tools:layout="@layout/fragment_recipes" />
+
+    <fragment
+        android:id="@+id/settings"
+        android:name="com.example.beer2beer.fragments.SettingsFragment"
+        android:label="@string/settings"
+        tools:layout="@layout/fragment_settings" />
+
+</navigation>
