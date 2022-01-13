@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/home"
+        android:id="@+id/homeFragment"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_home_24"
         android:title="@string/home"/>
     <item
-        android:id="@+id/cart"
+        android:id="@+id/cartFragment"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_shopping_cart_24"
         android:title="@string/cart"/>
     <item
-        android:id="@+id/brew"
+        android:id="@+id/brewFragment"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_lightbulb_24"
         android:title="@string/brew"/>
     <item
-        android:id="@+id/recipes"
+        android:id="@+id/recipesFragment"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_science_24"
         android:title="@string/recipes"/>
     <item
-        android:id="@+id/settings"
+        android:id="@+id/settingsFragment"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_settings_24"
         android:title="@string/settings"/>
