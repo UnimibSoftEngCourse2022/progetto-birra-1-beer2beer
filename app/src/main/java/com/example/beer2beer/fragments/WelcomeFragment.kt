@@ -11,11 +11,6 @@ import com.example.beer2beer.SharedViewModel
 import com.example.beer2beer.databinding.FragmentWelcomeBinding
 
 class WelcomeFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = WelcomeFragment()
-    }
-
     private lateinit var binding: FragmentWelcomeBinding
     private val viewModel: SharedViewModel by activityViewModels()
 

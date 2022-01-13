@@ -6,15 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.beer2beer.SharedViewModel
 import com.example.beer2beer.databinding.FragmentGetStartedBinding
 
 class GetStartedFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = GetStartedFragment()
-    }
-
     private lateinit var binding: FragmentGetStartedBinding
     private val viewModel: SharedViewModel by activityViewModels()
 
@@ -22,8 +18,13 @@ class GetStartedFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         getStartedFragmentSetup(inflater, container)
+
+        binding.continueButton.setOnClickListener {
+            val action = GetStartedFragmentDirections.actionGetStartedToHome()
+            findNavController().navigate(action)
+        }
+
         return binding.root
     }
 

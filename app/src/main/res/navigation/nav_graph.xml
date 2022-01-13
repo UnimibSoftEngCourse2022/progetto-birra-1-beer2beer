@@ -18,7 +18,11 @@
         android:id="@+id/getStartedFragment"
         android:name="com.example.beer2beer.fragments.GetStartedFragment"
         android:label="GetStartedFragment"
-        tools:layout="@layout/fragment_get_started"/>
+        tools:layout="@layout/fragment_get_started">
+        <action
+            android:id="@+id/action_getStarted_to_home"
+            app:destination="@id/homeFragment" />
+    </fragment>
 
 
     <!-- Main Fragments -->
