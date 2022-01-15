@@ -1,6 +1,7 @@
 package com.example.beer2beer
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
@@ -40,6 +41,13 @@ class MainActivity : AppCompatActivity() {
 
         navView = binding.bottomNavigationView
         NavigationUI.setupWithNavController(navView, navController)
-        //binding.bottomNavigationView.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if (destination.id == R.id.welcomeFragment || destination.id == R.id.getStartedFragment){
+                binding.bottomNavigationView.visibility = View.GONE
+            } else {
+                binding.bottomNavigationView.visibility = View.VISIBLE
+            }
+        }
     }
 }
