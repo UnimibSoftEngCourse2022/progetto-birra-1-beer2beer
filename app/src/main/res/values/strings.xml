@@ -2,10 +2,15 @@
     <string name="app_name">Beer2Beer</string>
     <string name="welcomeTextView">Welcome to Brew Day!</string>
     <string name="getStartedButton">Get Started</string>
-    
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="enterYourNameTextView">Enter your name</string>
     <string name="nameTextView">Name</string>
     <string name="nameEditText_hint">Enter your name</string>
     <string name="continueButton">Continue</string>
+    <string name="home">Home</string>
+    <string name="cart">Cart</string>
+    <string name="brew">Brew</string>
+    <string name="recipes">Recipes</string>
+    <string name="settings">Settings</string>
 </resources>

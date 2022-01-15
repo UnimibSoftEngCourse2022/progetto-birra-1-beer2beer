@@ -18,5 +18,45 @@
         android:id="@+id/getStartedFragment"
         android:name="com.example.beer2beer.fragments.GetStartedFragment"
         android:label="GetStartedFragment"
-        tools:layout="@layout/fragment_get_started"/>
+        tools:layout="@layout/fragment_get_started">
+        <action
+            android:id="@+id/action_getStarted_to_home"
+            app:destination="@id/homeFragment"
+            app:launchSingleTop="false"
+            app:popUpTo="@id/welcomeFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+
+    <!-- Main Fragments -->
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.beer2beer.fragments.HomeFragment"
+        android:label="@string/home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.example.beer2beer.fragments.CartFragment"
+        android:label="@string/cart"
+        tools:layout="@layout/fragment_cart" />
+
+    <fragment
+        android:id="@+id/brewFragment"
+        android:name="com.example.beer2beer.fragments.BrewFragment"
+        android:label="@string/brew"
+        tools:layout="@layout/fragment_brew" />
+
+    <fragment
+        android:id="@+id/recipesFragment"
+        android:name="com.example.beer2beer.fragments.RecipesFragment"
+        android:label="@string/recipes"
+        tools:layout="@layout/fragment_recipes" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.beer2beer.fragments.SettingsFragment"
+        android:label="@string/settings"
+        tools:layout="@layout/fragment_settings" />
+
 </navigation>

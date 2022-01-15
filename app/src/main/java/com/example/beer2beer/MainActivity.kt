@@ -1,18 +1,24 @@
 package com.example.beer2beer
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 import com.example.beer2beer.databinding.ActivityMainBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: SharedViewModel
     private lateinit var binding: ActivityMainBinding
+    private lateinit var navView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mainActivitySetup()
+        setupBottomNavigationView()
         setContentView(binding.root)
     }
 
@@ -27,5 +33,21 @@ class MainActivity : AppCompatActivity() {
 
         // Makes LiveData update the UI correctly
         binding.lifecycleOwner = this
+    }
+
+    private fun setupBottomNavigationView() {
+        val navHostFragment = this.supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
+        val navController = navHostFragment.navController
+
+        navView = binding.bottomNavigationView
+        NavigationUI.setupWithNavController(navView, navController)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if (destination.id == R.id.welcomeFragment || destination.id == R.id.getStartedFragment){
+                binding.bottomNavigationView.visibility = View.GONE
+            } else {
+                binding.bottomNavigationView.visibility = View.VISIBLE
+            }
+        }
     }
 }
