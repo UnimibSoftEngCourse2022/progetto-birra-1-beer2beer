@@ -21,7 +21,10 @@
         tools:layout="@layout/fragment_get_started">
         <action
             android:id="@+id/action_getStarted_to_home"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:launchSingleTop="false"
+            app:popUpTo="@id/welcomeFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
 
