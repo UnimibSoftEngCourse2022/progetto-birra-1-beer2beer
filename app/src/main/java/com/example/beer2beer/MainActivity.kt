@@ -4,6 +4,8 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -20,6 +22,17 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val splashScreen = installSplashScreen()
+
+        // When the condition becomes false, the activity shows
+        val condition = SplashScreen.KeepOnScreenCondition{
+            // The splash screen stays up for 1 second before disappearing
+            Thread.sleep(1000)
+            false
+        }
+        splashScreen.setKeepOnScreenCondition(condition)
+
+
         mainActivitySetup()
         setupBottomNavigationView()
         setContentView(binding.root)
