@@ -1,5 +1,6 @@
 package com.example.beer2beer.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +21,12 @@ class SettingsFragment : Fragment() {
     ): View {
 
         settingsFragmentSetup(inflater, container)
+
+        binding.buttonClearName.setOnClickListener {
+            val sharedPreferences = this.activity!!.getSharedPreferences("com.example.beer2beer", Context.MODE_PRIVATE)
+            sharedPreferences.edit().clear().apply()
+            this.activity!!.finishAffinity()
+        }
 
         return binding.root
     }
