@@ -1,5 +1,6 @@
 package com.example.beer2beer.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.example.beer2beer.R
 import com.example.beer2beer.SharedViewModel
 import com.example.beer2beer.databinding.FragmentGetStartedBinding
 
@@ -21,8 +23,19 @@ class GetStartedFragment : Fragment() {
         getStartedFragmentSetup(inflater, container)
 
         binding.continueButton.setOnClickListener {
-            val action = GetStartedFragmentDirections.actionGetStartedToHome()
-            findNavController().navigate(action)
+            if (binding.continueButton.text.isBlank())
+                binding.continueButton.error = resources.getString(R.string.blankUsernameError)
+            else{
+                binding.continueButton.error = null
+
+                val sharedPreferences = this.activity!!.getSharedPreferences("com.example.beer2beer", Context.MODE_PRIVATE)
+                sharedPreferences.edit()
+                    .putString("username", binding.nameEditText.text.toString())
+                    .apply()
+
+                val action = GetStartedFragmentDirections.actionGetStartedToHome()
+                findNavController().navigate(action)
+            }
         }
 
         return binding.root

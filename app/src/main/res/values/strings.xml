@@ -13,4 +13,5 @@
     <string name="brew">Brew</string>
     <string name="recipes">Recipes</string>
     <string name="settings">Settings</string>
+    <string name="blankUsernameError">The username must not be blank!</string>
 </resources>
