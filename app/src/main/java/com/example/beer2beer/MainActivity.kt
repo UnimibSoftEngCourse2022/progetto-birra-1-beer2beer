@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -40,8 +39,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        if (isUsernameIn())
-            findNavController(R.id.navHostFragment).navigate(R.id.homeFragment)
+        if (isUsernameIn()) {
+            findNavController(R.id.navHostFragment).navigate(R.id.action_global_home)
+        }
     }
 
     private fun mainActivitySetup() {
