@@ -23,10 +23,10 @@ class GetStartedFragment : Fragment() {
         getStartedFragmentSetup(inflater, container)
 
         binding.continueButton.setOnClickListener {
-            if (binding.continueButton.text.isBlank())
-                binding.continueButton.error = resources.getString(R.string.blankUsernameError)
+            if (binding.nameEditText.text.isBlank())
+                binding.nameEditText.error = resources.getString(R.string.blankUsernameError)
             else{
-                binding.continueButton.error = null
+                binding.nameEditText.error = null
 
                 val sharedPreferences = this.activity!!.getSharedPreferences("com.example.beer2beer", Context.MODE_PRIVATE)
                 sharedPreferences.edit()
