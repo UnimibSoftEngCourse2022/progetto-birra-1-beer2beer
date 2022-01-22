@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
@@ -9,21 +9,29 @@
             type="com.example.beer2beer.SharedViewModel" />
     </data>
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".fragments.SettingsFragment">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/settings" />
+        android:layout_height="match_parent">
 
         <Button
             android:id="@+id/buttonClearName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/clearNameButton" />
+            android:text="@string/clearNameButton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/settingsTextView"
+            app:layout_constraintStart_toStartOf="@+id/settingsTextView"
+            app:layout_constraintTop_toBottomOf="@+id/settingsTextView" />
 
-    </FrameLayout>
+        <TextView
+            android:id="@+id/settingsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settingsTextView"
+            android:textSize="34sp"
+            app:layout_constraintBottom_toTopOf="@+id/buttonClearName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

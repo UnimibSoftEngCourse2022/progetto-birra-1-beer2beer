@@ -4,26 +4,26 @@
         android:id="@+id/homeFragment"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_home_24"
-        android:title="@string/home"/>
+        android:title="@string/homeTextView"/>
     <item
         android:id="@+id/cartFragment"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_shopping_cart_24"
-        android:title="@string/cart"/>
+        android:title="@string/cartTextView"/>
     <item
         android:id="@+id/brewFragment"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_lightbulb_24"
-        android:title="@string/brew"/>
+        android:title="@string/brewTextView"/>
     <item
         android:id="@+id/recipesFragment"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_science_24"
-        android:title="@string/recipes"/>
+        android:title="@string/recipesTextView"/>
     <item
         android:id="@+id/settingsFragment"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_settings_24"
-        android:title="@string/settings"/>
+        android:title="@string/settingsTextView"/>
 
 </menu>
