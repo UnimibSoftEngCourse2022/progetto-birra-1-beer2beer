@@ -7,4 +7,13 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- palette app -->
+    <color name="background">#FEF1D5</color>
+    <color name="shade2">#e8d0a7</color>
+    <color name="shade3">#d4b68a</color>
+    <color name="buttons">#815016</color>
+    <color name="text">#35424a</color>
+
+
 </resources>
