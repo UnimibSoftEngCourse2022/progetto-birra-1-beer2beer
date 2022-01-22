@@ -37,6 +37,6 @@ class SettingsFragment : Fragment() {
     ) {
         binding = FragmentSettingsBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
     }
 }

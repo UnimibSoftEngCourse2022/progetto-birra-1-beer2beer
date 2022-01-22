@@ -30,6 +30,6 @@ class RecipesFragment : Fragment() {
     ) {
         binding = FragmentRecipesBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
     }
 }

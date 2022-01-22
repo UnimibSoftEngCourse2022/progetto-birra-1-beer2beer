@@ -1,9 +1,7 @@
 package com.example.beer2beer.database
 
 import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.room.*
 import com.example.beer2beer.database.entities.*
 
 @Database(
@@ -11,9 +9,11 @@ import com.example.beer2beer.database.entities.*
         RecipeInstance::class, RecipeInstanceUseEquipment::class],
     version = 1
 )
+@TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun recipeDao(): RecipeDao
 
+    /*
     companion object {
         // Singleton Pattern applied to ensure that only one instance of the database is created.
         @Volatile
@@ -30,8 +30,10 @@ abstract class AppDatabase : RoomDatabase() {
             Room.databaseBuilder(
                 context.applicationContext,
                 AppDatabase::class.java,
-                "MyDatabase.db"
+                "BeerDatabase"
             )
                 .build()
     }
+
+     */
 }

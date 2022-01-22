@@ -30,6 +30,6 @@ class BrewFragment : Fragment() {
     ) {
         binding = FragmentBrewBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
     }
 }
