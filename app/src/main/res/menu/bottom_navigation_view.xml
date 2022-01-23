@@ -10,11 +10,16 @@
         android:enabled="true"
         android:icon="@drawable/ic_baseline_shopping_cart_24"
         android:title="@string/cartTextView"/>
-    <item
+    <!--<item
         android:id="@+id/brewFragment"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_lightbulb_24"
-        android:title="@string/brewTextView"/>
+        android:title="@string/brewTextView"/>-->
+    <item
+        android:id="@+id/brewFragment"
+        android:checkable="false"
+        android:enabled="false"
+        android:title=""/>
     <item
         android:id="@+id/recipesFragment"
         android:enabled="true"
