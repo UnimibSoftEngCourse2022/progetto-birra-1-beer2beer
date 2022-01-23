@@ -67,9 +67,11 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if (destination.id == R.id.welcomeFragment || destination.id == R.id.getStartedFragment){
                 binding.fabBrew.visibility = View.GONE
+                binding.bottomAppBar.visibility = View.GONE
                 binding.bottomNavigationView.visibility = View.GONE
             } else {
                 binding.fabBrew.visibility = View.VISIBLE
+                binding.bottomAppBar.visibility = View.VISIBLE
                 binding.bottomNavigationView.visibility = View.VISIBLE
             }
         }
