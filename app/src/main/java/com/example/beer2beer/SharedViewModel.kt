@@ -13,6 +13,10 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
 
     // Declare all the Daos
     private val recipeDao = db.recipeDao()
+    private val ingredientDao = db.ingredientDao()
+    private val equipmentDao = db.equipmentDao()
 
     val recipes = recipeDao.getAll()
+    val ingredient = ingredientDao.getAll()
+    val equipment = equipmentDao.getAll()
 }
