@@ -20,20 +20,48 @@
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@id/bottomNavigationView"
+            android:layout_marginBottom="?attr/actionBarSize"
             app:defaultNavHost="true"
-            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+            app:layout_anchorGravity="center"
             app:navGraph="@navigation/nav_graph" />
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
+        
+        
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            app:menu="@menu/bottom_navigation_view"
-            app:itemIconTint="@drawable/bottom_navigation_selector"
-            app:backgroundTint="@color/background"/>
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true">
 
+            <com.google.android.material.bottomappbar.BottomAppBar
+                android:id="@+id/bottom_app_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="-16dp"
+                app:fabCradleMargin="10dp"
+                app:fabCradleRoundedCornerRadius="15dp"
+                app:fabCradleVerticalOffset="0dp">
+
+                <com.google.android.material.bottomnavigation.BottomNavigationView
+                    android:id="@+id/bottomNavigationView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="16dp"
+                    android:layout_gravity="bottom"
+                    android:background="@android:color/transparent"
+                    app:menu="@menu/bottom_navigation_view" />
+
+            </com.google.android.material.bottomappbar.BottomAppBar>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_brew"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="Brew"
+                android:backgroundTint="@color/fab"
+                android:src="@drawable/ic_baseline_lightbulb_24"
+                app:layout_anchor="@id/bottom_app_bar" />
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     </RelativeLayout>
 
