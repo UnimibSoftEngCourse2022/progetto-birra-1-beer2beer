@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNavigationView.background = null
         binding.fabBrew.setOnClickListener {
-            navController.navigate(R.id.brewFragment);
+            navController.navigate(R.id.action_global_brew)
         }
     }
 
