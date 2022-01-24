@@ -14,70 +14,67 @@
         android:layout_height="match_parent"
         tools:context=".fragments.GetStartedFragment">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center">
+            android:layout_height="match_parent">
 
             <LinearLayout
-                android:id="@+id/getStartedLinearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
                 android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:gravity="center_horizontal">
 
                 <LinearLayout
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="120dp"
-                    android:orientation="vertical">
+                    android:layout_width="match_parent"
+                    android:layout_height="550dp"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
 
-                    <TextView
-                        android:id="@+id/enterYourNameTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="@string/enterYourNameTextView"
-                        android:textSize="22sp" />
-
-                    <TextView
-                        android:id="@+id/nameTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="58dp"
-                        android:text="@string/nameTextView"
-                        android:textSize="14sp" />
-
-                    <EditText
-                        android:id="@+id/nameEditText"
+                    <LinearLayout
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
-                        android:autofillHints="name"
-                        android:ems="10"
-                        android:hint="@string/nameEditText_hint"
-                        android:inputType="textPersonName"
-                        android:minHeight="48dp"
-                        android:textSize="14sp"
-                        tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="150dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/enterYourNameTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="@string/enterYourNameTextView"
+                            android:textSize="22sp" />
+
+                        <TextView
+                            android:id="@+id/nameTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="58dp"
+                            android:text="@string/nameTextView"
+                            android:textSize="14sp" />
+
+                        <EditText
+                            android:id="@+id/nameEditText"
+                            android:layout_width="300dp"
+                            android:layout_height="wrap_content"
+                            android:autofillHints="name"
+                            android:ems="10"
+                            android:hint="@string/nameEditText_hint"
+                            android:inputType="textPersonName"
+                            android:minHeight="48dp"
+                            android:textSize="14sp"
+                            tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
+                    </LinearLayout>
                 </LinearLayout>
+
+                <Button
+                    android:id="@+id/continueButton"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    app:cornerRadius="30dp"
+                    android:text="@string/continueButton"/>
             </LinearLayout>
-
-            <Button
-                android:id="@+id/continueButton"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                app:cornerRadius="30dp"
-                android:text="@string/continueButton"
-                android:layout_marginBottom="120dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
     </FrameLayout>
 </layout>
