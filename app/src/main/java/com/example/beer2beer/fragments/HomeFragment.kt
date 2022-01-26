@@ -18,9 +18,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         homeFragmentSetup(inflater, container)
-
         return binding.root
     }
 
