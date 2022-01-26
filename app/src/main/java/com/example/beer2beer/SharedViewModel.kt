@@ -28,10 +28,15 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
 
     // Test DataBase
     fun testDb() {
-        val recipe = Recipe(1, "ricetta 1")
+        val recipe1 = Recipe(1, "ricetta 1")
+        val recipe2 = Recipe(2, "ricetta 2")
+        val recipe3 = Recipe(3, "ricetta 3")
+
 
         viewModelScope.launch(Dispatchers.IO) {
-            recipeDao.insert(recipe)
+            recipeDao.insert(recipe1)
+            recipeDao.insert(recipe2)
+            recipeDao.insert(recipe3)
         }
 
     }

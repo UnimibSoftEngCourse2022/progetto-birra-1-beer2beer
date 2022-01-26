@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.beer2beer.SharedViewModel
+import com.example.beer2beer.adapters.RecipeAdapter
+import com.example.beer2beer.database.entities.Recipe
 import com.example.beer2beer.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -19,6 +21,15 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         homeFragmentSetup(inflater, container)
+
+        viewModel.testDb()
+
+        val recipe1 = Recipe(0, "ricetta1")
+        val recipe2 = Recipe(0, "ricetta2")
+        val lista = listOf<Recipe>(recipe1, recipe2)
+
+        binding.homeRecyclerView.adapter = RecipeAdapter(lista)
+
         return binding.root
     }
 
