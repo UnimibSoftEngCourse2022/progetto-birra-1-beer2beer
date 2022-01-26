@@ -45,7 +45,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun mainActivitySetup() {
-        viewModel = ViewModelProvider(this)[SharedViewModel::class.java]
+        //viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(application))[SharedViewModel::class.java]
+        viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application))[SharedViewModel::class.java]
 
         // Setup binding object to inflate the activity
         binding = ActivityMainBinding.inflate(layoutInflater)
