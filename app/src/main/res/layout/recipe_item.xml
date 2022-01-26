@@ -1,14 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_width="350dp"
+    android:layout_height="300dp">
 
-    <TextView
-        android:id="@+id/RecipeNameTextView"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#546E7A"
-        tools:text="TextView" />
+        android:orientation="vertical"
+        android:background="@color/background"
+        android:backgroundTint="@color/shade2"
+        app:cornerRadius="30dp"
+        android:gravity="center_horizontal"
+        tools:ignore="UselessParent">
+
+        <TextView
+            android:id="@+id/RecipeNameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:padding="10dp"
+            tools:text="@string/recipeName"
+            android:textColor="@color/buttons"
+            android:textSize="20sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recipeIngredientsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+    </LinearLayout>
+
 </FrameLayout>
