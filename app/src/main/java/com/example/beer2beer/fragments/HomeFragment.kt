@@ -14,6 +14,7 @@ import com.example.beer2beer.databinding.FragmentHomeBinding
 class HomeFragment : Fragment() {
     private lateinit var  binding: FragmentHomeBinding
     private val viewModel: SharedViewModel by activityViewModels()
+    private val adapter = RecipeAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,9 +27,10 @@ class HomeFragment : Fragment() {
 
         val recipe1 = Recipe(0, "ricetta1")
         val recipe2 = Recipe(0, "ricetta2")
-        val lista = listOf<Recipe>(recipe1, recipe2)
+        val lista = mutableListOf<Recipe>(recipe1, recipe2)
 
-        binding.homeRecyclerView.adapter = RecipeAdapter(lista)
+        binding.homeRecyclerView.adapter = adapter
+        adapter.submitList(lista)
 
         return binding.root
     }
