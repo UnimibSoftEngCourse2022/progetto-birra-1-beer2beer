@@ -23,14 +23,11 @@ class HomeFragment : Fragment() {
     ): View {
         homeFragmentSetup(inflater, container)
 
-        viewModel.testDb()
-
-        val recipe1 = Recipe(0, "ricetta1")
-        val recipe2 = Recipe(0, "ricetta2")
-        val lista = mutableListOf<Recipe>(recipe1, recipe2)
-
         binding.homeRecyclerView.adapter = adapter
-        adapter.submitList(lista)
+
+        viewModel.recipes.observe(viewLifecycleOwner){ recipeList ->
+            adapter.submitList(recipeList)
+        }
 
         return binding.root
     }
