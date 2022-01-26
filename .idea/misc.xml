@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Samuele/Downloads/progetto-birra-1-beer2beer-master/progetto-birra-1-beer2beer/app/src/main/res/layout/activity_main.xml" value="0.21875" />
+        <entry key="..\:/Users/Samuele/Downloads/progetto-birra-1-beer2beer-master/progetto-birra-1-beer2beer/app/src/main/res/layout/fragment_get_started.xml" value="0.20208333333333334" />
+        <entry key="..\:/Users/Samuele/Downloads/progetto-birra-1-beer2beer-master/progetto-birra-1-beer2beer/app/src/main/res/layout/fragment_welcome.xml" value="0.21875" />
+        <entry key="..\:/Users/Samuele/Downloads/progetto-birra-1-beer2beer-master/progetto-birra-1-beer2beer/app/src/main/res/menu/bottom_navigation_view.xml" value="0.21875" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.371875" />
         <entry key="app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.1953125" />
         <entry key="app/src/main/res/drawable/ic_brewday_logo.xml" value="0.371875" />
