@@ -19,4 +19,8 @@
     <string name="name">Hi name!</string>
     <string name="equipmentTextView">Equipment</string>
     <string name="addEquipment">add equipment</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="addWater">add water</string>
+    <string name="water">Water</string>
+    <string name="qtyWater">q.tyWater</string>
 </resources>
