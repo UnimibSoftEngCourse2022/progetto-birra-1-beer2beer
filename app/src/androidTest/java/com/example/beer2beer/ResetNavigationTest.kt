@@ -17,57 +17,36 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.example.beer2beer.fragments.GetStartedFragment
+import com.example.beer2beer.fragments.SettingsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.junit.After
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class GetStartedNavigationTest {
-
-    val USERNAME = "Gianpiero"
+class ResetNavigationTest {
 
     @Test
     fun getStartedNavigationTest() {
 
         val navController = TestNavHostController(
-            ApplicationProvider.getApplicationContext())
+            ApplicationProvider.getApplicationContext()
+        )
 
-        val scenario = launchFragmentInContainer<GetStartedFragment>()
+        val scenario = launchFragmentInContainer<SettingsFragment>()
 
         scenario.onFragment { fragment ->
             navController.setGraph(R.navigation.nav_graph)
-            navController.navigate(R.id.getStartedFragment)
+            navController.navigate(R.id.settingsFragment)
             Navigation.setViewNavController(fragment.requireView(), navController)
         }
 
-        //val scenario = launchFragmentInContainer {
-        //    TitleScreen().also { fragment ->
-        //        fragment.viewLifecycleOwnerLiveData.observeForever { viewLifecycleOwner ->
-        //            if (viewLifecycleOwner != null) {
-        //                // The fragment’s view has just been created
-        //                navController.setGraph(R.navigation.nav_graph)
-        //                Navigation.setViewNavController(fragment.requireView(), navController)
-        //            }
-        //        }
-        //    }
-        //}
-
-        onView(withId(R.id.nameEditText)).perform(typeText(USERNAME), closeSoftKeyboard())
-        onView(withId(R.id.continueButton)).perform(click())
-        assert(navController.currentDestination?.id == R.id.homeFragment)
+        onView(withId(R.id.buttonClearName)).perform(click())
 
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         val sharedPreferences = appContext
             .getSharedPreferences("com.example.beer2beer", Context.MODE_PRIVATE)
         val username = sharedPreferences.getString("username", "")!!
-        assert(username == USERNAME)
-    }
-
-    class TitleScreen : Fragment(R.layout.fragment_get_started) {
-        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-            val navController = view.findNavController()
-            view.findViewById<BottomNavigationView>(R.id.bottomNavigationView).setupWithNavController(navController)
-        }
+        assert(username == "")
     }
 }

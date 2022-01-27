@@ -11,7 +11,9 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.beer2beer.fragments.WelcomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -46,7 +48,7 @@ class WelcomeNavigationTest {
         //    }
         //}
 
-        onView(ViewMatchers.withId(R.id.getStartedButton)).perform(ViewActions.click())
+        onView(withId(R.id.getStartedButton)).perform(click())
         assert(navController.currentDestination?.id == R.id.getStartedFragment)
     }
 
