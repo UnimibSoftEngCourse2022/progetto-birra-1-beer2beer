@@ -15,4 +15,5 @@
     <string name="clearNameButton">Clear name!</string>
     <string name="contentDescriptionLogo">Logo Image</string>
     <string name="recipeName">Recipe Name</string>
+    <string name="addRecipie">add recipie</string>
 </resources>
