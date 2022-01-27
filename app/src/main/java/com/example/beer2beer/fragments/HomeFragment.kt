@@ -18,9 +18,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         homeFragmentSetup(inflater, container)
-
         return binding.root
     }
 
@@ -30,6 +28,6 @@ class HomeFragment : Fragment() {
     ) {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
     }
 }

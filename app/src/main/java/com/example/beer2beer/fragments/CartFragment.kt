@@ -30,6 +30,6 @@ class CartFragment : Fragment() {
     ) {
         binding = FragmentCartBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
     }
 }

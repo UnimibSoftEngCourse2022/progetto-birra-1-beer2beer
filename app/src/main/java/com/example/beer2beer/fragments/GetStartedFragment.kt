@@ -28,7 +28,7 @@ class GetStartedFragment : Fragment() {
             else{
                 binding.nameEditText.error = null
 
-                val sharedPreferences = this.activity!!.getSharedPreferences("com.example.beer2beer", Context.MODE_PRIVATE)
+                val sharedPreferences = this.requireActivity().getSharedPreferences("com.example.beer2beer", Context.MODE_PRIVATE)
                 sharedPreferences.edit()
                     .putString("username", binding.nameEditText.text.toString())
                     .apply()
@@ -47,6 +47,6 @@ class GetStartedFragment : Fragment() {
     ) {
         binding = FragmentGetStartedBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
     }
 }

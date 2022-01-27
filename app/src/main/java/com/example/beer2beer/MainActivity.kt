@@ -19,8 +19,15 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navView: BottomNavigationView
 
+    private var isFirstTime = true
+    private var isAlreadyStarted = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //Check if the username is already set
+        isFirstTime = !isUsernameIn()
+
         val splashScreen = installSplashScreen()
 
         // When the condition becomes false, the activity shows
@@ -31,21 +38,24 @@ class MainActivity : AppCompatActivity() {
         }
         splashScreen.setKeepOnScreenCondition(condition)
 
-
         mainActivitySetup()
         setupBottomNavigationView()
         setContentView(binding.root)
     }
 
+
+
     override fun onStart() {
         super.onStart()
-        if (isUsernameIn()) {
+        if (!isFirstTime && !isAlreadyStarted) {
             findNavController(R.id.navHostFragment).navigate(R.id.action_global_home)
         }
+        isAlreadyStarted = true
     }
 
     private fun mainActivitySetup() {
-        viewModel = ViewModelProvider(this)[SharedViewModel::class.java]
+        //viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(application))[SharedViewModel::class.java]
+        viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application))[SharedViewModel::class.java]
 
         // Setup binding object to inflate the activity
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -66,10 +76,19 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if (destination.id == R.id.welcomeFragment || destination.id == R.id.getStartedFragment){
+                binding.fabBrew.visibility = View.GONE
+                binding.bottomAppBar.visibility = View.GONE
                 binding.bottomNavigationView.visibility = View.GONE
             } else {
+                binding.fabBrew.visibility = View.VISIBLE
+                binding.bottomAppBar.visibility = View.VISIBLE
                 binding.bottomNavigationView.visibility = View.VISIBLE
             }
+        }
+
+        binding.bottomNavigationView.background = null
+        binding.fabBrew.setOnClickListener {
+            navController.navigate(R.id.action_global_brew)
         }
     }
 

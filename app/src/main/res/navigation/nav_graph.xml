@@ -63,5 +63,9 @@
         app:destination="@id/homeFragment"
         app:popUpTo="@id/welcomeFragment"
         app:popUpToInclusive="true" />
+    <action
+        android:id="@+id/action_global_brew"
+        app:destination="@id/brewFragment"
+        app:enterAnim="@android:anim/fade_in" />
 
 </navigation>

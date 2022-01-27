@@ -12,9 +12,9 @@
         android:title="@string/cartTextView"/>
     <item
         android:id="@+id/brewFragment"
-        android:enabled="true"
-        android:icon="@drawable/ic_baseline_lightbulb_24"
-        android:title="@string/brewTextView"/>
+        android:checkable="false"
+        android:enabled="false"
+        android:title=""/>
     <item
         android:id="@+id/recipesFragment"
         android:enabled="true"
