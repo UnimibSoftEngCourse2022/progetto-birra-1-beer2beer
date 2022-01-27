@@ -30,4 +30,6 @@
     <string name="descriptionTextView">Insert here the recipe description:</string>
     <string name="descriptionEditTextHint">Recipe description</string>
     <string name="saveRecipeButton">Save</string>
+    <string name="recipeNameEditTextError">The recipe name cannot be empty!</string>
+    <string name="selectIngredientsTextViewError">The recipe cannot have 0 ingredients!</string>
 </resources>

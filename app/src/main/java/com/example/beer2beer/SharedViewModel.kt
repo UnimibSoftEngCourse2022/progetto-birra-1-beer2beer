@@ -4,11 +4,9 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.room.Room
-import androidx.room.RoomDatabase
-import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.beer2beer.database.AppDatabase
-import com.example.beer2beer.database.entities.Ingredient
 import com.example.beer2beer.database.entities.Recipe
+import com.example.beer2beer.database.entities.RecipeHasIngredient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -17,10 +15,11 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     private val db = Room.databaseBuilder(
         application.applicationContext,
         AppDatabase::class.java,
-        "BeerDatabase").createFromAsset("brewday.db")
+        "BeerDatabase"
+    ).createFromAsset("brewday.db")
         .build()
 
-    // Declare all the Daos
+    // Declare all Dao
     private val recipeDao = db.recipeDao()
     private val ingredientDao = db.ingredientDao()
     private val equipmentDao = db.equipmentDao()
@@ -29,18 +28,20 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     val ingredients = ingredientDao.getAll()
     val equipment = equipmentDao.getAll()
 
-    // Test DataBase
-    fun testDb() {
-        val recipe1 = Recipe(1, "ricetta 1", "")
-        val recipe2 = Recipe(2, "ricetta 2", "")
-        val recipe3 = Recipe(3, "ricetta 3", "")
-
+    fun createNewRecipe(
+        ingredientNames: Array<String>,
+        quantities: DoubleArray,
+        name: String,
+        description: String
+    ) {
+        val recipe = Recipe(0, name, description)
 
         viewModelScope.launch(Dispatchers.IO) {
-            recipeDao.insert(recipe1)
-            recipeDao.insert(recipe2)
-            recipeDao.insert(recipe3)
+            val id = recipeDao.insert(recipe)
+            quantities.forEachIndexed { index, quantity ->
+                val rhi = RecipeHasIngredient(id.toInt(), ingredientNames[index], quantity)
+                recipeDao.insertIngredient(rhi)
+            }
         }
-
     }
 }
