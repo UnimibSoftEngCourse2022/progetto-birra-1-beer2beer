@@ -23,7 +23,7 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     private val equipmentDao = db.equipmentDao()
 
     val recipes = recipeDao.getAll()
-    val ingredient = ingredientDao.getAll()
+    val ingredients = ingredientDao.getAll()
     val equipment = equipmentDao.getAll()
 
     // Test DataBase

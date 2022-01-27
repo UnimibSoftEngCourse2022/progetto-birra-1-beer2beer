@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.beer2beer.R
 import com.example.beer2beer.database.entities.Recipe
 
-class RecipeAdapter() : ListAdapter<Recipe, RecipeAdapter.RecipeViewHolder>(DiffCallback()) {
+class RecipeAdapter() : ListAdapter<Recipe, RecipeAdapter.RecipeViewHolder>(RecipeDiffcallback()) {
     class RecipeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val recipeNameTextView: TextView = view.findViewById(R.id.RecipeNameTextView)
     }
@@ -26,7 +26,7 @@ class RecipeAdapter() : ListAdapter<Recipe, RecipeAdapter.RecipeViewHolder>(Diff
 
 }
 
-class DiffCallback : DiffUtil.ItemCallback<Recipe>(){
+class RecipeDiffcallback : DiffUtil.ItemCallback<Recipe>(){
     override fun areItemsTheSame(oldItem: Recipe, newItem: Recipe): Boolean {
         return oldItem.id == newItem.id
     }

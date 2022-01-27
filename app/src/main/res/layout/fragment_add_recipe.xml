@@ -59,13 +59,14 @@
             app:layout_constraintTop_toBottomOf="@+id/recipeNameEditText" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+            android:id="@+id/ingredientsRecyclerView"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             app:layout_constraintBottom_toTopOf="@id/descriptionTextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/selectIngredientsTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/selectIngredientsTextView"
+            tools:listitem="@layout/ingredient_item" />
 
         <TextView
             android:id="@+id/descriptionTextView"
@@ -74,13 +75,14 @@
             android:layout_marginTop="16dp"
             android:text="@string/descriptionTextView"
             app:layout_constraintStart_toStartOf="@+id/selectIngredientsTextView"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+            app:layout_constraintTop_toBottomOf="@+id/ingredientsRecyclerView" />
 
         <EditText
             android:id="@+id/descriptionEditText"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
             android:ems="10"
             android:gravity="start|top"
             android:hint="@string/descriptionEditTextHint"
@@ -97,7 +99,7 @@
             android:id="@+id/saveRecipeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="32dp"
             android:text="@string/saveRecipeButton"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

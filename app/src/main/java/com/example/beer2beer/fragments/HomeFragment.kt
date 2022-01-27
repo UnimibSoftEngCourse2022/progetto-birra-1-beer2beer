@@ -25,7 +25,6 @@ class HomeFragment : Fragment() {
         homeFragmentSetup(inflater, container)
 
         binding.homeRecyclerView.adapter = adapter
-
         viewModel.recipes.observe(viewLifecycleOwner){ recipeList ->
             adapter.submitList(recipeList)
         }
