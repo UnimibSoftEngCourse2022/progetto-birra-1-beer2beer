@@ -27,6 +27,7 @@ class IngredientAdapter() : ListAdapter<Ingredient, IngredientAdapter.Ingredient
 
     override fun onBindViewHolder(holder: IngredientViewHolder, position: Int) {
         holder.ingredientNameTextView.text = getItem(position).name
+        holder.quantityEditText.setText(getItem(position).quantity.toString())
     }
 }
 
