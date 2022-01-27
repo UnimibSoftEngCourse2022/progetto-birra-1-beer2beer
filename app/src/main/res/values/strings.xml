@@ -23,4 +23,19 @@
     <string name="addWater">add water</string>
     <string name="water">Water</string>
     <string name="qtyWater">q.tyWater</string>
+    <string name="malts">Malts</string>
+    <string name="qtyMalts">q.tyMalts</string>
+    <string name="addMalts">add malts</string>
+    <string name="hops">Hops</string>
+    <string name="qtyHops">q.tyHops</string>
+    <string name="yeasts">Yeasts</string>
+    <string name="qtyYeasts">q.tyYeasts</string>
+    <string name="addYeasts">add yeasts</string>
+    <string name="addHops">add hops</string>
+    <string name="sugars">Sugars</string>
+    <string name="qtySugars">q.tySugars</string>
+    <string name="addSugars">add sugars</string>
+    <string name="additives">Additives</string>
+    <string name="qtyAdditives">q.tyAdditives</string>
+    <string name="addAdditives">add additives</string>
 </resources>

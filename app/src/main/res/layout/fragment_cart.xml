@@ -32,66 +32,330 @@
                 android:textSize="28sp"
                 android:textColor="@color/buttons"/>
 
-            <LinearLayout
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_marginTop="10dp">
+                android:layout_height="wrap_content">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/card_view_water"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardBackgroundColor="@color/shade2"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="5dp"
-                    app:cardUseCompatPadding="true">
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp">
 
-                    <LinearLayout
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_view_water"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/shade2"
-                        android:orientation="horizontal"
-                        android:gravity="center">
+                        app:cardBackgroundColor="@color/shade2"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="5dp"
+                        app:cardUseCompatPadding="true">
 
-                        <TextView
-                            android:layout_width="0dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-medium"
-                            android:gravity="start"
-                            android:padding="10dp"
-                            android:paddingStart="30dp"
-                            android:text="@string/water"
-                            android:textColor="@color/buttons"
-                            android:textSize="12sp"
-                            android:layout_weight="1"
-                            tools:ignore="RtlSymmetry" />
+                            android:background="@color/shade2"
+                            android:orientation="horizontal"
+                            android:gravity="center">
 
-                        <TextView
-                            android:id="@+id/WaterQtyTextView"
-                            android:layout_width="wrap_content"
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-medium"
+                                android:gravity="start"
+                                android:padding="10dp"
+                                android:paddingStart="30dp"
+                                android:text="@string/water"
+                                android:textColor="@color/buttons"
+                                android:textSize="12sp"
+                                android:layout_weight="1"
+                                tools:ignore="RtlSymmetry" />
+
+                            <TextView
+                                android:id="@+id/WaterQtyTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif"
+                                android:gravity="end"
+                                android:padding="10dp"
+                                android:text="@string/qtyWater"
+                                android:textColor="@color/buttons"
+                                android:textSize="12sp"/>
+
+                            <ImageButton
+                                android:id="@+id/addWaterButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:padding="10dp"
+                                android:background="@android:color/transparent"
+                                app:srcCompat="@android:drawable/ic_menu_add"
+                                android:contentDescription="@string/addWater" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_view_malts"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardBackgroundColor="@color/shade2"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="5dp"
+                        app:cardUseCompatPadding="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif"
-                            android:gravity="end"
-                            android:padding="10dp"
-                            android:text="@string/qtyWater"
-                            android:textColor="@color/buttons"
-                            android:textSize="12sp"/>
+                            android:background="@color/shade2"
+                            android:orientation="horizontal"
+                            android:gravity="center">
 
-                        <ImageButton
-                            android:id="@+id/addWaterButton"
-                            android:layout_width="wrap_content"
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-medium"
+                                android:gravity="start"
+                                android:padding="10dp"
+                                android:paddingStart="30dp"
+                                android:text="@string/malts"
+                                android:textColor="@color/buttons"
+                                android:textSize="12sp"
+                                android:layout_weight="1"
+                                tools:ignore="RtlSymmetry" />
+
+                            <TextView
+                                android:id="@+id/maltsQtyTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif"
+                                android:gravity="end"
+                                android:padding="10dp"
+                                android:text="@string/qtyMalts"
+                                android:textColor="@color/buttons"
+                                android:textSize="12sp"/>
+
+                            <ImageButton
+                                android:id="@+id/addMaltsButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:padding="10dp"
+                                android:background="@android:color/transparent"
+                                app:srcCompat="@android:drawable/ic_menu_add"
+                                android:contentDescription="@string/addMalts" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_view_hops"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardBackgroundColor="@color/shade2"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="5dp"
+                        app:cardUseCompatPadding="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:padding="10dp"
-                            android:background="@android:color/transparent"
-                            app:srcCompat="@android:drawable/ic_menu_add"
-                            android:contentDescription="@string/addWater" />
+                            android:background="@color/shade2"
+                            android:orientation="horizontal"
+                            android:gravity="center">
 
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-medium"
+                                android:gravity="start"
+                                android:padding="10dp"
+                                android:paddingStart="30dp"
+                                android:text="@string/hops"
+                                android:textColor="@color/buttons"
+                                android:textSize="12sp"
+                                android:layout_weight="1"
+                                tools:ignore="RtlSymmetry" />
+
+                            <TextView
+                                android:id="@+id/hopsQtyTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif"
+                                android:gravity="end"
+                                android:padding="10dp"
+                                android:text="@string/qtyHops"
+                                android:textColor="@color/buttons"
+                                android:textSize="12sp"/>
+
+                            <ImageButton
+                                android:id="@+id/addHopsButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:padding="10dp"
+                                android:background="@android:color/transparent"
+                                app:srcCompat="@android:drawable/ic_menu_add"
+                                android:contentDescription="@string/addHops" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_view_yeasts"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardBackgroundColor="@color/shade2"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="5dp"
+                        app:cardUseCompatPadding="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/shade2"
+                            android:orientation="horizontal"
+                            android:gravity="center">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-medium"
+                                android:gravity="start"
+                                android:padding="10dp"
+                                android:paddingStart="30dp"
+                                android:text="@string/yeasts"
+                                android:textColor="@color/buttons"
+                                android:textSize="12sp"
+                                android:layout_weight="1"
+                                tools:ignore="RtlSymmetry" />
+
+                            <TextView
+                                android:id="@+id/yeastsQtyTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif"
+                                android:gravity="end"
+                                android:padding="10dp"
+                                android:text="@string/qtyYeasts"
+                                android:textColor="@color/buttons"
+                                android:textSize="12sp"/>
+
+                            <ImageButton
+                                android:id="@+id/addYeastsButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:padding="10dp"
+                                android:background="@android:color/transparent"
+                                app:srcCompat="@android:drawable/ic_menu_add"
+                                android:contentDescription="@string/addYeasts" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_view_sugars"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardBackgroundColor="@color/shade2"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="5dp"
+                        app:cardUseCompatPadding="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/shade2"
+                            android:orientation="horizontal"
+                            android:gravity="center">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-medium"
+                                android:gravity="start"
+                                android:padding="10dp"
+                                android:paddingStart="30dp"
+                                android:text="@string/sugars"
+                                android:textColor="@color/buttons"
+                                android:textSize="12sp"
+                                android:layout_weight="1"
+                                tools:ignore="RtlSymmetry" />
+
+                            <TextView
+                                android:id="@+id/sugarsQtyTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif"
+                                android:gravity="end"
+                                android:padding="10dp"
+                                android:text="@string/qtySugars"
+                                android:textColor="@color/buttons"
+                                android:textSize="12sp"/>
+
+                            <ImageButton
+                                android:id="@+id/addSugarsButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:padding="10dp"
+                                android:background="@android:color/transparent"
+                                app:srcCompat="@android:drawable/ic_menu_add"
+                                android:contentDescription="@string/addSugars" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_view_additives"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardBackgroundColor="@color/shade2"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="5dp"
+                        app:cardUseCompatPadding="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/shade2"
+                            android:orientation="horizontal"
+                            android:gravity="center">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-medium"
+                                android:gravity="start"
+                                android:padding="10dp"
+                                android:paddingStart="30dp"
+                                android:text="@string/additives"
+                                android:textColor="@color/buttons"
+                                android:textSize="12sp"
+                                android:layout_weight="1"
+                                tools:ignore="RtlSymmetry" />
+
+                            <TextView
+                                android:id="@+id/additivesQtyTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif"
+                                android:gravity="end"
+                                android:padding="10dp"
+                                android:text="@string/qtyAdditives"
+                                android:textColor="@color/buttons"
+                                android:textSize="12sp"/>
+
+                            <ImageButton
+                                android:id="@+id/addAdditivesButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:padding="10dp"
+                                android:background="@android:color/transparent"
+                                app:srcCompat="@android:drawable/ic_menu_add"
+                                android:contentDescription="@string/addAdditives" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+            </ScrollView>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
