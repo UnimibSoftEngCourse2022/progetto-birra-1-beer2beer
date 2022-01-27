@@ -17,4 +17,6 @@
     <string name="deleteAccountButton">Delete Account</string>
     <string name="contentDescriptionLogo">Logo Image</string>
     <string name="name">Hi name!</string>
+    <string name="equipmentTextView">Equipment</string>
+    <string name="addEquipment">add equipment</string>
 </resources>
