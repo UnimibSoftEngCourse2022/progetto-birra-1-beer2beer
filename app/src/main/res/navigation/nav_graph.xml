@@ -33,7 +33,11 @@
         android:id="@+id/homeFragment"
         android:name="com.example.beer2beer.fragments.HomeFragment"
         android:label="@string/homeTextView"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_home_to_addRecipe"
+            app:destination="@id/addRecipeFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/cartFragment"
@@ -67,5 +71,10 @@
         android:id="@+id/action_global_brew"
         app:destination="@id/brewFragment"
         app:enterAnim="@android:anim/fade_in" />
+    <fragment
+        android:id="@+id/addRecipeFragment"
+        android:name="com.example.beer2beer.fragments.AddRecipeFragment"
+        android:label="AddRecipeFragment"
+        tools:layout="@layout/fragment_add_recipe" />
 
 </navigation>

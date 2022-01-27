@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.beer2beer.SharedViewModel
 import com.example.beer2beer.adapters.RecipeAdapter
 import com.example.beer2beer.database.entities.Recipe
@@ -27,6 +28,11 @@ class HomeFragment : Fragment() {
 
         viewModel.recipes.observe(viewLifecycleOwner){ recipeList ->
             adapter.submitList(recipeList)
+        }
+
+        binding.addRecipeFab.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeToAddRecipe()
+            findNavController().navigate(action)
         }
 
         return binding.root

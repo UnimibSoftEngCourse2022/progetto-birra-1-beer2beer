@@ -16,4 +16,18 @@
     <string name="contentDescriptionLogo">Logo Image</string>
     <string name="recipeName">Recipe Name</string>
     <string name="addRecipie">add recipie</string>
+    <string name="InsertRecipeFragmentTextView">Insert a new recipe</string>
+    <string name="recipeNameTextView">Insert the name for the new recipe!</string>
+    <string name="recipeNameEditTextHint">Insert recipe name</string>
+    <string name="selectIngredientsTextView">Select the ingredients:</string>
+    <string name="waterCheckBox">Water</string>
+    <string name="maltsCheckBox">Malts</string>
+    <string name="hopsCheckBox">Hops</string>
+    <string name="yeastCheckBox">Yeast</string>
+    <string name="sugarCheckBox">Sugar</string>
+    <string name="additivesCheckBox">Additives</string>
+    <string name="quantityEditText">Qty.</string>
+    <string name="descriptionTextView">Insert here the recipe description:</string>
+    <string name="descriptionEditTextHint">Recipe description</string>
+    <string name="saveRecipeButton">Save</string>
 </resources>
