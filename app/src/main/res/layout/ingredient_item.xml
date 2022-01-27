@@ -36,8 +36,6 @@
                 android:id="@+id/subButton"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
-                android:minWidth="48dp"
-                android:minHeight="48dp"
                 app:cornerRadius="30dp"
                 android:text="@string/minus" />
 
