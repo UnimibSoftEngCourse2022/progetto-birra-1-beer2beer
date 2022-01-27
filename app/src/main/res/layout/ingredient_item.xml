@@ -17,7 +17,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/shade2"
+            android:background="@color/shade3"
             android:orientation="horizontal"
             android:gravity="center">
 
@@ -26,18 +26,20 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
-                android:textColor="@color/text"
+                android:textColor="@color/textBrown"
                 tools:text="Ingredient name"
                 android:layout_weight="1"
                 android:textSize="14sp"
                 android:fontFamily="sans-serif-medium"/>
 
             <Button
-                android:id="@+id/addButton"
+                android:id="@+id/subButton"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
                 app:cornerRadius="30dp"
-                android:text="@string/plus" />
+                android:text="@string/minus" />
 
             <EditText
                 android:id="@+id/quantityEditText"
@@ -48,16 +50,16 @@
                 android:hint="@string/quantityEditText"
                 android:importantForAutofill="no"
                 android:inputType="number"
-                android:textSize="14sp"/>
+                android:textSize="14sp"
+                android:textColor="@color/textBrown"/>
 
             <Button
-                android:id="@+id/subButton"
+                android:id="@+id/addButton"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
-                android:minWidth="48dp"
-                android:minHeight="48dp"
                 app:cornerRadius="30dp"
-                android:text="@string/minus" />
+                android:text="@string/plus"
+                android:layout_marginEnd="8dp"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </FrameLayout>
