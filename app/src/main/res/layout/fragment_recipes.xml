@@ -29,8 +29,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="@string/equipmentTextView"
-            android:textSize="28sp" />
+            android:text="@string/equipment"
+            android:textSize="28sp"
+            android:textColor="@color/buttons"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/equipmentRecyclerView"
