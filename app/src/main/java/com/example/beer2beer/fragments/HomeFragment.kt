@@ -24,10 +24,10 @@ class HomeFragment : Fragment() {
     ): View {
         homeFragmentSetup(inflater, container)
 
-        binding.homeRecyclerView.adapter = adapter
         viewModel.recipes.observe(viewLifecycleOwner){ recipeList ->
             adapter.submitList(recipeList)
         }
+        binding.homeRecyclerView.adapter = adapter
 
         binding.addRecipeFab.setOnClickListener {
             val action = HomeFragmentDirections.actionHomeToAddRecipe()
