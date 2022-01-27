@@ -44,9 +44,9 @@
                     android:inputType="textPersonName"
                     android:minHeight="48dp"
                     android:padding="16dp"
-                    android:textColor="@color/text"
-                    android:textColorHighlight="@color/text"
-                    android:textColorHint="@color/text"
+                    android:textColor="@color/textBrown"
+                    android:textColorHighlight="@color/textBrown"
+                    android:textColorHint="@color/textBrown"
                     android:textSize="22sp" />
 
                 <TextView
@@ -61,7 +61,7 @@
                     android:gravity="start"
                     android:padding="16dp"
                     android:text="@string/ingredients"
-                    android:textColor="@color/buttons"
+                    android:textColor="@color/textBrown"
                     android:textSize="18sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -70,7 +70,9 @@
                     android:layout_height="wrap_content"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:itemCount="6"
-                    tools:listitem="@layout/ingredient_item" />
+                    tools:listitem="@layout/ingredient_item"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"/>
 
                 <TextView
                     android:id="@+id/descriptionTextView"
@@ -89,6 +91,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
+                    android:layout_margin="8dp"
                     android:ems="10"
                     android:gravity="start|top"
                     android:hint="@string/descriptionEditTextHint"
