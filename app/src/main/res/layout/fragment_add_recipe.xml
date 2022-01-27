@@ -16,17 +16,21 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
                 android:layout_margin="16dp"
-                app:cornerRadius="30dp"
+                android:background="@color/shade2"
+                android:gravity="center"
+                android:orientation="vertical"
                 android:topLeftRadius="100dip"
-                android:background="@color/shade2">
+                app:cornerRadius="30dp">
 
                 <EditText
                     android:id="@+id/recipeNameEditText"
@@ -49,18 +53,18 @@
                     android:id="@+id/selectIngredientsTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:padding="16dp"
-                    android:gravity="start"
                     android:layout_gravity="start"
+                    android:layout_marginTop="10dp"
+                    android:gravity="start"
+                    android:padding="16dp"
                     android:text="@string/ingredients"
-                    android:textSize="18sp"
-                    android:textColor="@color/buttons"/>
+                    android:textColor="@color/buttons"
+                    android:textSize="18sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/ingredientsRecyclerView"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="wrap_content"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/ingredient_item" />
 
@@ -68,19 +72,18 @@
                     android:id="@+id/descriptionTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:padding="16dp"
-                    android:gravity="start"
                     android:layout_gravity="start"
+                    android:layout_marginTop="10dp"
+                    android:gravity="start"
+                    android:padding="16dp"
                     android:text="@string/description"
-                    android:textSize="18sp"
-                    android:textColor="@color/textBrown"/>
+                    android:textColor="@color/textBrown"
+                    android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/descriptionEditText"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
                     android:layout_marginBottom="16dp"
                     android:ems="10"
                     android:gravity="start|top"
@@ -88,18 +91,19 @@
                     android:importantForAutofill="no"
                     android:inputType="textMultiLine"
                     android:minHeight="38dp"
-                    android:textColorHint="@color/textBrown"
+                    android:padding="16dp"
                     android:textColor="@color/textBrown"
-                    android:textSize="14sp"/>
+                    android:textColorHint="@color/textBrown"
+                    android:textSize="14sp" />
 
                 <Button
                     android:id="@+id/saveRecipeButton"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    app:cornerRadius="30dp"
                     android:layout_marginBottom="32dp"
-                    android:text="@string/saveRecipeButton" />
+                    android:padding="10dp"
+                    android:text="@string/saveRecipeButton"
+                    app:cornerRadius="30dp" />
             </LinearLayout>
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
