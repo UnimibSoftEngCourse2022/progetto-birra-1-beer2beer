@@ -51,7 +51,10 @@ class IngredientAdapter :
         }
 
         holder.quantityEditText.addTextChangedListener { s ->
-            ingredientQuantities[position] = s.toString().toDouble()
+            if (s.toString().isEmpty())
+                ingredientQuantities[position] = 0.0
+            else
+                ingredientQuantities[position] = s.toString().toDouble()
         }
     }
 }
