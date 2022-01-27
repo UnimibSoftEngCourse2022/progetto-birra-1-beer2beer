@@ -13,7 +13,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun recipeDao(): RecipeDao
     abstract fun ingredientDao (): IngredientDao
     abstract fun equipmentDao (): EquipmentDao
-    /*
+
     companion object {
         // Singleton Pattern applied to ensure that only one instance of the database is created.
         @Volatile
@@ -34,6 +34,4 @@ abstract class AppDatabase : RoomDatabase() {
             )
                 .build()
     }
-
-     */
 }
