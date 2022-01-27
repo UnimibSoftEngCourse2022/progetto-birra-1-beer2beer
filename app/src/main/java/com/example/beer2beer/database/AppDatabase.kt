@@ -6,7 +6,8 @@ import com.example.beer2beer.database.entities.*
 @Database(
     entities = [Equipment::class, Ingredient::class, Recipe::class, RecipeHasIngredient::class,
         RecipeInstance::class, RecipeInstanceUseEquipment::class],
-    version = 1
+    version = 1,
+    exportSchema = true
 )
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
