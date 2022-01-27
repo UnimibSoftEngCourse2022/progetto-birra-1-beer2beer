@@ -14,6 +14,8 @@
     <color name="shade3">#d4b68a</color>
     <color name="buttons">#815016</color>
     <color name="text">#35424a</color>
+    <color name="textBrown">#81501F</color>
+
 
     <color name="fab">#FFC107</color>
 </resources>

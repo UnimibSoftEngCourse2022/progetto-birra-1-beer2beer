@@ -14,97 +14,93 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/InsertRecipeFragmentTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/InsertRecipeFragmentTextView"
-            android:textSize="28sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
 
-        <TextView
-            android:id="@+id/recipeNameTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/InsertRecipeFragmentTextView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/InsertRecipeFragmentTextView" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_margin="16dp"
+                app:cornerRadius="30dp"
+                android:topLeftRadius="100dip"
+                android:background="@color/shade2">
 
-        <EditText
-            android:id="@+id/recipeNameEditText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/recipeNameEditTextHint"
-            android:importantForAutofill="no"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:textColor="#616161"
-            app:layout_constraintStart_toStartOf="@+id/recipeNameTextView"
-            app:layout_constraintTop_toBottomOf="@+id/recipeNameTextView"
-            tools:ignore="TextContrastCheck" />
+                <EditText
+                    android:id="@+id/recipeNameEditText"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="@string/recipeNameEditTextHint"
+                    android:importantForAutofill="no"
+                    android:inputType="textPersonName"
+                    android:minHeight="48dp"
+                    android:padding="16dp"
+                    android:textColor="@color/text"
+                    android:textColorHighlight="@color/text"
+                    android:textColorHint="@color/text"
+                    android:textSize="22sp" />
 
-        <TextView
-            android:id="@+id/selectIngredientsTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/selectIngredientsTextView"
-            app:layout_constraintStart_toStartOf="@+id/recipeNameEditText"
-            app:layout_constraintTop_toBottomOf="@+id/recipeNameEditText" />
+                <TextView
+                    android:id="@+id/selectIngredientsTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:padding="16dp"
+                    android:gravity="start"
+                    android:layout_gravity="start"
+                    android:text="@string/ingredients"
+                    android:textSize="18sp"
+                    android:textColor="@color/buttons"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/ingredientsRecyclerView"
-            android:layout_width="0dp"
-            android:layout_height="300dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toTopOf="@id/descriptionTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/selectIngredientsTextView"
-            tools:listitem="@layout/ingredient_item" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/ingredientsRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/ingredient_item" />
 
-        <TextView
-            android:id="@+id/descriptionTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/descriptionTextView"
-            app:layout_constraintStart_toStartOf="@+id/selectIngredientsTextView"
-            app:layout_constraintTop_toBottomOf="@+id/ingredientsRecyclerView" />
+                <TextView
+                    android:id="@+id/descriptionTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:padding="16dp"
+                    android:gravity="start"
+                    android:layout_gravity="start"
+                    android:text="@string/description"
+                    android:textSize="18sp"
+                    android:textColor="@color/textBrown"/>
 
-        <EditText
-            android:id="@+id/descriptionEditText"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
-            android:ems="10"
-            android:gravity="start|top"
-            android:hint="@string/descriptionEditTextHint"
-            android:importantForAutofill="no"
-            android:inputType="textMultiLine"
-            android:minHeight="48dp"
-            app:layout_constraintBottom_toTopOf="@+id/saveRecipeButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/descriptionTextView"
-            app:layout_constraintTop_toBottomOf="@+id/descriptionTextView"
-            tools:ignore="TextContrastCheck" />
+                <EditText
+                    android:id="@+id/descriptionEditText"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:hint="@string/descriptionEditTextHint"
+                    android:importantForAutofill="no"
+                    android:inputType="textMultiLine"
+                    android:minHeight="38dp"
+                    android:textColorHint="@color/textBrown"
+                    android:textColor="@color/textBrown"
+                    android:textSize="14sp"/>
 
-        <Button
-            android:id="@+id/saveRecipeButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
-            android:text="@string/saveRecipeButton"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
+                <Button
+                    android:id="@+id/saveRecipeButton"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    app:cornerRadius="30dp"
+                    android:layout_marginBottom="32dp"
+                    android:text="@string/saveRecipeButton" />
+            </LinearLayout>
+        </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

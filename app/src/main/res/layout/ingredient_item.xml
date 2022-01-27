@@ -1,81 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    card_view:layout_constraintEnd_toEndOf="parent"
-    card_view:layout_constraintStart_toStartOf="parent"
-    card_view:layout_constraintTop_toTopOf="parent">
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/card_view"
+        android:id="@+id/card_view_ingredients"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         card_view:cardBackgroundColor="@color/shade2"
         card_view:cardCornerRadius="20dp"
-        card_view:cardElevation="5dp"
         card_view:cardUseCompatPadding="true">
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:background="@color/shade2"
+            android:orientation="horizontal"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/ingredientTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:textColor="#455A64"
-                card_view:layout_constraintBottom_toBottomOf="parent"
-                card_view:layout_constraintEnd_toStartOf="@+id/subButton"
-                card_view:layout_constraintStart_toStartOf="parent"
-                card_view:layout_constraintTop_toTopOf="parent"
-                tools:text="Ingredient name" />
+                android:padding="16dp"
+                android:textColor="@color/text"
+                tools:text="Ingredient name"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif-medium"/>
 
             <Button
                 android:id="@+id/addButton"
-                android:layout_width="wrap_content"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:minWidth="48dp"
-                android:minHeight="48dp"
-                android:text="+"
-                card_view:layout_constraintBottom_toBottomOf="parent"
-                card_view:layout_constraintEnd_toEndOf="parent"
-                card_view:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/subButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minWidth="48dp"
-                android:minHeight="48dp"
-                android:text="-"
-                card_view:layout_constraintBottom_toBottomOf="parent"
-                card_view:layout_constraintEnd_toStartOf="@id/quantityEditText"
-                card_view:layout_constraintStart_toEndOf="@id/ingredientTextView"
-                card_view:layout_constraintTop_toTopOf="parent"
-                tools:ignore="TextContrastCheck" />
+                app:cornerRadius="30dp"
+                android:text="@string/plus" />
 
             <EditText
                 android:id="@+id/quantityEditText"
                 android:layout_width="48dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:layout_margin="8dp"
                 android:hint="@string/quantityEditText"
                 android:importantForAutofill="no"
                 android:inputType="number"
+                android:textSize="14sp"/>
+
+            <Button
+                android:id="@+id/subButton"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
                 android:minWidth="48dp"
                 android:minHeight="48dp"
-                card_view:layout_constraintBottom_toBottomOf="@+id/addButton"
-                card_view:layout_constraintEnd_toStartOf="@id/addButton"
-                card_view:layout_constraintStart_toEndOf="@+id/subButton"
-                card_view:layout_constraintTop_toTopOf="@+id/subButton"
-                tools:ignore="TextContrastCheck" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                app:cornerRadius="30dp"
+                android:text="@string/minus" />
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 </FrameLayout>
