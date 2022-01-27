@@ -27,6 +27,10 @@ class AddRecipeFragment : Fragment() {
             adapter.submitList(ingredientsList)
         }
 
+        binding.saveRecipeButton.setOnClickListener {
+            val quantities = adapter.ingredientQuantities
+        }
+
         return binding.root
     }
 

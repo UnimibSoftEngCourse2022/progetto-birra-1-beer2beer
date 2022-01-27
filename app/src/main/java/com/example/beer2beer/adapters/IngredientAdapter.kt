@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -20,6 +21,8 @@ class IngredientAdapter() : ListAdapter<Ingredient, IngredientAdapter.Ingredient
         val subButton: Button = view.findViewById(R.id.subButton)
     }
 
+    var ingredientQuantities = DoubleArray(6)
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IngredientViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.ingredient_item, parent, false)
         return IngredientViewHolder(view)
@@ -27,7 +30,24 @@ class IngredientAdapter() : ListAdapter<Ingredient, IngredientAdapter.Ingredient
 
     override fun onBindViewHolder(holder: IngredientViewHolder, position: Int) {
         holder.ingredientNameTextView.text = getItem(position).name
-        holder.quantityEditText.setText(getItem(position).quantity.toString())
+        holder.quantityEditText.setText(0.0.toString())
+
+        holder.addButton.setOnClickListener {
+            val currentValue = holder.quantityEditText.text.toString().toDouble()
+            val newValue = currentValue + 1.0
+            holder.quantityEditText.setText(newValue.toString())
+        }
+
+        holder.subButton.setOnClickListener {
+            val currentValue = holder.quantityEditText.text.toString().toDouble()
+            val newValue = currentValue - 1.0
+            if (newValue >= 0.0)
+                holder.quantityEditText.setText(newValue.toString())
+        }
+
+        holder.quantityEditText.addTextChangedListener{ s ->
+            ingredientQuantities[position] = s.toString().toDouble()
+        }
     }
 }
 
