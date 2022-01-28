@@ -11,9 +11,10 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.beer2beer.databinding.ActivityMainBinding
+import com.example.beer2beer.dialogs.AddIngredientsDialogFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), AddIngredientsDialogFragment.DialogListener {
 
     private lateinit var viewModel: SharedViewModel
     private lateinit var binding: ActivityMainBinding
@@ -86,5 +87,9 @@ class MainActivity : AppCompatActivity() {
         val sharedPreferences = this.getSharedPreferences("com.example.beer2beer", Context.MODE_PRIVATE)
         val username = sharedPreferences.getString("username", "")!!
         return username.isNotEmpty()
+    }
+
+    override fun onDialogSaveClick(name: String, quantity: Double) {
+        viewModel.updateIngredient(name, quantity)
     }
 }

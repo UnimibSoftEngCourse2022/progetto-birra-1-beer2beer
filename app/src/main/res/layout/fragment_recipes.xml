@@ -31,7 +31,7 @@
             android:padding="16dp"
             android:text="@string/equipment"
             android:textSize="28sp"
-            android:textColor="@color/buttons"/>
+            android:textColor="@color/textBrown"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/equipmentRecyclerView"
@@ -59,8 +59,9 @@
             android:backgroundTint="@android:color/transparent"
             android:outlineProvider="none"
             android:clickable="true"
+            app:tint="@color/plusPage"
             app:backgroundTint="@android:color/transparent"
-            app:srcCompat="@android:drawable/ic_menu_add"
+            app:srcCompat="@drawable/ic_baseline_add_24"
             android:contentDescription="@string/addEquipment" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

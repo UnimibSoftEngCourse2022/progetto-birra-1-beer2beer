@@ -34,30 +34,39 @@
 
             <Button
                 android:id="@+id/subButton"
-                android:layout_width="40dp"
+                android:layout_width="48dp"
                 android:layout_height="wrap_content"
-                app:cornerRadius="30dp"
-                android:text="@string/minus" />
+                android:text="@string/minus"
+                app:cornerRadius="30dp" />
 
             <EditText
                 android:id="@+id/quantityEditText"
                 android:layout_width="48dp"
                 android:layout_height="wrap_content"
-                android:ems="10"
                 android:layout_margin="8dp"
+                android:layout_marginEnd="0dp"
+                android:ems="10"
                 android:hint="@string/quantityEditText"
                 android:importantForAutofill="no"
                 android:inputType="numberDecimal"
-                android:textSize="14sp"
-                android:textColor="@color/textBrown"/>
+                android:minHeight="48dp"
+                android:textColor="@color/textBrown"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/unitOfMeasureTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                tools:text="L"/>
 
             <Button
                 android:id="@+id/addButton"
-                android:layout_width="40dp"
+                android:layout_width="48dp"
                 android:layout_height="wrap_content"
-                app:cornerRadius="30dp"
+                android:layout_marginEnd="8dp"
                 android:text="@string/plus"
-                android:layout_marginEnd="8dp"/>
+                app:cornerRadius="30dp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </FrameLayout>

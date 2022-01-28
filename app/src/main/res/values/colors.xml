@@ -14,8 +14,10 @@
     <color name="shade3">#d4b68a</color>
     <color name="buttons">#815016</color>
     <color name="text">#35424a</color>
-    <color name="textBrown">#81501F</color>
+    <color name="textBrown">#3a0e00</color>
+    <color name="plusIngredients">#81501F</color>
+    <color name="plusPage">#81501F</color>
 
-
+    <!-- 81501F -->
     <color name="fab">#FFC107</color>
 </resources>

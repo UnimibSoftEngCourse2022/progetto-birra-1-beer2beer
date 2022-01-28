@@ -50,7 +50,28 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
             }
         }
     }
-    fun deleteRecipeById(id: Int){
+
+    // This function transform the raw quantities in relative quantities
+    fun processQuantities(quantities: DoubleArray): DoubleArray {
+        var total = 0.0
+        quantities.forEachIndexed { index, q ->
+            // Se sto processando l'acqua, la converto in grammi
+            if (index == 0)
+                total += q * 1000
+            else
+                total += q
+        }
+        val relativeQuantities = DoubleArray(quantities.size)
+        quantities.forEachIndexed { index, q ->
+            if (index == 0)
+                relativeQuantities[index] = (q * 1000) / total
+            else
+                relativeQuantities[index] = q / total
+        }
+        return relativeQuantities
+    }
+
+    fun deleteRecipeById(id: Int) {
         viewModelScope.launch(Dispatchers.IO) {
             recipeDao.delete(id)
         }
@@ -63,17 +84,23 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
         val ss = SimplexSolver()
 
         viewModelScope.launch(Dispatchers.IO) {
-            recipes.value?.forEach{ recipe ->
+            recipes.value?.forEach { recipe ->
                 val recipeIngredients = recipeDao.getRecipeIngredients(recipe.id)
                 val constraint = ArrayList<LinearConstraint>()
                 val coeff = DoubleArray(recipeIngredients.size + 1)
 
-                for (i in recipeIngredients.indices){
-                    coeff[i] = - recipeIngredients.get(i).ratio
+                for (i in recipeIngredients.indices) {
+                    coeff[i] = -recipeIngredients.get(i).ratio
                     val c = DoubleArray(recipeIngredients.size + 1)
                     c.fill(0.0)
                     c[i] = 1.0
-                    constraint.add(LinearConstraint(c, Relationship.LEQ, recipeIngredients.get(i).quantity))
+                    constraint.add(
+                        LinearConstraint(
+                            c,
+                            Relationship.LEQ,
+                            recipeIngredients.get(i).quantity
+                        )
+                    )
                 }
                 coeff[coeff.lastIndex] = 1.0
                 constraint.add(LinearConstraint(coeff, Relationship.EQ, 0.0))
@@ -85,15 +112,17 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
                 val constr = LinearConstraintSet(constraint)
 
                 val solution =
-                    ss.optimize(DEFAULT_MAX_ITER, fObb, constr,
-                        GoalType.MAXIMIZE, NonNegativeConstraint(true)).value
+                    ss.optimize(
+                        DEFAULT_MAX_ITER, fObb, constr,
+                        GoalType.MAXIMIZE, NonNegativeConstraint(true)
+                    ).value
 
-                if(bestRecipe == null) {
+                if (bestRecipe == null) {
                     bestRecipe = recipe
                     bestQuantity = solution
 
                 } else {
-                    if (solution > bestQuantity){
+                    if (solution > bestQuantity) {
                         bestRecipe = recipe
                         bestQuantity = solution
                     }
@@ -106,5 +135,12 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
         }
 
         return bestRecipe?.name ?: ""
+    }
+    
+    fun updateIngredient(name: String, newQuantity: Double) {
+        viewModelScope.launch(Dispatchers.IO) {
+            ingredientDao.update(name, newQuantity)
+        }
+
     }
 }

@@ -18,6 +18,7 @@ class IngredientAdapter :
     class IngredientViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val ingredientNameTextView: TextView = view.findViewById(R.id.ingredientTextView)
         val quantityEditText: EditText = view.findViewById(R.id.quantityEditText)
+        val unitOfMeasureTextView: TextView = view.findViewById(R.id.unitOfMeasureTextView)
         val addButton: Button = view.findViewById(R.id.addButton)
         val subButton: Button = view.findViewById(R.id.subButton)
     }
@@ -35,6 +36,7 @@ class IngredientAdapter :
     override fun onBindViewHolder(holder: IngredientViewHolder, position: Int) {
         ingredientNames[position] = getItem(position).name
         holder.ingredientNameTextView.text = getItem(position).name
+        holder.unitOfMeasureTextView.text = getItem(position).unitOfMeasure
         holder.quantityEditText.setText(0.0.toString())
 
         holder.addButton.setOnClickListener {
