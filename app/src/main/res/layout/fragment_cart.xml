@@ -30,7 +30,7 @@
                 android:padding="16dp"
                 android:text="@string/ingredients"
                 android:textSize="28sp"
-                android:textColor="@color/buttons"/>
+                android:textColor="@color/textBrown"/>
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -67,7 +67,7 @@
                                 android:padding="10dp"
                                 android:paddingStart="30dp"
                                 android:text="@string/water"
-                                android:textColor="@color/buttons"
+                                android:textColor="@color/textBrown"
                                 android:textSize="12sp"
                                 android:layout_weight="1"
                                 tools:ignore="RtlSymmetry" />
@@ -80,7 +80,7 @@
                                 android:gravity="end"
                                 android:padding="10dp"
                                 tools:text="@string/qtyWater"
-                                android:textColor="@color/buttons"
+                                android:textColor="@color/textBrown"
                                 android:textSize="12sp"/>
 
                             <ImageButton
@@ -93,6 +93,7 @@
                                 android:minWidth="48dp"
                                 android:minHeight="48dp"
                                 android:padding="10dp"
+                                app:tint="@color/plusIngredients"
                                 app:srcCompat="@drawable/ic_baseline_add_24"
                                 tools:ignore="ImageContrastCheck" />
                         </LinearLayout>
@@ -122,7 +123,7 @@
                                 android:padding="10dp"
                                 android:paddingStart="30dp"
                                 android:text="@string/malts"
-                                android:textColor="@color/buttons"
+                                android:textColor="@color/textBrown"
                                 android:textSize="12sp"
                                 android:layout_weight="1"
                                 tools:ignore="RtlSymmetry" />
@@ -135,7 +136,7 @@
                                 android:gravity="end"
                                 android:padding="10dp"
                                 tools:text="@string/qtyMalts"
-                                android:textColor="@color/buttons"
+                                android:textColor="@color/textBrown"
                                 android:textSize="12sp"/>
 
                             <ImageButton
@@ -148,6 +149,7 @@
                                 android:minWidth="48dp"
                                 android:minHeight="48dp"
                                 android:padding="10dp"
+                                app:tint="@color/plusIngredients"
                                 app:srcCompat="@drawable/ic_baseline_add_24"
                                 tools:ignore="ImageContrastCheck" />
                         </LinearLayout>
@@ -177,7 +179,7 @@
                                 android:padding="10dp"
                                 android:paddingStart="30dp"
                                 android:text="@string/hops"
-                                android:textColor="@color/buttons"
+                                android:textColor="@color/textBrown"
                                 android:textSize="12sp"
                                 android:layout_weight="1"
                                 tools:ignore="RtlSymmetry" />
@@ -190,7 +192,7 @@
                                 android:gravity="end"
                                 android:padding="10dp"
                                 tools:text="@string/qtyHops"
-                                android:textColor="@color/buttons"
+                                android:textColor="@color/textBrown"
                                 android:textSize="12sp"/>
 
                             <ImageButton
@@ -203,6 +205,7 @@
                                 android:minWidth="48dp"
                                 android:minHeight="48dp"
                                 android:padding="10dp"
+                                app:tint="@color/plusIngredients"
                                 app:srcCompat="@drawable/ic_baseline_add_24"
                                 tools:ignore="ImageContrastCheck" />
                         </LinearLayout>
@@ -232,7 +235,7 @@
                                 android:padding="10dp"
                                 android:paddingStart="30dp"
                                 android:text="@string/yeasts"
-                                android:textColor="@color/buttons"
+                                android:textColor="@color/textBrown"
                                 android:textSize="12sp"
                                 android:layout_weight="1"
                                 tools:ignore="RtlSymmetry" />
@@ -245,7 +248,7 @@
                                 android:gravity="end"
                                 android:padding="10dp"
                                 tools:text="@string/qtyYeasts"
-                                android:textColor="@color/buttons"
+                                android:textColor="@color/textBrown"
                                 android:textSize="12sp"/>
 
                             <ImageButton
@@ -258,6 +261,7 @@
                                 android:minWidth="48dp"
                                 android:minHeight="48dp"
                                 android:padding="10dp"
+                                app:tint="@color/plusIngredients"
                                 app:srcCompat="@drawable/ic_baseline_add_24"
                                 tools:ignore="ImageContrastCheck" />
                         </LinearLayout>
@@ -287,7 +291,7 @@
                                 android:padding="10dp"
                                 android:paddingStart="30dp"
                                 android:text="@string/sugars"
-                                android:textColor="@color/buttons"
+                                android:textColor="@color/textBrown"
                                 android:textSize="12sp"
                                 android:layout_weight="1"
                                 tools:ignore="RtlSymmetry" />
@@ -300,7 +304,7 @@
                                 android:gravity="end"
                                 android:padding="10dp"
                                 tools:text="@string/qtySugars"
-                                android:textColor="@color/buttons"
+                                android:textColor="@color/textBrown"
                                 android:textSize="12sp"/>
 
                             <ImageButton
@@ -313,6 +317,7 @@
                                 android:minWidth="48dp"
                                 android:minHeight="48dp"
                                 android:padding="10dp"
+                                app:tint="@color/plusIngredients"
                                 app:srcCompat="@drawable/ic_baseline_add_24"
                                 tools:ignore="ImageContrastCheck" />
                         </LinearLayout>
@@ -342,7 +347,7 @@
                                 android:padding="10dp"
                                 android:paddingStart="30dp"
                                 android:text="@string/additives"
-                                android:textColor="@color/buttons"
+                                android:textColor="@color/textBrown"
                                 android:textSize="12sp"
                                 android:layout_weight="1"
                                 tools:ignore="RtlSymmetry" />
@@ -355,7 +360,7 @@
                                 android:gravity="end"
                                 android:padding="10dp"
                                 tools:text="@string/qtyAdditives"
-                                android:textColor="@color/buttons"
+                                android:textColor="@color/textBrown"
                                 android:textSize="12sp"/>
 
                             <ImageButton
@@ -368,6 +373,7 @@
                                 android:minWidth="48dp"
                                 android:minHeight="48dp"
                                 android:padding="10dp"
+                                app:tint="@color/plusIngredients"
                                 app:srcCompat="@drawable/ic_baseline_add_24"
                                 tools:ignore="ImageContrastCheck" />
                         </LinearLayout>

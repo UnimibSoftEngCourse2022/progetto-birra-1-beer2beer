@@ -20,6 +20,7 @@
             android:padding="16dp"
             android:text="@string/settingsTextView"
             android:textSize="28sp"
+            android:textColor="@color/textBrown"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
