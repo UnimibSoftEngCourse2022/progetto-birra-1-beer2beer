@@ -57,7 +57,7 @@ class AddIngredientsDialogFragment(private val ingredientName: String, private v
         }
 
         return activity?.let {
-            val builder = AlertDialog.Builder(it)
+            val builder = AlertDialog.Builder(it, R.style.CustomAlertDialog)
 
             builder.setView(binding.root)
                 .setPositiveButton(R.string.saveDialogButton) { _, _ ->

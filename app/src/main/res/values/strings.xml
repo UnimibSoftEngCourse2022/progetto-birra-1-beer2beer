@@ -1,43 +1,42 @@
 <resources>
-    <string name="app_name">BrewDay!</string>
+    <!--Account related-->
     <string name="welcomeTextView">Welcome to</string>
     <string name="getStartedButton">Get Started</string>
     <string name="enterYourNameTextView">Enter your name</string>
+    <string name="name">Hi name!</string>
     <string name="nameTextView">Name</string>
-    <string name="nameEditText_hint">Enter your name</string>
+    <string name="nameEditText_hint">Enter your name</string> <!--duplicate!! -->
     <string name="continueButton">Continue</string>
-    <string name="homeTextView">Home</string>
-    <string name="cartTextView">Cart</string>
-    <string name="brewTextView">Brew</string>
-    <string name="recipesTextView">Recipes</string>
-    <string name="settingsTextView">Settings</string>
     <string name="blankUsernameError">The username must not be blank!</string>
     <string name="deleteAccountButton">Delete Account</string>
     <string name="contentDescriptionLogo">Logo Image</string>
-    <string name="recipeName">Recipe Name</string>
-    <string name="addRecipie">add recipie</string>
-    <string name="InsertRecipeFragmentTextView">Insert a new recipe</string>
-    <string name="recipeNameTextView">Insert the name for the new recipe!</string>
-    <string name="recipeNameEditTextHint">Insert recipe name</string>
-    <string name="selectIngredientsTextView">Select the ingredients:</string>
+    <!--Ingredients-->
     <string name="waterCheckBox">Water</string>
     <string name="maltsCheckBox">Malts</string>
     <string name="hopsCheckBox">Hops</string>
     <string name="yeastCheckBox">Yeast</string>
     <string name="sugarCheckBox">Sugar</string>
     <string name="additivesCheckBox">Additives</string>
-    <string name="quantityEditText">Qty.</string>
+    <!--Recipe related-->
+    <string name="recipeName">Recipe Name</string>
+    <string name="addRecipie">add recipe</string>
+    <string name="InsertRecipeFragmentTextView">Insert a new recipe</string>
+    <string name="recipeNameTextView">Insert the name for the new recipe!</string>
+    <string name="recipeNameEditTextHint">Insert recipe name</string>
+    <string name="selectIngredientsTextView">Select the ingredients:</string>
+    <string name="quantityEditText">Q.ty</string>
     <string name="descriptionTextView">Insert here the recipe description:</string>
     <string name="descriptionEditTextHint">Recipe description</string>
     <string name="saveRecipeButton">Save</string>
     <string name="description">Description</string>
     <string name="recipeNameEditTextError">The recipe name cannot be empty!</string>
     <string name="selectIngredientsTextViewError">The recipe cannot have 0 ingredients!</string>
-    <string name="plus">+</string>
-    <string name="minus">－</string>
-    <string name="name">Hi name!</string>
-    <string name="equipment">Equipment</string>
-    <string name="addEquipment">add equipment</string>
+
+
+
+
+
+    <!--Ingredients related-->
     <string name="ingredients">Ingredients</string>
     <string name="addWater">add water</string>
     <string name="water">Water</string>
@@ -57,6 +56,20 @@
     <string name="additives">Additives</string>
     <string name="qtyAdditives">q.tyAdditives</string>
     <string name="addAdditives">add additives</string>
+    <string name="ingredientName">Ingredient name</string>
+    <!--Equipment related-->
+    <string name="equipment">Equipment</string>
+    <string name="addEquipment">add equipment</string>
+    <!--Useful-->
+    <string name="app_name">BrewDay!</string>
+    <string name="homeTextView">Home</string>
+    <string name="cartTextView">Cart</string>
+    <string name="brewTextView">Brew</string>
+    <string name="recipesTextView">Recipes</string>
+    <string name="settingsTextView">Settings</string>
+    <string name="plus">+</string>
+    <string name="minus">－</string>
     <string name="saveDialogButton">Save</string>
     <string name="discardDialogButton">Discard</string>
+    <string name="line">line</string>
 </resources>

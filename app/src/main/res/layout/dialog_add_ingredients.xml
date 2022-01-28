@@ -1,64 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="fragment"
             type="com.example.beer2beer.dialogs.AddIngredientsDialogFragment" />
     </data>
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/shade3"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/ingredientTextView"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="sans-serif-medium"
-            android:padding="16dp"
-            android:textColor="#5D4037"
-            android:textSize="14sp"
-            tools:text="Ingredient name" />
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:background="@color/shade2">
 
-        <Button
-            android:id="@+id/subButton"
-            android:layout_width="48dp"
-            android:layout_height="wrap_content"
-            android:text="@string/minus"
-            android:textColor="#FFCC80"
-            tools:ignore="TextContrastCheck" />
+            <TextView
+                android:id="@+id/ingredientTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-medium"
+                android:padding="16dp"
+                android:textColor="@color/textBrown"
+                android:textSize="14sp"
+                tools:text="@string/ingredientName" />
 
-        <EditText
-            android:id="@+id/quantityEditText"
-            android:layout_width="48dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:ems="10"
-            android:hint="@string/quantityEditText"
-            android:importantForAutofill="no"
-            android:inputType="numberDecimal"
-            android:minHeight="48dp"
-            android:textColor="@color/textBrown"
-            android:textColorHint="#5D4037"
-            android:textSize="14sp" />
+            <Button
+                android:id="@+id/subButton"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                app:cornerRadius="30dp"
+                android:text="@string/minus" />
 
-        <Button
-            android:id="@+id/addButton"
-            android:layout_width="48dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="@string/plus"
-            android:textColor="#FFCC80"
-            tools:ignore="TextContrastCheck" />
+            <EditText
+                android:id="@+id/quantityEditText"
+                android:layout_width="48dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:ems="10"
+                android:hint="@string/quantityEditText"
+                android:importantForAutofill="no"
+                android:inputType="numberDecimal"
+                android:minHeight="48dp"
+                android:textColor="@color/textBrown"
+                android:textColorHint="@color/textBrown"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/addButton"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                app:cornerRadius="30dp"
+                android:text="@string/plus" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/shade3"
+            android:contentDescription="@string/line" />
     </LinearLayout>
+
 
 </layout>
