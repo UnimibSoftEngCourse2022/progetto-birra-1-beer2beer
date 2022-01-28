@@ -24,6 +24,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //Check if the username is already set
+        isFirstTime = !isUsernameIn()
+
         installSplashScreen()
 
         mainActivitySetup()
@@ -31,13 +35,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
     }
 
-
-
     override fun onStart() {
         super.onStart()
-        if (isUsernameIn()) {
+        if (!isFirstTime && !isAlreadyStarted) {
             findNavController(R.id.navHostFragment).navigate(R.id.action_global_home)
         }
+        isAlreadyStarted = true
     }
 
     private fun mainActivitySetup() {
