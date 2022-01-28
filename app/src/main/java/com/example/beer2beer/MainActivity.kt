@@ -19,6 +19,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navView: BottomNavigationView
 
+    private var isFirstTime = true
+    private var isAlreadyStarted = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen()
@@ -28,11 +31,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
     }
 
+
+
     override fun onStart() {
         super.onStart()
-        if (isUsernameIn()) {
+        if (!isFirstTime && !isAlreadyStarted) {
             findNavController(R.id.navHostFragment).navigate(R.id.action_global_home)
         }
+        isAlreadyStarted = true
     }
 
     private fun mainActivitySetup() {

@@ -37,6 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_marginStart="-16dp"
+                android:backgroundTint="@color/background"
                 app:fabCradleMargin="10dp"
                 app:fabCradleRoundedCornerRadius="15dp"
                 app:fabCradleVerticalOffset="0dp">
@@ -47,8 +48,9 @@
                     android:layout_height="match_parent"
                     android:layout_marginEnd="16dp"
                     android:layout_gravity="bottom"
-                    android:background="@android:color/transparent"
-                    app:menu="@menu/bottom_navigation_view" />
+                    app:menu="@menu/bottom_navigation_view"
+                    app:itemIconTint="@drawable/bottom_navigation_selector"
+                    app:backgroundTint="@color/background"/>
 
             </com.google.android.material.bottomappbar.BottomAppBar>
 
@@ -56,7 +58,7 @@
                 android:id="@+id/fab_brew"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:contentDescription="Brew"
+                android:contentDescription="@string/app_name"
                 android:backgroundTint="@color/fab"
                 android:src="@drawable/ic_baseline_lightbulb_24"
                 app:layout_anchor="@id/bottom_app_bar" />
