@@ -94,21 +94,34 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
                     val c = DoubleArray(recipeIngredients.size + 1)
                     c.fill(0.0)
                     c[i] = 1.0
-                    constraint.add(
-                        LinearConstraint(
-                            c,
-                            Relationship.LEQ,
-                            recipeIngredients.get(i).quantity
+                    if(recipeIngredients.get(i).name == "Water"){
+                        constraint.add(
+                            LinearConstraint(
+                                c,
+                                Relationship.LEQ,
+                                recipeIngredients.get(i).quantity * 1000
+                            )
                         )
-                    )
+                    }else{
+                        constraint.add(
+                            LinearConstraint(
+                                c,
+                                Relationship.LEQ,
+                                recipeIngredients.get(i).quantity
+                            )
+                        )
+                    }
+
                 }
+
                 coeff[coeff.lastIndex] = 1.0
                 constraint.add(LinearConstraint(coeff, Relationship.EQ, 0.0))
+
                 val c = DoubleArray(recipeIngredients.size + 1)
                 c.fill(0.0)
                 c[c.lastIndex] = 1.0
 
-                val fObb = LinearObjectiveFunction(c, 1.0)
+                val fObb = LinearObjectiveFunction(c, 0.0)
                 val constr = LinearConstraintSet(constraint)
 
                 val solution =
@@ -136,7 +149,7 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
 
         return bestRecipe?.name ?: ""
     }
-    
+
     fun updateIngredient(name: String, newQuantity: Double) {
         viewModelScope.launch(Dispatchers.IO) {
             ingredientDao.update(name, newQuantity)
