@@ -56,12 +56,13 @@ class AddRecipeFragment : Fragment() {
 
             //If all the checks passes, save the new recipe and navigate back to homepage
             if (passed) {
+                val relativeQuantities = viewModel.processQuantities(quantities)
                 val recipeName = binding.recipeNameEditText.text.toString()
                 val recipeDescription = binding.descriptionEditText.text.toString()
 
                 viewModel.createNewRecipe(
                     ingredientNames,
-                    quantities,
+                    relativeQuantities,
                     recipeName,
                     recipeDescription
                 )
