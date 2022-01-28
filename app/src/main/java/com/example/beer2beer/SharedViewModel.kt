@@ -5,15 +5,11 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.beer2beer.database.AppDatabase
-<<<<<<< HEAD
 import com.example.beer2beer.database.entities.Equipment
 import com.example.beer2beer.database.entities.Ingredient
-import com.example.beer2beer.database.entities.Recipe
 import com.example.beer2beer.database.entities.RecipeIngredients
-=======
 import com.example.beer2beer.database.entities.Recipe
 import com.example.beer2beer.database.entities.RecipeHasIngredient
->>>>>>> 7a4814a8598cbb3f89d4d4f08b6486eb217032b2
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.apache.commons.math3.linear.OpenMapRealVector
