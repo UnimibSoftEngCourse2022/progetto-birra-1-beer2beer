@@ -21,6 +21,17 @@ class CartFragment : Fragment() {
 
         cartFragmentSetup(inflater, container)
 
+        viewModel.ingredients.observe(viewLifecycleOwner){
+            val ingList = viewModel.ingredients.value
+
+            binding.waterQtyTextView.text = ingList?.get(0)?.quantity.toString()
+            binding.maltsQtyTextView.text = ingList?.get(1)?.quantity.toString()
+            binding.hopsQtyTextView.text = ingList?.get(2)?.quantity.toString()
+            binding.yeastsQtyTextView.text = ingList?.get(3)?.quantity.toString()
+            binding.sugarsQtyTextView.text = ingList?.get(4)?.quantity.toString()
+            binding.additivesQtyTextView.text = ingList?.get(0)?.quantity.toString()
+        }
+
         return binding.root
     }
 
