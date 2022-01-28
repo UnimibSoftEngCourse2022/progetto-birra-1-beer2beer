@@ -56,17 +56,18 @@ class AddIngredientsDialogFragment(private val ingredientName: String, private v
                 binding.quantityEditText.setText(newValue.toString())
         }
 
-        binding.quantityEditText.addTextChangedListener { s ->
-            if (s.toString().isEmpty())
-                binding.quantityEditText.setText(0.0.toString())
-        }
-
         return activity?.let {
             val builder = AlertDialog.Builder(it)
 
             builder.setView(binding.root)
-                .setPositiveButton(R.string.saveDialogButton) { dialog, id ->
-                    listener.onDialogSaveClick(ingredientName, binding.quantityEditText.text.toString().toDouble())
+                .setPositiveButton(R.string.saveDialogButton) { _, _ ->
+                    val quantity: Double
+                    if (binding.quantityEditText.text.toString().isEmpty())
+                        quantity = 0.0
+                    else
+                        quantity = binding.quantityEditText.text.toString().toDouble()
+
+                    listener.onDialogSaveClick(ingredientName, quantity)
                 }
                 .setNegativeButton(R.string.discardDialogButton) { _, _ ->
                     dialog?.cancel()
