@@ -35,10 +35,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        if (!isFirstTime && !isAlreadyStarted) {
+        if (isUsernameIn()) {
             findNavController(R.id.navHostFragment).navigate(R.id.action_global_home)
         }
-        isAlreadyStarted = true
     }
 
     private fun mainActivitySetup() {
