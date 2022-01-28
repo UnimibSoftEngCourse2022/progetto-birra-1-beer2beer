@@ -13,7 +13,7 @@ import com.example.beer2beer.adapters.IngredientAdapter
 import com.example.beer2beer.databinding.FragmentAddRecipeBinding
 
 class AddRecipeFragment : Fragment() {
-    private lateinit var  binding: FragmentAddRecipeBinding
+    private lateinit var binding: FragmentAddRecipeBinding
     private val viewModel: SharedViewModel by activityViewModels()
     private val adapter = IngredientAdapter()
 
@@ -25,7 +25,7 @@ class AddRecipeFragment : Fragment() {
         recipesFragmentSetup(inflater, container)
 
         binding.ingredientsRecyclerView.adapter = adapter
-        viewModel.ingredients.observe(viewLifecycleOwner){ ingredientsList ->
+        viewModel.ingredients.observe(viewLifecycleOwner) { ingredientsList ->
             adapter.submitList(ingredientsList)
         }
 
@@ -39,16 +39,18 @@ class AddRecipeFragment : Fragment() {
 
             //UI checks
             var passed = true
-            if (binding.recipeNameEditText.text.isBlank()){
-                binding.recipeNameEditText.error = resources.getString(R.string.recipeNameEditTextError)
+            if (binding.recipeNameEditText.text.isBlank()) {
+                binding.recipeNameEditText.error =
+                    resources.getString(R.string.recipeNameEditTextError)
                 passed = false
             }
             var isAllZero = true
             for (quantity in quantities)
                 if (quantity != 0.0)
                     isAllZero = false
-            if (isAllZero){
-                binding.selectIngredientsTextView.error = resources.getString(R.string.selectIngredientsTextViewError)
+            if (isAllZero) {
+                binding.selectIngredientsTextView.error =
+                    resources.getString(R.string.selectIngredientsTextViewError)
                 passed = false
             }
 
@@ -57,7 +59,12 @@ class AddRecipeFragment : Fragment() {
                 val recipeName = binding.recipeNameEditText.text.toString()
                 val recipeDescription = binding.descriptionEditText.text.toString()
 
-                viewModel.createNewRecipe(ingredientNames, quantities, recipeName, recipeDescription)
+                viewModel.createNewRecipe(
+                    ingredientNames,
+                    quantities,
+                    recipeName,
+                    recipeDescription
+                )
 
                 val action = AddRecipeFragmentDirections.actionAddRecipeToHome()
                 findNavController().navigate(action)

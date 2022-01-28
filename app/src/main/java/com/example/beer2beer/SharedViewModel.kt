@@ -3,7 +3,6 @@ package com.example.beer2beer
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.room.Room
 import com.example.beer2beer.database.AppDatabase
 import com.example.beer2beer.database.entities.Recipe
 import com.example.beer2beer.database.entities.RecipeHasIngredient
@@ -12,14 +11,8 @@ import kotlinx.coroutines.launch
 
 class SharedViewModel(application: Application) : AndroidViewModel(application) {
     // get the Database instance
-    private val db = Room.databaseBuilder(
-        application.applicationContext,
-        AppDatabase::class.java,
-        "BeerDatabase"
-    ).createFromAsset("brewday.db")
-        .build()
+    private val db = AppDatabase.getInstance(getApplication<Application>().applicationContext)
 
-    // Declare all Dao
     private val recipeDao = db.recipeDao()
     private val ingredientDao = db.ingredientDao()
     private val equipmentDao = db.equipmentDao()
@@ -42,6 +35,11 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
                 val rhi = RecipeHasIngredient(id.toInt(), ingredientNames[index], quantity)
                 recipeDao.insertIngredient(rhi)
             }
+        }
+    }
+    fun deleteRecipeById(id: Int){
+        viewModelScope.launch(Dispatchers.IO) {
+            recipeDao.delete(id)
         }
     }
 }

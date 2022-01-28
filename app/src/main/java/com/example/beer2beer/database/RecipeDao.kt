@@ -17,8 +17,8 @@ interface RecipeDao {
     @Update
     fun update(recipe: Recipe)
 
-    @Delete
-    fun delete(recipe: Recipe)
+    @Query("DELETE FROM recipe WHERE id = :id")
+    fun delete(id: Int)
 
     @Query("SELECT * FROM recipe")
     fun getAll(): LiveData<List<Recipe>>

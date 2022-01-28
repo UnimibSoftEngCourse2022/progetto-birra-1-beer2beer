@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "67cbb71467ec84fa04d7bc79028b3099",
+    "identityHash": "78404f20cba221038f5e81aee51d4161",
     "entities": [
       {
         "tableName": "Equipment",
@@ -108,7 +108,7 @@
       },
       {
         "tableName": "RecipeHasIngredient",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`recipe` INTEGER NOT NULL, `ingredient` TEXT NOT NULL, `ratio` REAL NOT NULL, PRIMARY KEY(`recipe`, `ingredient`), FOREIGN KEY(`recipe`) REFERENCES `Recipe`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`ingredient`) REFERENCES `Ingredient`(`name`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`recipe` INTEGER NOT NULL, `ingredient` TEXT NOT NULL, `ratio` REAL NOT NULL, PRIMARY KEY(`recipe`, `ingredient`), FOREIGN KEY(`recipe`) REFERENCES `Recipe`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`ingredient`) REFERENCES `Ingredient`(`name`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "recipe",
@@ -140,7 +140,7 @@
         "foreignKeys": [
           {
             "table": "Recipe",
-            "onDelete": "NO ACTION",
+            "onDelete": "CASCADE",
             "onUpdate": "NO ACTION",
             "columns": [
               "recipe"
@@ -151,7 +151,7 @@
           },
           {
             "table": "Ingredient",
-            "onDelete": "NO ACTION",
+            "onDelete": "CASCADE",
             "onUpdate": "NO ACTION",
             "columns": [
               "ingredient"
@@ -164,7 +164,7 @@
       },
       {
         "tableName": "RecipeInstance",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `recipe` INTEGER NOT NULL, `date` INTEGER NOT NULL, `note` TEXT NOT NULL, `quantity` REAL NOT NULL, FOREIGN KEY(`recipe`) REFERENCES `Recipe`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `recipe` INTEGER NOT NULL, `date` INTEGER NOT NULL, `note` TEXT NOT NULL, `quantity` REAL NOT NULL, FOREIGN KEY(`recipe`) REFERENCES `Recipe`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
@@ -207,7 +207,7 @@
         "foreignKeys": [
           {
             "table": "Recipe",
-            "onDelete": "NO ACTION",
+            "onDelete": "CASCADE",
             "onUpdate": "NO ACTION",
             "columns": [
               "recipe"
@@ -220,7 +220,7 @@
       },
       {
         "tableName": "RecipeInstanceUseEquipment",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`recipeInstance` INTEGER NOT NULL, `equipment` INTEGER NOT NULL, PRIMARY KEY(`recipeInstance`, `equipment`), FOREIGN KEY(`recipeInstance`) REFERENCES `RecipeInstance`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`equipment`) REFERENCES `Equipment`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`recipeInstance` INTEGER NOT NULL, `equipment` INTEGER NOT NULL, PRIMARY KEY(`recipeInstance`, `equipment`), FOREIGN KEY(`recipeInstance`) REFERENCES `RecipeInstance`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`equipment`) REFERENCES `Equipment`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "recipeInstance",
@@ -246,7 +246,7 @@
         "foreignKeys": [
           {
             "table": "RecipeInstance",
-            "onDelete": "NO ACTION",
+            "onDelete": "CASCADE",
             "onUpdate": "NO ACTION",
             "columns": [
               "recipeInstance"
@@ -257,7 +257,7 @@
           },
           {
             "table": "Equipment",
-            "onDelete": "NO ACTION",
+            "onDelete": "CASCADE",
             "onUpdate": "NO ACTION",
             "columns": [
               "equipment"
@@ -272,7 +272,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '67cbb71467ec84fa04d7bc79028b3099')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '78404f20cba221038f5e81aee51d4161')"
     ]
   }
 }
