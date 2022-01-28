@@ -7,19 +7,25 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.beer2beer.SharedViewModel
+import com.example.beer2beer.adapters.EquipmentAdapter
 import com.example.beer2beer.databinding.FragmentRecipesBinding
 
 class RecipesFragment : Fragment() {
-    private lateinit var  binding: FragmentRecipesBinding
+    private lateinit var binding: FragmentRecipesBinding
     private val viewModel: SharedViewModel by activityViewModels()
+    private val adapter = EquipmentAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         recipesFragmentSetup(inflater, container)
+
+        viewModel.equipment.observe(viewLifecycleOwner) { equipmentList ->
+            adapter.submitList(equipmentList)
+        }
+        binding.equipmentRecyclerView.adapter = adapter
 
         return binding.root
     }
