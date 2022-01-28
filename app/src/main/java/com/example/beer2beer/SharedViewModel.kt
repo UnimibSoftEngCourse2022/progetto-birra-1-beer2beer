@@ -37,9 +37,16 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
             }
         }
     }
-    fun deleteRecipeById(id: Int){
+
+    fun deleteRecipeById(id: Int) {
         viewModelScope.launch(Dispatchers.IO) {
             recipeDao.delete(id)
+        }
+    }
+
+    fun updateIngredient(name: String, newQuantity: Double){
+        viewModelScope.launch(Dispatchers.IO){
+            ingredientDao.update(name, newQuantity)
         }
     }
 }

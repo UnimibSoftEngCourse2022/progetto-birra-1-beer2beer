@@ -9,8 +9,8 @@ interface IngredientDao {
     @Insert
     fun insert(ingredient: Ingredient)
 
-    @Update
-    fun update(ingredient: Ingredient)
+    @Query("UPDATE Ingredient SET quantity = :quantity WHERE name = :name")
+    fun update(name: String, quantity: Double)
 
     @Delete
     fun delete(ingredient: Ingredient)
