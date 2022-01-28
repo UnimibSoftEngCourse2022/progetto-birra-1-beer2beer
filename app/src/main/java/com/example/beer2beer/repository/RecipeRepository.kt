@@ -11,6 +11,7 @@ import com.example.beer2beer.callback.CallBack
 import com.example.beer2beer.database.AppDatabase
 import com.example.beer2beer.database.RecipeDao
 import com.example.beer2beer.database.entities.Recipe
+import com.example.beer2beer.database.entities.RecipeHasIngredient
 import com.google.android.gms.common.api.Response
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
@@ -30,15 +31,21 @@ class RecipeRepository (
         }
     }
 
+    fun insertIngredients(recipeHasIngredient: RecipeHasIngredient) {
+        coroutineContext.launch(Dispatchers.IO) {
+            dao.insertIngredient(recipeHasIngredient)
+        }
+    }
+
     fun updateRecipe(recipe: Recipe) {
         coroutineContext.launch(Dispatchers.IO) {
             dao.update(recipe)
         }
     }
 
-    fun deleteRecipe(recipe: Recipe) {
+    fun deleteRecipe(id: Int) {
         coroutineContext.launch(Dispatchers.IO) {
-            dao.delete(recipe)
+            dao.delete(id)
         }
     }
 
