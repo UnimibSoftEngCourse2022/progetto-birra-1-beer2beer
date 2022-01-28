@@ -24,19 +24,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        //Check if the username is already set
-        isFirstTime = !isUsernameIn()
-
-        val splashScreen = installSplashScreen()
-
-        // When the condition becomes false, the activity shows
-        val condition = SplashScreen.KeepOnScreenCondition{
-            // The splash screen stays up for 1 second before disappearing
-            Thread.sleep(1000)
-            false
-        }
-        splashScreen.setKeepOnScreenCondition(condition)
+        installSplashScreen()
 
         mainActivitySetup()
         setupBottomNavigationView()
@@ -47,10 +35,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        if (!isFirstTime && !isAlreadyStarted) {
+        if (isUsernameIn()) {
             findNavController(R.id.navHostFragment).navigate(R.id.action_global_home)
         }
-        isAlreadyStarted = true
     }
 
     private fun mainActivitySetup() {

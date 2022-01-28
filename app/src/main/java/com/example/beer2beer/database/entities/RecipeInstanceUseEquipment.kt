@@ -2,6 +2,7 @@ package com.example.beer2beer.database.entities
 
 import androidx.room.Entity
 import androidx.room.ForeignKey
+import androidx.room.ForeignKey.CASCADE
 
 @Entity(
     primaryKeys = ["recipeInstance", "equipment"],
@@ -9,12 +10,14 @@ import androidx.room.ForeignKey
         ForeignKey(
             entity = RecipeInstance::class,
             parentColumns = ["id"],
-            childColumns = ["recipeInstance"]
+            childColumns = ["recipeInstance"],
+            onDelete = CASCADE
         ),
         ForeignKey(
             entity = Equipment::class,
             parentColumns = ["id"],
-            childColumns = ["equipment"]
+            childColumns = ["equipment"],
+            onDelete = CASCADE
         )
     ]
 )

@@ -2,6 +2,7 @@ package com.example.beer2beer.database.entities
 
 import androidx.room.Entity
 import androidx.room.ForeignKey
+import androidx.room.ForeignKey.CASCADE
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverter
 import java.util.*
@@ -11,7 +12,8 @@ import java.util.*
         ForeignKey(
             entity = Recipe::class,
             parentColumns = ["id"],
-            childColumns = ["recipe"]
+            childColumns = ["recipe"],
+            onDelete = CASCADE
         )
     ]
 )
