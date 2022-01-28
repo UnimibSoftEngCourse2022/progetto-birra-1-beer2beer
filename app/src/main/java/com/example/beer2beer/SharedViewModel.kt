@@ -4,14 +4,16 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import androidx.room.Room
-import androidx.room.RoomDatabase
-import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.beer2beer.database.AppDatabase
+<<<<<<< HEAD
 import com.example.beer2beer.database.entities.Equipment
 import com.example.beer2beer.database.entities.Ingredient
 import com.example.beer2beer.database.entities.Recipe
 import com.example.beer2beer.database.entities.RecipeIngredients
+=======
+import com.example.beer2beer.database.entities.Recipe
+import com.example.beer2beer.database.entities.RecipeHasIngredient
+>>>>>>> 7a4814a8598cbb3f89d4d4f08b6486eb217032b2
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.apache.commons.math3.linear.OpenMapRealVector
@@ -26,13 +28,8 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     private val DEFAULT_MAX_ITER = MaxIter(100)
 
     // get the Database instance
-    private val db = Room.databaseBuilder(
-        application.applicationContext,
-        AppDatabase::class.java,
-        "BeerDatabase").createFromAsset("brewday.db")
-        .build()
+    private val db = AppDatabase.getInstance(getApplication<Application>().applicationContext)
 
-    // Declare all the Daos
     private val recipeDao = db.recipeDao()
     private val ingredientDao = db.ingredientDao()
     private val equipmentDao = db.equipmentDao()
@@ -41,17 +38,25 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     val ingredients = ingredientDao.getAll()
     val equipment = equipmentDao.getAll()
 
-    // Test DataBase
-    fun testDb() {
-        val recipe1 = Recipe(1, "ricetta 1", "")
-        val recipe2 = Recipe(2, "ricetta 2", "")
-        val recipe3 = Recipe(3, "ricetta 3", "")
-
+    fun createNewRecipe(
+        ingredientNames: Array<String>,
+        quantities: DoubleArray,
+        name: String,
+        description: String
+    ) {
+        val recipe = Recipe(0, name, description)
 
         viewModelScope.launch(Dispatchers.IO) {
-            recipeDao.insert(recipe1)
-            recipeDao.insert(recipe2)
-            recipeDao.insert(recipe3)
+            val id = recipeDao.insert(recipe)
+            quantities.forEachIndexed { index, quantity ->
+                val rhi = RecipeHasIngredient(id.toInt(), ingredientNames[index], quantity)
+                recipeDao.insertIngredient(rhi)
+            }
+        }
+    }
+    fun deleteRecipeById(id: Int){
+        viewModelScope.launch(Dispatchers.IO) {
+            recipeDao.delete(id)
         }
     }
 

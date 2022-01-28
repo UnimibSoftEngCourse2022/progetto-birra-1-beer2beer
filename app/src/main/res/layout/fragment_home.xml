@@ -31,10 +31,13 @@
                 android:layout_height="wrap_content"
                 android:padding="16dp"
                 android:text="@string/homeTextView"
+                android:textColor="@color/textBrown"
                 android:textSize="28sp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/homeRecyclerView"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:listitem="@layout/recipe_item"
@@ -60,6 +63,7 @@
                 android:backgroundTint="@android:color/transparent"
                 android:outlineProvider="none"
                 android:clickable="true"
+                app:tint="@color/textBrown"
                 app:backgroundTint="@android:color/transparent"
                 app:srcCompat="@drawable/ic_baseline_add_24"
                 android:contentDescription="@string/addRecipie" />

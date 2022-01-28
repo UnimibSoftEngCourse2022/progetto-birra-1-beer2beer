@@ -28,22 +28,12 @@ class MainActivity : AppCompatActivity() {
         //Check if the username is already set
         isFirstTime = !isUsernameIn()
 
-        val splashScreen = installSplashScreen()
-
-        // When the condition becomes false, the activity shows
-        val condition = SplashScreen.KeepOnScreenCondition{
-            // The splash screen stays up for 1 second before disappearing
-            Thread.sleep(1000)
-            false
-        }
-        splashScreen.setKeepOnScreenCondition(condition)
+        installSplashScreen()
 
         mainActivitySetup()
         setupBottomNavigationView()
         setContentView(binding.root)
     }
-
-
 
     override fun onStart() {
         super.onStart()
