@@ -135,11 +135,7 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
                         GoalType.MAXIMIZE, NonNegativeConstraint(true)
                     ).value
 
-                if (bestRecipe == null) {
-                    bestRecipe = recipe
-                    bestQuantity = solution
-
-                } else if (solution > bestQuantity) {
+                if (bestRecipe == null || solution > bestQuantity) {
                     bestRecipe = recipe
                     bestQuantity = solution
                 }
