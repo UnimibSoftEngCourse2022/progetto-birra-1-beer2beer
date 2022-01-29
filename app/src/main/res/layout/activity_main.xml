@@ -50,6 +50,7 @@
                     android:layout_gravity="bottom"
                     app:menu="@menu/bottom_navigation_view"
                     app:itemIconTint="@drawable/bottom_navigation_selector"
+                    app:labelVisibilityMode="unlabeled"
                     app:backgroundTint="@color/background"/>
 
             </com.google.android.material.bottomappbar.BottomAppBar>

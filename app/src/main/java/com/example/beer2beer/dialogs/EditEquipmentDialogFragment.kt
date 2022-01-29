@@ -56,7 +56,7 @@ class EditEquipmentDialogFragment (private val position: Int) : DialogFragment()
             "Misuratore"
         )
 
-        binding.spinner.adapter = context?.let { ArrayAdapter(it, android.R.layout.simple_spinner_dropdown_item, categories) }
+        binding.spinner.adapter = context?.let { ArrayAdapter(it, R.layout.spinner_dropdown_item, categories) }
         
         for(i in 0..3){
             if(categories[i] == equipmentCategory) {

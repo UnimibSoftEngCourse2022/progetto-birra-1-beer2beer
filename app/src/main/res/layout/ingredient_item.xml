@@ -34,7 +34,7 @@
 
             <Button
                 android:id="@+id/subButton"
-                android:layout_width="48dp"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:text="@string/minus"
                 app:cornerRadius="30dp" />
@@ -44,7 +44,6 @@
                 android:layout_width="48dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:layout_marginEnd="0dp"
                 android:ems="10"
                 android:hint="@string/quantity"
                 android:importantForAutofill="no"
@@ -66,7 +65,7 @@
 
             <Button
                 android:id="@+id/addButton"
-                android:layout_width="48dp"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:text="@string/plus"

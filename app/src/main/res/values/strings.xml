@@ -46,9 +46,10 @@
     <!--Equipment related-->
     <string name="equipment">Equipment</string>
     <string name="addEquipment">add equipment</string>
-    <string name="equipmentNameRequest">Insert Equipment name</string>
+    <string name="equipmentNameRequest">Equipment name</string>
     <string name="category">Category</string>
     <string name="capacity">Capacity</string>
+    <string name="newEquipment">New Equipment</string>
     <!--Useful-->
     <string name="appName">BrewDay!</string>
     <string name="home">Home</string>
