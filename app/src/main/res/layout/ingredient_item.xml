@@ -58,7 +58,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                tools:text="L"/>
+                tools:text="@string/unitOfMeasure"
+                android:textColor="@color/textBrown"
+                android:textSize="13sp" />
 
             <Button
                 android:id="@+id/addButton"

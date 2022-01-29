@@ -31,11 +31,6 @@
     <string name="description">Description</string>
     <string name="recipeNameEditTextError">The recipe name cannot be empty!</string>
     <string name="selectIngredientsTextViewError">The recipe cannot have 0 ingredients!</string>
-
-
-
-
-
     <!--Ingredients related-->
     <string name="ingredients">Ingredients</string>
     <string name="addWater">add water</string>
@@ -72,4 +67,5 @@
     <string name="saveDialogButton">Save</string>
     <string name="discardDialogButton">Discard</string>
     <string name="line">line</string>
+    <string name="unitOfMeasure">L</string>
 </resources>
