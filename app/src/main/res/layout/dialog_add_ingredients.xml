@@ -52,7 +52,7 @@
                 android:minHeight="48dp"
                 android:gravity="center"
                 android:textColor="@color/textBrown"
-                android:textColorHint="@color/textBrown"
+                android:textColorHint="@color/textHint"
                 android:textSize="14sp"
                 android:background="@android:color/transparent"/>
 

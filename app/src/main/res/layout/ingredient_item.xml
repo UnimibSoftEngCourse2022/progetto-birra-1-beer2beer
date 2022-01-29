@@ -50,6 +50,7 @@
                 android:inputType="numberDecimal"
                 android:minHeight="48dp"
                 android:textColor="@color/textBrown"
+                android:textColorHint="@color/textHint"
                 android:textSize="14sp"
                 android:gravity="center"
                 android:background="@android:color/transparent"/>

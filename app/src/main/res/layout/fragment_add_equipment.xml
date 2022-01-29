@@ -54,8 +54,7 @@
                     android:minHeight="48dp"
                     android:padding="16dp"
                     android:textColor="@color/textBrown"
-                    android:textColorHighlight="@color/textBrown"
-                    android:textColorHint="@color/textBrown"
+                    android:textColorHint="@color/textHint"
                     android:textSize="22sp"
                     android:background="@android:color/transparent"
                     android:layout_gravity="center"/>
@@ -125,7 +124,7 @@
                         android:minHeight="48dp"
                         android:gravity="center"
                         android:textColor="@color/textBrown"
-                        android:textColorHint="@color/textBrown"
+                        android:textColorHint="@color/textHint"
                         android:textSize="14sp"
                         android:background="@android:color/transparent"/>
 
