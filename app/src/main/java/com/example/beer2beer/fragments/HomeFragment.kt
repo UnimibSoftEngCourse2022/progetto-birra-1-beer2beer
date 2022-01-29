@@ -35,7 +35,6 @@ class HomeFragment : Fragment() {
             val action = HomeFragmentDirections.actionHomeToAddRecipe()
             findNavController().navigate(action)
         }
-
         return binding.root
     }
 

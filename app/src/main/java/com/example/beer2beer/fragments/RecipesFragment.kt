@@ -47,10 +47,10 @@ class RecipesFragment : Fragment() {
 
         val swipeHandler = object : SwipeToDeleteCallback(view.context) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val recipe = viewModel.recipes.value?.get(viewHolder.adapterPosition)
+                val equipment = viewModel.equipment.value?.get(viewHolder.adapterPosition)
 
-                if (recipe != null) {
-                    viewModel.deleteRecipeById(recipe.id)
+                if (equipment != null) {
+                    viewModel.deleteEquipment(equipment)
                 }
             }
         }
