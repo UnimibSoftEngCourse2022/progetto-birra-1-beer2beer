@@ -29,7 +29,7 @@ class EquipmentRepository (
 
     fun deleteEquipment(equipment: Equipment) {
         coroutineContext.launch(Dispatchers.IO) {
-            dao.delete(equipment)
+            dao.delete(equipment.id)
         }
     }
 

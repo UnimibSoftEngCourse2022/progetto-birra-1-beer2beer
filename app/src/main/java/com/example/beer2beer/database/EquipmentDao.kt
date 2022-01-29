@@ -12,8 +12,8 @@ interface EquipmentDao {
     @Update
     fun update(equipment: Equipment)
 
-    @Delete
-    fun delete(equipment: Equipment)
+    @Query("DELETE FROM equipment WHERE id = :id")
+    fun delete(id: Int)
 
     @Query("SELECT * FROM equipment")
     fun getAll(): LiveData<List<Equipment>>
