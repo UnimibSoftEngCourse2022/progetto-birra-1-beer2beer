@@ -17,10 +17,11 @@ class BrewFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View {
 
         brewFragmentSetup(inflater, container)
-
+        viewModel.whatShouldIBrewToday()
         return binding.root
     }
 
