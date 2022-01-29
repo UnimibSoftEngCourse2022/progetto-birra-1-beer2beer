@@ -31,13 +31,13 @@
                 android:background="@drawable/radius_30_background">
 
                 <EditText
-                    android:id="@+id/recipeNameEditText"
+                    android:id="@+id/equipmentNameEditText"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:ems="10"
                     android:gravity="center"
-                    android:hint="@string/recipeNameEditTextHint"
+                    android:hint="@string/equipmentNameEditTextHint"
                     android:importantForAutofill="no"
                     android:inputType="textPersonName"
                     android:minHeight="48dp"
@@ -50,7 +50,7 @@
                     android:layout_gravity="center"/>
 
                 <TextView
-                    android:id="@+id/selectIngredientsTextView"
+                    android:id="@+id/selectCategoryTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
@@ -60,51 +60,74 @@
                     android:focusableInTouchMode="true"
                     android:gravity="start"
                     android:padding="16dp"
-                    android:text="@string/ingredients"
+                    android:text="@string/category"
                     android:textColor="@color/textBrown"
                     android:textSize="18sp" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/ingredientsRecyclerView"
+                <Spinner
+                    android:id="@+id/spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:itemCount="6"
-                    tools:listitem="@layout/ingredient_item"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"/>
+                    android:padding="14dp"
+                    android:popupBackground="@drawable/ic_dropdown_list_background"/>
 
                 <TextView
-                    android:id="@+id/descriptionTextView"
+                    android:id="@+id/capacityTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:layout_marginTop="10dp"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:focusableInTouchMode="true"
                     android:gravity="start"
                     android:padding="16dp"
-                    android:text="@string/description"
+                    android:text="@string/capacity"
                     android:textColor="@color/textBrown"
                     android:textSize="18sp" />
 
-                <EditText
-                    android:id="@+id/descriptionEditText"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:layout_margin="8dp"
-                    android:ems="10"
-                    android:gravity="start|top"
-                    android:hint="@string/descriptionEditTextHint"
-                    android:importantForAutofill="no"
-                    android:inputType="textMultiLine"
-                    android:minHeight="38dp"
-                    android:padding="16dp"
-                    android:textColor="@color/textBrown"
-                    android:textColorHint="@color/textBrown"
-                    android:textSize="14sp" />
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:background="@color/shade2">
+
+                    <Button
+                        android:id="@+id/subButton"
+                        android:layout_width="48dp"
+                        android:layout_height="wrap_content"
+
+                        android:text="@string/minus"
+                        app:cornerRadius="30dp" />
+
+                    <EditText
+                        android:id="@+id/quantityEditText"
+                        android:layout_width="48dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:ems="10"
+                        android:hint="@string/quantityEditText"
+                        android:importantForAutofill="no"
+                        android:inputType="numberDecimal"
+                        android:minHeight="48dp"
+                        android:gravity="center"
+                        android:textColor="@color/textBrown"
+                        android:textColorHint="@color/textBrown"
+                        android:textSize="14sp"
+                        android:background="@android:color/transparent"/>
+
+                    <Button
+                        android:id="@+id/addButton"
+                        android:layout_width="48dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/plus"
+                        app:cornerRadius="30dp" />
+                </LinearLayout>
 
                 <Button
-                    android:id="@+id/saveRecipeButton"
+                    android:id="@+id/saveEquipmentButton"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="32dp"

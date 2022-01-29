@@ -13,10 +13,7 @@ import com.example.beer2beer.database.RecipeDao
 import com.example.beer2beer.database.entities.Recipe
 import com.example.beer2beer.database.entities.RecipeHasIngredient
 import com.google.android.gms.common.api.Response
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
 
@@ -25,10 +22,8 @@ class RecipeRepository (
     private val coroutineContext: CoroutineScope
 ) {
 
-    fun createRecipe(recipe: Recipe) {
-        coroutineContext.launch(Dispatchers.IO) {
-            dao.insert(recipe)
-        }
+    fun createRecipe(recipe: Recipe) : Long {
+        return dao.insert(recipe)
     }
 
     fun insertIngredients(recipeHasIngredient: RecipeHasIngredient) {

@@ -21,9 +21,9 @@ class IngredientRepository (
         }
     }
 
-    fun updateIngredient(ingredient: Ingredient) {
+    fun updateIngredient(name: String, newQuantity: Double) {
         coroutineContext.launch(Dispatchers.IO) {
-            dao.update(ingredient)
+            dao.update(name, newQuantity)
         }
     }
 

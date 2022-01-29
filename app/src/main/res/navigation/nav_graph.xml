@@ -83,4 +83,16 @@
             app:popUpTo="@id/addRecipeFragment"
             app:popUpToInclusive="true" />
     </fragment>
+
+    <fragment
+        android:id="@+id/addEquipmentFragment"
+        android:name="com.example.beer2beer.fragments.AddEquipmentFragment"
+        android:label="AddEquipmentFragment"
+        tools:layout="@layout/fragment_add_equipment">
+        <action
+            android:id="@+id/action_addRecipe_to_home"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/addRecipeFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

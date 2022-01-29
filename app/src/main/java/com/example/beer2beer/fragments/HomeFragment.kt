@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.example.beer2beer.R
 import com.example.beer2beer.SharedViewModel
 import com.example.beer2beer.adapters.RecipeAdapter
 import com.example.beer2beer.database.entities.Recipe
@@ -35,7 +37,13 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel
+        setAddRecipe()
+    }
+
+    private fun setAddRecipe() {
+        binding.addRecipeFab.setOnClickListener{
+            findNavController().navigate(R.id.addRecipeFragment)
+        }
     }
 
     private fun homeFragmentSetup(
