@@ -59,12 +59,19 @@ class AddEquipmentFragment : Fragment() {
         }
 
         binding.saveEquipmentButton.setOnClickListener {
-            viewModel.createEquipment(Equipment(
-                id,
-                category = binding.spinner.selectedItem.toString(),
-                binding.equipmentNameEditText.text.toString(),
-                quantity
-            ))
+            if(binding.equipmentNameEditText.text.isBlank())
+                binding.equipmentNameEditText.error = "Insert equipment name"
+            else {
+                viewModel.createEquipment(
+                    Equipment(
+                        0,
+                        category = binding.spinner.selectedItem.toString(),
+                        binding.equipmentNameEditText.text.toString(),
+                        quantity
+                    )
+                )
+
+            }
         }
 
         return binding.root
