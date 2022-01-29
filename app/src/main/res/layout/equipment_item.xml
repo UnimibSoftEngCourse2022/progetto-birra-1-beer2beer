@@ -48,7 +48,7 @@
                 tools:text="Cap. L" />
 
             <ImageButton
-                android:id="@+id/addWaterButton"
+                android:id="@+id/editButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

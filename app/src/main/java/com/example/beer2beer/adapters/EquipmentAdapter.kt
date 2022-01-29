@@ -3,17 +3,28 @@ package com.example.beer2beer.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
+import androidx.fragment.app.FragmentManager
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.beer2beer.R
 import com.example.beer2beer.database.entities.Equipment
+import com.example.beer2beer.databinding.EquipmentItemBinding
+import com.example.beer2beer.dialogs.AddEquipmentDialogFragment
+import com.example.beer2beer.fragments.RecipesFragmentDirections
 
-class EquipmentAdapter : ListAdapter<Equipment, EquipmentAdapter.EquipmentViewHolder>(EquipmentDiffCallback()) {
+class EquipmentAdapter(private val childFragmentManager: FragmentManager) : ListAdapter<Equipment, EquipmentAdapter.EquipmentViewHolder>(EquipmentDiffCallback()) {
     class EquipmentViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val equipmentNameTextView: TextView = view.findViewById(R.id.equipmentNameTextView)
-        val equipmentCapacityTextView: TextView = view.findViewById(R.id.capacityTextView)
+        val binding = EquipmentItemBinding.bind(view)
+        val equipmentNameTextView: TextView = binding.equipmentNameTextView
+        val equipmentCapacityTextView: TextView = binding.capacityTextView
+        val editEquipment: ImageButton = binding.editButton
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EquipmentViewHolder {
@@ -26,6 +37,14 @@ class EquipmentAdapter : ListAdapter<Equipment, EquipmentAdapter.EquipmentViewHo
 
         val capacity = getItem(position).capacity.toString() + "L"
         holder.equipmentCapacityTextView.text = capacity
+
+        holder.editEquipment.setOnClickListener {
+            val navController = Navigation.findNavController(holder.editEquipment)
+
+            val dialog = AddEquipmentDialogFragment(holder.equipmentNameTextView.text.toString(),
+                holder.equipmentCapacityTextView.text.toString().toDouble())
+            dialog.show(childFragmentManager, "EditEquipmentDialog")
+        }
     }
 
 

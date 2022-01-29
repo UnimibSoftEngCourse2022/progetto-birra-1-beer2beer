@@ -7,15 +7,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.example.beer2beer.R
 import com.example.beer2beer.SharedViewModel
 import com.example.beer2beer.adapters.EquipmentAdapter
 import com.example.beer2beer.databinding.FragmentRecipesBinding
+import com.example.beer2beer.utils.SwipeToDeleteCallback
 
 class RecipesFragment : Fragment() {
     private lateinit var binding: FragmentRecipesBinding
     private val viewModel: SharedViewModel by activityViewModels()
-    private val adapter = EquipmentAdapter()
+    private val adapter = EquipmentAdapter(childFragmentManager)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,10 +34,27 @@ class RecipesFragment : Fragment() {
 
 
         binding.addEquipmentFab.setOnClickListener {
-            findNavController().navigate(R.id.addEquipmentFragment)
+            val action = RecipesFragmentDirections.actionRecipesToAddEquipment()
+            findNavController().navigate(action)
         }
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val swipeHandler = object : SwipeToDeleteCallback(view.context) {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val recipe = viewModel.recipes.value?.get(viewHolder.adapterPosition)
+
+                if (recipe != null) {
+                    viewModel.deleteRecipeById(recipe.id)
+                }
+            }
+        }
+        val itemTouchHelper = ItemTouchHelper(swipeHandler)
+        itemTouchHelper.attachToRecyclerView(binding.equipmentRecyclerView)
     }
 
     private fun recipesFragmentSetup(

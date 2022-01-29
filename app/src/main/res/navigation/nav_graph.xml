@@ -56,7 +56,11 @@
         android:id="@+id/recipesFragment"
         android:name="com.example.beer2beer.fragments.RecipesFragment"
         android:label="@string/recipesTextView"
-        tools:layout="@layout/fragment_recipes" />
+        tools:layout="@layout/fragment_recipes" >
+        <action
+            android:id="@+id/action_recipes_to_addEquipment"
+            app:destination="@id/addEquipmentFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/settingsFragment"
@@ -90,9 +94,9 @@
         android:label="AddEquipmentFragment"
         tools:layout="@layout/fragment_add_equipment">
         <action
-            android:id="@+id/action_addRecipe_to_home"
-            app:destination="@id/homeFragment"
-            app:popUpTo="@id/addRecipeFragment"
+            android:id="@+id/action_addEquipment_to_home"
+            app:destination="@id/recipesFragment"
+            app:popUpTo="@id/addEquipmentFragment"
             app:popUpToInclusive="true" />
     </fragment>
 </navigation>
