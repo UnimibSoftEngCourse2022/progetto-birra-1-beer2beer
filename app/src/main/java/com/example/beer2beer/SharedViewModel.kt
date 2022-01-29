@@ -37,9 +37,36 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
             }
         }
     }
-    fun deleteRecipeById(id: Int){
+
+    // This function transform the raw quantities in relative quantities
+    fun processQuantities(quantities: DoubleArray): DoubleArray {
+        var total = 0.0
+        quantities.forEachIndexed { index, q ->
+            // Se sto processando l'acqua, la converto in grammi
+            if (index == 0)
+                total += q * 1000
+            else
+                total += q
+        }
+        val relativeQuantities = DoubleArray(quantities.size)
+        quantities.forEachIndexed { index, q ->
+            if (index == 0)
+                relativeQuantities[index] = (q * 1000) / total
+            else
+                relativeQuantities[index] = q / total
+        }
+        return relativeQuantities
+    }
+
+    fun deleteRecipeById(id: Int) {
         viewModelScope.launch(Dispatchers.IO) {
             recipeDao.delete(id)
+        }
+    }
+
+    fun updateIngredient(name: String, newQuantity: Double) {
+        viewModelScope.launch(Dispatchers.IO) {
+            ingredientDao.update(name, newQuantity)
         }
     }
 }

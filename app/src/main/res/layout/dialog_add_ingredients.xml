@@ -1,74 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_view_ingredients"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="fragment"
+            type="com.example.beer2beer.dialogs.AddIngredientsDialogFragment" />
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        card_view:cardBackgroundColor="@color/shade2"
-        card_view:cardCornerRadius="20dp"
-        card_view:cardUseCompatPadding="true">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/shade3"
+            android:gravity="center"
             android:orientation="horizontal"
-            android:gravity="center">
+            android:background="@color/shade2">
 
             <TextView
                 android:id="@+id/ingredientTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-medium"
                 android:padding="16dp"
                 android:textColor="@color/textBrown"
-                tools:text="Ingredient name"
-                android:layout_weight="1"
                 android:textSize="14sp"
-                android:fontFamily="sans-serif-medium"/>
+                tools:text="@string/ingredientName" />
 
             <Button
                 android:id="@+id/subButton"
-                android:layout_width="48dp"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
-                android:text="@string/minus"
-                app:cornerRadius="30dp" />
+                app:cornerRadius="30dp"
+                android:text="@string/minus" />
 
             <EditText
                 android:id="@+id/quantityEditText"
                 android:layout_width="48dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:layout_marginEnd="0dp"
                 android:ems="10"
                 android:hint="@string/quantityEditText"
                 android:importantForAutofill="no"
                 android:inputType="numberDecimal"
                 android:minHeight="48dp"
                 android:textColor="@color/textBrown"
+                android:textColorHint="@color/textBrown"
                 android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/unitOfMeasureTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                tools:text="@string/unitOfMeasure"
-                android:textColor="@color/textBrown"
-                android:textSize="13sp" />
 
             <Button
                 android:id="@+id/addButton"
-                android:layout_width="48dp"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:text="@string/plus"
-                app:cornerRadius="30dp" />
+                app:cornerRadius="30dp"
+                android:text="@string/plus" />
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
-</FrameLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/shade3"
+            android:contentDescription="@string/line" />
+    </LinearLayout>
+
+
+</layout>

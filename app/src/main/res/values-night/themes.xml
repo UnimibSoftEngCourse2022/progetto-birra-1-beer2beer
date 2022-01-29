@@ -16,4 +16,8 @@
         <item name="android:windowBackground">@color/shade3</item>
         <item name="android:textColor">@color/text</item>
     </style>
+    <style name="CustomAlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorOnPrimary">@color/textBrown</item>
+        <item name="android:windowBackground">@drawable/radius_30_background</item>
+    </style>
 </resources>
