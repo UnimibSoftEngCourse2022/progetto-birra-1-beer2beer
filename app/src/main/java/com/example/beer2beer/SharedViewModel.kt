@@ -92,7 +92,7 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
 
         viewModelScope.launch(Dispatchers.IO) {
             recipes.value?.forEach { recipe ->
-                val recipeIngredients = recipeDao.getRecipeIngredients(recipe.id)
+                val recipeIngredients = db.recipeDao().getRecipeIngredients(recipe.id)
                 val constraint = ArrayList<LinearConstraint>()
                 val coeff = DoubleArray(recipeIngredients.size + 1)
 
@@ -160,7 +160,7 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     fun updateIngredient(name: String, newQuantity: Double) {
         ingredientRepository.updateIngredient(name, newQuantity)
         viewModelScope.launch(Dispatchers.IO) {
-            ingredientDao.update(name, newQuantity)
+            db.ingredientDao().update(name, newQuantity)
         }
 
     }
