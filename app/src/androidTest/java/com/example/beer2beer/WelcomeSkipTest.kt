@@ -21,7 +21,6 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.example.beer2beer.fragments.WelcomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.hamcrest.Matchers.not
 import org.junit.Before
@@ -42,9 +41,6 @@ class WelcomeSkipTest {
             .putString("username", USERNAME)
             .apply()
 
-        val navController = TestNavHostController(
-            ApplicationProvider.getApplicationContext())
-
         val scenario = ActivityScenario.launch(MainActivity::class.java)
 
         onView(withId(R.id.homeFragment)).check(matches(isDisplayed()))
@@ -58,10 +54,7 @@ class WelcomeSkipTest {
             .getSharedPreferences("com.example.beer2beer", Context.MODE_PRIVATE)
         sharedPreferences.edit().clear().apply()
 
-        val navController = TestNavHostController(
-            ApplicationProvider.getApplicationContext())
-
-        val scenario = ActivityScenario.launch(MainActivity::class.java)
+        ActivityScenario.launch(MainActivity::class.java)
 
          onView(withId(R.id.homeFragment)).check(matches(not(isDisplayed())))
 

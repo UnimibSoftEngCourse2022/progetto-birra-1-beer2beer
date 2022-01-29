@@ -7,8 +7,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.map
 import androidx.room.Database
-import com.example.beer2beer.callback.CallBack
-import com.example.beer2beer.database.AppDatabase
 import com.example.beer2beer.database.RecipeDao
 import com.example.beer2beer.database.entities.Recipe
 import com.example.beer2beer.database.entities.RecipeHasIngredient

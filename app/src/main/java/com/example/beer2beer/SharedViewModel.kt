@@ -6,8 +6,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.beer2beer.database.AppDatabase
 import com.example.beer2beer.database.entities.Equipment
-import com.example.beer2beer.database.entities.Ingredient
-import com.example.beer2beer.database.entities.RecipeIngredients
 import com.example.beer2beer.database.entities.Recipe
 import com.example.beer2beer.database.entities.RecipeHasIngredient
 import com.example.beer2beer.repository.EquipmentRepository
@@ -141,12 +139,9 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
                     bestRecipe = recipe
                     bestQuantity = solution
 
-                } else {
-                    if (solution > bestQuantity) {
-                        bestRecipe = recipe
-                        bestQuantity = solution
-                    }
-
+                } else if (solution > bestQuantity) {
+                    bestRecipe = recipe
+                    bestQuantity = solution
                 }
 
             }

@@ -12,7 +12,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.beer2beer.R
 import com.example.beer2beer.SharedViewModel
 import com.example.beer2beer.adapters.IngredientAdapter
-import com.example.beer2beer.database.entities.Equipment
 import com.example.beer2beer.databinding.FragmentAddRecipeBinding
 
 class AddRecipeFragment : Fragment() {

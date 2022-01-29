@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.beer2beer.SharedViewModel
-import com.example.beer2beer.database.entities.Equipment
 import com.example.beer2beer.databinding.FragmentAddEquipmentBinding
 
 class AddEquipmentFragment : Fragment() {
