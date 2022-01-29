@@ -18,7 +18,6 @@ import com.example.beer2beer.utils.SwipeToDeleteCallback
 class RecipesFragment : Fragment() {
     private lateinit var binding: FragmentRecipesBinding
     private val viewModel: SharedViewModel by activityViewModels()
-    private val adapter = EquipmentAdapter(childFragmentManager)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,6 +25,8 @@ class RecipesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         recipesFragmentSetup(inflater, container)
+
+        val adapter = EquipmentAdapter(childFragmentManager)
 
         viewModel.equipment.observe(viewLifecycleOwner) { equipmentList ->
             adapter.submitList(equipmentList)
