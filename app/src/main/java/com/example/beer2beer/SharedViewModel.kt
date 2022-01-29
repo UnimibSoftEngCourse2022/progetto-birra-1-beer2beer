@@ -10,8 +10,12 @@ import com.example.beer2beer.database.entities.Ingredient
 import com.example.beer2beer.database.entities.RecipeIngredients
 import com.example.beer2beer.database.entities.Recipe
 import com.example.beer2beer.database.entities.RecipeHasIngredient
+import com.example.beer2beer.repository.EquipmentRepository
+import com.example.beer2beer.repository.IngredientRepository
+import com.example.beer2beer.repository.RecipeRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.apache.commons.math3.linear.OpenMapRealVector
 import org.apache.commons.math3.linear.RealVector
 import org.apache.commons.math3.optim.MaxIter
@@ -26,14 +30,17 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     // get the Database instance
     private val db = AppDatabase.getInstance(getApplication<Application>().applicationContext)
 
-    private val recipeDao = db.recipeDao()
-    private val ingredientDao = db.ingredientDao()
-    private val equipmentDao = db.equipmentDao()
+    private val recipeRepository = RecipeRepository(db.recipeDao(), viewModelScope)
+    private val ingredientRepository = IngredientRepository(db.ingredientDao(), viewModelScope)
+    private val equipmentRepository = EquipmentRepository(db.equipmentDao(), viewModelScope)
 
-    val recipes = recipeDao.getAll()
-    val ingredients = ingredientDao.getAll()
-    val equipment = equipmentDao.getAll()
 
+    val recipes = recipeRepository.getAllRecipes()
+    val ingredients = ingredientRepository.getAllIngredients()
+    val equipment = equipmentRepository.getAllEquipments()
+
+
+    //RECIPES
     fun createNewRecipe(
         ingredientNames: Array<String>,
         quantities: DoubleArray,
@@ -43,13 +50,15 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
         val recipe = Recipe(0, name, description)
 
         viewModelScope.launch(Dispatchers.IO) {
-            val id = recipeDao.insert(recipe)
+            val id = recipeRepository.createRecipe(recipe)
             quantities.forEachIndexed { index, quantity ->
                 val rhi = RecipeHasIngredient(id.toInt(), ingredientNames[index], quantity)
-                recipeDao.insertIngredient(rhi)
+                recipeRepository.insertIngredients(rhi)
             }
         }
     }
+
+    //INGREDIENTS
 
     // This function transform the raw quantities in relative quantities
     fun processQuantities(quantities: DoubleArray): DoubleArray {
@@ -72,9 +81,7 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     }
 
     fun deleteRecipeById(id: Int) {
-        viewModelScope.launch(Dispatchers.IO) {
-            recipeDao.delete(id)
-        }
+        recipeRepository.deleteRecipe(id)
     }
 
     fun whatShouldIBrewToday(): String {
@@ -85,7 +92,7 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
 
         viewModelScope.launch(Dispatchers.IO) {
             recipes.value?.forEach { recipe ->
-                val recipeIngredients = recipeDao.getRecipeIngredients(recipe.id)
+                val recipeIngredients = db.recipeDao().getRecipeIngredients(recipe.id)
                 val constraint = ArrayList<LinearConstraint>()
                 val coeff = DoubleArray(recipeIngredients.size + 1)
 
@@ -151,9 +158,26 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     }
 
     fun updateIngredient(name: String, newQuantity: Double) {
+        ingredientRepository.updateIngredient(name, newQuantity)
         viewModelScope.launch(Dispatchers.IO) {
-            ingredientDao.update(name, newQuantity)
+            db.ingredientDao().update(name, newQuantity)
         }
 
     }
+
+    //EQUIPMENTS
+
+    fun createEquipment(name: String, category: String, capacity: Double) {
+        val equipment = Equipment(0, name, category, capacity)
+        equipmentRepository.createEquipment(equipment)
+    }
+
+    fun deleteEquipment(equipment: Equipment) {
+        equipmentRepository.deleteEquipment(equipment)
+    }
+
+    fun updateEquipment(equipment: Equipment) {
+        equipmentRepository.updateEquipment(equipment)
+    }
+
 }

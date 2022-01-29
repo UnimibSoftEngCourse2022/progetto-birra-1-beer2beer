@@ -50,9 +50,11 @@
                 android:importantForAutofill="no"
                 android:inputType="numberDecimal"
                 android:minHeight="48dp"
+                android:gravity="center"
                 android:textColor="@color/textBrown"
                 android:textColorHint="@color/textBrown"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:background="@android:color/transparent"/>
 
             <Button
                 android:id="@+id/addButton"

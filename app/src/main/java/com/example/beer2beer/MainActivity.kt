@@ -65,7 +65,9 @@ class MainActivity : AppCompatActivity(), AddIngredientsDialogFragment.DialogLis
         navView = binding.bottomNavigationView
         NavigationUI.setupWithNavController(navView, navController)
 
+        var d = 0
         navController.addOnDestinationChangedListener { _, destination, _ ->
+            d = destination.id
             if (destination.id == R.id.welcomeFragment || destination.id == R.id.getStartedFragment){
                 binding.fabBrew.visibility = View.GONE
                 binding.bottomAppBar.visibility = View.GONE
@@ -79,7 +81,8 @@ class MainActivity : AppCompatActivity(), AddIngredientsDialogFragment.DialogLis
 
         binding.bottomNavigationView.background = null
         binding.fabBrew.setOnClickListener {
-            navController.navigate(R.id.action_global_brew)
+            if(d != R.id.brewFragment)
+                navController.navigate(R.id.action_global_brew)
         }
     }
 

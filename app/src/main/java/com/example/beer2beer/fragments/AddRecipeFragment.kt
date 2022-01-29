@@ -1,15 +1,18 @@
 package com.example.beer2beer.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.beer2beer.R
 import com.example.beer2beer.SharedViewModel
 import com.example.beer2beer.adapters.IngredientAdapter
+import com.example.beer2beer.database.entities.Equipment
 import com.example.beer2beer.databinding.FragmentAddRecipeBinding
 
 class AddRecipeFragment : Fragment() {
@@ -60,15 +63,30 @@ class AddRecipeFragment : Fragment() {
                 val recipeName = binding.recipeNameEditText.text.toString()
                 val recipeDescription = binding.descriptionEditText.text.toString()
 
-                viewModel.createNewRecipe(
-                    ingredientNames,
-                    relativeQuantities,
-                    recipeName,
-                    recipeDescription
-                )
+                //Equipment
+                var maxSize = 0.0
+                viewModel.equipment.value?.forEach { equipment ->
+                    maxSize += equipment.capacity
+                }
 
-                val action = AddRecipeFragmentDirections.actionAddRecipeToHome()
-                findNavController().navigate(action)
+                var size = 0.0
+                relativeQuantities.forEach { quantity ->
+                    size += quantity
+                }
+
+                if(size <= maxSize) {
+                    viewModel.createNewRecipe(
+                        ingredientNames,
+                        relativeQuantities,
+                        recipeName,
+                        recipeDescription
+                    )
+
+                    val action = AddRecipeFragmentDirections.actionAddRecipeToHome()
+                    findNavController().navigate(action)
+                }
+                else
+                    binding.recipeNameEditText.error = "Equipment' s capacity not enough"
             }
         }
 
