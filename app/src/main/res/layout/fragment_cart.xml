@@ -290,7 +290,7 @@
                                 android:gravity="start"
                                 android:padding="10dp"
                                 android:paddingStart="30dp"
-                                android:text="@string/sugars"
+                                android:text="@string/sugar"
                                 android:textColor="@color/textBrown"
                                 android:textSize="12sp"
                                 android:layout_weight="1"
@@ -303,7 +303,7 @@
                                 android:fontFamily="sans-serif"
                                 android:gravity="end"
                                 android:padding="10dp"
-                                tools:text="@string/qtySugars"
+                                tools:text="@string/qtySugar"
                                 android:textColor="@color/textBrown"
                                 android:textSize="12sp"/>
 
@@ -313,7 +313,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:background="@android:color/transparent"
-                                android:contentDescription="@string/addSugars"
+                                android:contentDescription="@string/addSugar"
                                 android:minWidth="48dp"
                                 android:minHeight="48dp"
                                 android:padding="10dp"

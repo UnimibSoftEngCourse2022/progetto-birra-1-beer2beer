@@ -42,7 +42,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
-                        android:text="@string/enterYourNameTextView"
+                        android:text="@string/enterYourName"
                         android:textSize="22sp" />
 
                     <TextView
@@ -50,7 +50,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="58dp"
-                        android:text="@string/nameTextView"
+                        android:text="@string/name"
                         android:textSize="14sp" />
 
                     <EditText
@@ -59,7 +59,7 @@
                         android:layout_height="wrap_content"
                         android:autofillHints="name"
                         android:ems="10"
-                        android:hint="@string/nameEditText_hint"
+                        android:hint="@string/enterYourName"
                         android:inputType="textPersonName"
                         android:minHeight="48dp"
                         android:textSize="14sp"
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 app:cornerRadius="30dp"
-                android:text="@string/continueButton"/>
+                android:text="@string/Continue"/>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

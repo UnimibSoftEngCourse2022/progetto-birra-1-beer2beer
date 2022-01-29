@@ -60,7 +60,7 @@ class AddIngredientsDialogFragment(private val ingredientName: String, private v
             val builder = AlertDialog.Builder(it, R.style.CustomAlertDialog)
 
             builder.setView(binding.root)
-                .setPositiveButton(R.string.saveDialogButton) { _, _ ->
+                .setPositiveButton(R.string.save) { _, _ ->
                     val quantity: Double
                     if (binding.quantityEditText.text.toString().isEmpty())
                         quantity = 0.0
@@ -69,7 +69,7 @@ class AddIngredientsDialogFragment(private val ingredientName: String, private v
 
                     listener.onDialogSaveClick(ingredientName, quantity)
                 }
-                .setNegativeButton(R.string.discardDialogButton) { _, _ ->
+                .setNegativeButton(R.string.discard) { _, _ ->
                     dialog?.cancel()
                 }
             builder.create()

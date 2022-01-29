@@ -32,7 +32,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.beer2beer.fragments.HomeFragment"
-        android:label="@string/homeTextView"
+        android:label="@string/home"
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_home_to_addRecipe"
@@ -42,20 +42,20 @@
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.example.beer2beer.fragments.CartFragment"
-        android:label="@string/cartTextView"
+        android:label="@string/cart"
         tools:layout="@layout/fragment_cart">
     </fragment>
 
     <fragment
         android:id="@+id/brewFragment"
         android:name="com.example.beer2beer.fragments.BrewFragment"
-        android:label="@string/brewTextView"
+        android:label="@string/brew"
         tools:layout="@layout/fragment_brew" />
 
     <fragment
         android:id="@+id/recipesFragment"
         android:name="com.example.beer2beer.fragments.RecipesFragment"
-        android:label="@string/recipesTextView"
+        android:label="@string/recipes"
         tools:layout="@layout/fragment_recipes" >
         <action
             android:id="@+id/action_recipes_to_addEquipment"
@@ -65,7 +65,7 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.beer2beer.fragments.SettingsFragment"
-        android:label="@string/settingsTextView"
+        android:label="@string/settings"
         tools:layout="@layout/fragment_settings" />
     <action
         android:id="@+id/action_global_home"

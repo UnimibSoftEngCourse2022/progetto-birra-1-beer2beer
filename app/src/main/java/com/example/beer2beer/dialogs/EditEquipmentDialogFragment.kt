@@ -70,7 +70,7 @@ class EditEquipmentDialogFragment (private val position: Int) : DialogFragment()
             val builder = AlertDialog.Builder(it, R.style.CustomAlertDialog)
 
             builder.setView(binding.root)
-                .setPositiveButton(R.string.saveDialogButton) { _, _ ->
+                .setPositiveButton(R.string.save) { _, _ ->
                     val quantity: Double
                     if (binding.quantityEditText.text.toString().isEmpty())
                         quantity = 0.0
@@ -89,7 +89,7 @@ class EditEquipmentDialogFragment (private val position: Int) : DialogFragment()
                         viewModel.updateEquipment(equipment)
                     }
                 }
-                .setNegativeButton(R.string.discardDialogButton) { _, _ ->
+                .setNegativeButton(R.string.discard) { _, _ ->
                     dialog?.cancel()
                 }
             builder.create()

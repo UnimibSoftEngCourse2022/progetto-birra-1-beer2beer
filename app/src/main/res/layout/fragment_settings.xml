@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="@string/settingsTextView"
+            android:text="@string/settings"
             android:textSize="28sp"
             android:textColor="@color/textBrown"
             app:layout_constraintEnd_toEndOf="parent"
@@ -45,7 +45,7 @@
                     android:id="@+id/settingsTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="@string/name"
+                    tools:text="@string/hiName"
                     android:textSize="30sp" />
 
             </LinearLayout>
@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 app:cornerRadius="30dp"
-                android:text="@string/deleteAccountButton" />
+                android:text="@string/deleteAccount" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

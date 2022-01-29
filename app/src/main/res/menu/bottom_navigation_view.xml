@@ -4,12 +4,12 @@
         android:id="@+id/homeFragment"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_home_24"
-        android:title="@string/homeTextView"/>
+        android:title="@string/home"/>
     <item
         android:id="@+id/cartFragment"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_shopping_cart_24"
-        android:title="@string/cartTextView"/>
+        android:title="@string/ingredients"/>
     <item
         android:id="@+id/brewFragment"
         android:checkable="false"
@@ -19,11 +19,11 @@
         android:id="@+id/recipesFragment"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_science_24"
-        android:title="@string/recipesTextView"/>
+        android:title="@string/equipment"/>
     <item
         android:id="@+id/settingsFragment"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_settings_24"
-        android:title="@string/settingsTextView"/>
+        android:title="@string/settings"/>
 
 </menu>

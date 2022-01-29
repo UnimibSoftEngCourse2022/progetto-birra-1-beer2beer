@@ -43,7 +43,7 @@ class AddRecipeFragment : Fragment() {
             var passed = true
             if (binding.recipeNameEditText.text.isBlank()) {
                 binding.recipeNameEditText.error =
-                    resources.getString(R.string.recipeNameEditTextError)
+                    resources.getString(R.string.recipeNameError2)
                 passed = false
             }
             var isAllZero = true
@@ -52,7 +52,7 @@ class AddRecipeFragment : Fragment() {
                     isAllZero = false
             if (isAllZero) {
                 binding.selectIngredientsTextView.error =
-                    resources.getString(R.string.selectIngredientsTextViewError)
+                    resources.getString(R.string.selectIngredientsError)
                 passed = false
             }
 
