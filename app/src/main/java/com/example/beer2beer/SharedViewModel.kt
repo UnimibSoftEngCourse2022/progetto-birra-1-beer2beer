@@ -79,7 +79,8 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
 
     //EQUIPMENTS
 
-    fun createEquipment(equipment: Equipment) {
+    fun createEquipment(name: String, category: String, capacity: Double) {
+        val equipment = Equipment(0, name, category, capacity)
         equipmentRepository.createEquipment(equipment)
     }
 

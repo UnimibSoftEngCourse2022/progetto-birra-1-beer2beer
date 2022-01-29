@@ -16,10 +16,9 @@ import com.example.beer2beer.dialogs.EditEquipmentDialogFragment
 
 class EquipmentAdapter(private val childFragmentManager: FragmentManager) : ListAdapter<Equipment, EquipmentAdapter.EquipmentViewHolder>(EquipmentDiffCallback()) {
     class EquipmentViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val binding = EquipmentItemBinding.bind(view)
-        val equipmentNameTextView: TextView = binding.equipmentNameTextView
-        val equipmentCapacityTextView: TextView = binding.capacityTextView
-        val editEquipment: ImageButton = binding.editButton
+        val equipmentNameTextView: TextView = view.findViewById(R.id.equipmentNameTextView)
+        val equipmentCapacityTextView: TextView = view.findViewById(R.id.capacityTextView)
+        val editEquipment: ImageButton = view.findViewById(R.id.editButton)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EquipmentViewHolder {

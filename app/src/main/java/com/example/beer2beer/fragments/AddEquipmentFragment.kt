@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.beer2beer.SharedViewModel
 import com.example.beer2beer.database.entities.Equipment
 import com.example.beer2beer.databinding.FragmentAddEquipmentBinding
@@ -63,14 +64,12 @@ class AddEquipmentFragment : Fragment() {
                 binding.equipmentNameEditText.error = "Insert equipment name"
             else {
                 viewModel.createEquipment(
-                    Equipment(
-                        0,
-                        category = binding.spinner.selectedItem.toString(),
+                        binding.spinner.selectedItem.toString(),
                         binding.equipmentNameEditText.text.toString(),
                         quantity
                     )
-                )
-
+                val action = AddEquipmentFragmentDirections.actionAddEquipmentToHome()
+                findNavController().navigate(action)
             }
         }
 
