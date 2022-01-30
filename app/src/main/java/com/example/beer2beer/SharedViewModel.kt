@@ -2,7 +2,6 @@ package com.example.beer2beer
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.beer2beer.database.AppDatabase
 import com.example.beer2beer.database.entities.Equipment
@@ -13,11 +12,7 @@ import com.example.beer2beer.repository.IngredientRepository
 import com.example.beer2beer.repository.RecipeRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import org.apache.commons.math3.linear.OpenMapRealVector
-import org.apache.commons.math3.linear.RealVector
 import org.apache.commons.math3.optim.MaxIter
-import org.apache.commons.math3.optim.OptimizationData
 import org.apache.commons.math3.optim.linear.*
 import org.apache.commons.math3.optim.nonlinear.scalar.GoalType
 
@@ -139,10 +134,7 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
                     bestRecipe = recipe
                     bestQuantity = solution
                 }
-
             }
-
-
         }
 
         return bestRecipe?.name ?: ""
@@ -171,4 +163,15 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
         equipmentRepository.updateEquipment(equipment)
     }
 
+    // RECIPE DETAIL
+    val recipeHasIngredient = recipeRepository.getRecipeHasIngredients()
+    //TODO: Accetta il nome della ricetta come parametro.
+    fun filterIngredientsList(): List<RecipeHasIngredient>{
+        val result = mutableListOf<RecipeHasIngredient>()
+        recipeHasIngredient.value?.forEach {
+            if (it.ratio > 0.0)
+                result.add(it)
+        }
+        return result.toList()
+    }
 }

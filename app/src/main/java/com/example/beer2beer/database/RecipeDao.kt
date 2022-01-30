@@ -24,6 +24,9 @@ interface RecipeDao {
     @Query("SELECT * FROM recipe")
     fun getAll(): LiveData<List<Recipe>>
 
+    @Query("SELECT * FROM recipehasingredient")
+    fun getRecipeHasIngredients(): LiveData<List<RecipeHasIngredient>>
+
     @Query("SELECT ri.ratio AS ratio, i.name AS name, i.quantity AS quantity " +
             "FROM recipe AS r INNER JOIN recipehasingredient AS ri ON r.id = ri.recipe " +
             "INNER JOIN ingredient as i on ri.ingredient = i.name " +

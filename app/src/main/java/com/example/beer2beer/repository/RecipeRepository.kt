@@ -10,6 +10,7 @@ import androidx.room.Database
 import com.example.beer2beer.database.RecipeDao
 import com.example.beer2beer.database.entities.Recipe
 import com.example.beer2beer.database.entities.RecipeHasIngredient
+import com.example.beer2beer.database.entities.RecipeIngredients
 import com.google.android.gms.common.api.Response
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
@@ -45,5 +46,10 @@ class RecipeRepository (
     fun getAllRecipes(): LiveData<List<Recipe>> =
         liveData(Dispatchers.IO) {
             emitSource(dao.getAll())
+        }
+
+    fun getRecipeHasIngredients(): LiveData<List<RecipeHasIngredient>> =
+        liveData(Dispatchers.IO){
+            emitSource(dao.getRecipeHasIngredients())
         }
 }
