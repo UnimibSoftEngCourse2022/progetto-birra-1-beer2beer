@@ -19,6 +19,7 @@
         <entry key="app/src/main/res/layout/fragment_welcome.xml" value="0.33" />
         <entry key="app/src/main/res/layout/ingredient_item.xml" value="0.33" />
         <entry key="app/src/main/res/layout/recipe_ingredient_item.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/recipe_instance_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/recipe_item.xml" value="0.35144927536231885" />
         <entry key="app/src/main/res/layout/welcome_fragment.xml" value="0.25" />
         <entry key="app/src/main/res/menu/bottom_navigation_view.xml" value="0.35572916666666665" />

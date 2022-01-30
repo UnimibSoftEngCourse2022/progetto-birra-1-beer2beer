@@ -6,6 +6,7 @@ import androidx.room.OnConflictStrategy.*
 import com.example.beer2beer.database.entities.Recipe
 import com.example.beer2beer.database.entities.RecipeIngredients
 import com.example.beer2beer.database.entities.RecipeHasIngredient
+import com.example.beer2beer.database.entities.RecipeInstance
 
 @Dao
 interface RecipeDao {
@@ -26,6 +27,9 @@ interface RecipeDao {
 
     @Query("SELECT * FROM recipehasingredient")
     fun getRecipeHasIngredients(): LiveData<List<RecipeHasIngredient>>
+
+    @Query("SELECT * FROM recipeinstance")
+    fun getRecipeInstances(): LiveData<List<RecipeInstance>>
 
     @Query("SELECT ri.ratio AS ratio, i.name AS name, i.quantity AS quantity " +
             "FROM recipe AS r INNER JOIN recipehasingredient AS ri ON r.id = ri.recipe " +

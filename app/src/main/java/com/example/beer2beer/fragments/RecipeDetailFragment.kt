@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.beer2beer.SharedViewModel
 import com.example.beer2beer.adapters.RecipeIngredientsAdapter
+import com.example.beer2beer.adapters.RecipeInstanceAdapter
 import com.example.beer2beer.database.entities.RecipeHasIngredient
 import com.example.beer2beer.databinding.FragmentRecipeDetailBinding
 
@@ -15,6 +16,7 @@ class RecipeDetailFragment : Fragment() {
     private lateinit var binding: FragmentRecipeDetailBinding
     private val viewModel: SharedViewModel by activityViewModels()
     private val ingredientsAdapter = RecipeIngredientsAdapter()
+    private val instancesAdapter = RecipeInstanceAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,9 +26,16 @@ class RecipeDetailFragment : Fragment() {
 
         viewModel.recipeHasIngredient.observe(viewLifecycleOwner){ recipeIngredientsList ->
             //TODO: Filtra in base al nome della ricetta!
-            ingredientsAdapter.submitList(viewModel.filterIngredientsList())
+            ingredientsAdapter.submitList(recipeIngredientsList)
         }
         binding.ingredientsRecyclerView.adapter = ingredientsAdapter
+
+
+        viewModel.recipeInstances.observe(viewLifecycleOwner){ recipeInstancesList ->
+            instancesAdapter.submitList(recipeInstancesList)
+        }
+        binding.recipeInstancesRecyclerView.adapter = instancesAdapter
+
 
         return binding.root
     }
