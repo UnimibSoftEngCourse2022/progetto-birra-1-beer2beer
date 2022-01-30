@@ -40,10 +40,10 @@
     </fragment>
 
     <fragment
-        android:id="@+id/cartFragment"
-        android:name="com.example.beer2beer.fragments.CartFragment"
-        android:label="@string/cart"
-        tools:layout="@layout/fragment_cart">
+        android:id="@+id/ingredientsFragment"
+        android:name="com.example.beer2beer.fragments.IngredientsFragment"
+        android:label="@string/ingredients"
+        tools:layout="@layout/fragment_ingredients">
     </fragment>
 
     <fragment
@@ -53,12 +53,12 @@
         tools:layout="@layout/fragment_brew" />
 
     <fragment
-        android:id="@+id/recipesFragment"
-        android:name="com.example.beer2beer.fragments.RecipesFragment"
-        android:label="@string/recipes"
-        tools:layout="@layout/fragment_recipes" >
+        android:id="@+id/equipmentsFragment"
+        android:name="com.example.beer2beer.fragments.EquipmentsFragment"
+        android:label="@string/equipment"
+        tools:layout="@layout/fragment_equipments" >
         <action
-            android:id="@+id/action_recipes_to_addEquipment"
+            android:id="@+id/action_equipment_to_addEquipment"
             app:destination="@id/addEquipmentFragment" />
     </fragment>
 
@@ -95,7 +95,7 @@
         tools:layout="@layout/fragment_add_equipment">
         <action
             android:id="@+id/action_addEquipment_to_home"
-            app:destination="@id/recipesFragment"
+            app:destination="@id/equipmentsFragment"
             app:popUpTo="@id/addEquipmentFragment"
             app:popUpToInclusive="true" />
     </fragment>

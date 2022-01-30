@@ -12,11 +12,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.beer2beer.R
 import com.example.beer2beer.SharedViewModel
 import com.example.beer2beer.adapters.EquipmentAdapter
-import com.example.beer2beer.databinding.FragmentRecipesBinding
+import com.example.beer2beer.databinding.FragmentEquipmentsBinding
 import com.example.beer2beer.utils.SwipeToDeleteCallback
 
-class RecipesFragment : Fragment() {
-    private lateinit var binding: FragmentRecipesBinding
+class EquipmentsFragment : Fragment() {
+    private lateinit var binding: FragmentEquipmentsBinding
     private val viewModel: SharedViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -35,7 +35,7 @@ class RecipesFragment : Fragment() {
 
 
         binding.addEquipmentFab.setOnClickListener {
-            val action = RecipesFragmentDirections.actionRecipesToAddEquipment()
+            val action = EquipmentsFragmentDirections.actionEquipmentToAddEquipment()
             findNavController().navigate(action)
         }
 
@@ -62,7 +62,7 @@ class RecipesFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?
     ) {
-        binding = FragmentRecipesBinding.inflate(inflater, container, false)
+        binding = FragmentEquipmentsBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
     }

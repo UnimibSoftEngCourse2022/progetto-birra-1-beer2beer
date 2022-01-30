@@ -6,7 +6,7 @@
         android:icon="@drawable/ic_baseline_home_24"
         android:title="@string/home"/>
     <item
-        android:id="@+id/cartFragment"
+        android:id="@+id/ingredientsFragment"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_shopping_cart_24"
         android:title="@string/ingredients"/>
@@ -16,7 +16,7 @@
         android:enabled="false"
         android:title=""/>
     <item
-        android:id="@+id/recipesFragment"
+        android:id="@+id/equipmentsFragment"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_science_24"
         android:title="@string/equipment"/>

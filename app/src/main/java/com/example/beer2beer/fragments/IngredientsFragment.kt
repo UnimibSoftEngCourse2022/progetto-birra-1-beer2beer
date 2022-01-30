@@ -8,11 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.beer2beer.SharedViewModel
-import com.example.beer2beer.databinding.FragmentCartBinding
+import com.example.beer2beer.databinding.FragmentIngredientsBinding
 import com.example.beer2beer.dialogs.AddIngredientsDialogFragment
 
-class CartFragment : Fragment() {
-    private lateinit var  binding: FragmentCartBinding
+class IngredientsFragment : Fragment() {
+    private lateinit var  binding: FragmentIngredientsBinding
     private val viewModel: SharedViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -74,7 +74,7 @@ class CartFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?
     ) {
-        binding = FragmentCartBinding.inflate(inflater, container, false)
+        binding = FragmentIngredientsBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
     }
