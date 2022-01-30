@@ -31,6 +31,12 @@ class EquipmentRepository (
         }
     }
 
+    fun deleteAllEquipment(){
+        coroutineContext.launch(Dispatchers.IO) {
+            dao.deleteAll()
+        }
+    }
+
     fun getAllEquipments(): LiveData<List<Equipment>> =
         liveData(Dispatchers.IO) {
             emitSource(dao.getAll())
