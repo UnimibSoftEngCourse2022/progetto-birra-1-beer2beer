@@ -159,7 +159,7 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     //EQUIPMENTS
 
     fun createEquipment(name: String, category: String, capacity: Double) {
-        val equipment = Equipment(0, name, category, capacity)
+        val equipment = Equipment(0, category, name, capacity)
         equipmentRepository.createEquipment(equipment)
     }
 
