@@ -42,6 +42,12 @@ class RecipeRepository (
         }
     }
 
+    fun deleteAllRecipe(){
+        coroutineContext.launch(Dispatchers.IO){
+            dao.deleteAll()
+        }
+    }
+
     fun getAllRecipes(): LiveData<List<Recipe>> =
         liveData(Dispatchers.IO) {
             emitSource(dao.getAll())

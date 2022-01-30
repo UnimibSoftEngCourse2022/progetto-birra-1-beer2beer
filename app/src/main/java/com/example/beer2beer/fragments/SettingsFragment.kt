@@ -25,6 +25,7 @@ class SettingsFragment : Fragment() {
         binding.buttonClearName.setOnClickListener {
             val sharedPreferences = this.requireActivity().getSharedPreferences("com.example.beer2beer", Context.MODE_PRIVATE)
             sharedPreferences.edit().clear().apply()
+            viewModel.resetDatabase()
             this.requireActivity().finishAffinity()
         }
 
