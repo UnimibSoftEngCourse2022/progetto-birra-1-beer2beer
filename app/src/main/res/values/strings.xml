@@ -65,4 +65,6 @@
     <string name="unitOfMeasure">L</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="capacityInL">cap. L</string>
+    <string name="recipe">Recipe</string>
+    <string name="date">Date</string>
 </resources>
