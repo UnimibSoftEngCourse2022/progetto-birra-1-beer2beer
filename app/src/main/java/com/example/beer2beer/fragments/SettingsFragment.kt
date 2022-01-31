@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.beer2beer.SharedViewModel
+import com.example.beer2beer.database.AppDatabase
 import com.example.beer2beer.databinding.FragmentSettingsBinding
 
 class SettingsFragment : Fragment() {
@@ -26,6 +27,8 @@ class SettingsFragment : Fragment() {
             val sharedPreferences = this.requireActivity().getSharedPreferences("com.example.beer2beer", Context.MODE_PRIVATE)
             sharedPreferences.edit().clear().apply()
             this.requireActivity().finishAffinity()
+
+            activity?.deleteDatabase("BeerDatabase")
         }
 
         return binding.root

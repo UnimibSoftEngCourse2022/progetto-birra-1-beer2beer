@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.example.beer2beer.R
 import com.example.beer2beer.SharedViewModel
 import com.example.beer2beer.databinding.FragmentCartBinding
 import com.example.beer2beer.dialogs.AddIngredientsDialogFragment
@@ -37,27 +38,27 @@ class CartFragment : Fragment() {
         // Set click listeners
         binding.addWaterButton.setOnClickListener {
             val qnt = viewModel.ingredients.value?.get(0)?.quantity
-            makeAddIngredientsDialog("Water", qnt)
+            makeAddIngredientsDialog(resources.getString(R.string.water), qnt)
         }
         binding.addMaltsButton.setOnClickListener {
             val qnt = viewModel.ingredients.value?.get(1)?.quantity
-            makeAddIngredientsDialog("Malts", qnt)
+            makeAddIngredientsDialog(resources.getString(R.string.malts), qnt)
         }
         binding.addHopsButton.setOnClickListener {
             val qnt = viewModel.ingredients.value?.get(2)?.quantity
-            makeAddIngredientsDialog("Hops", qnt)
+            makeAddIngredientsDialog(resources.getString(R.string.hops), qnt)
         }
         binding.addYeastsButton.setOnClickListener {
             val qnt = viewModel.ingredients.value?.get(3)?.quantity
-            makeAddIngredientsDialog("Yeast", qnt)
+            makeAddIngredientsDialog(resources.getString(R.string.yeasts), qnt)
         }
         binding.addSugarsButton.setOnClickListener {
             val qnt = viewModel.ingredients.value?.get(4)?.quantity
-            makeAddIngredientsDialog("Sugars", qnt)
+            makeAddIngredientsDialog(resources.getString(R.string.sugar), qnt)
         }
         binding.addAdditivesButton.setOnClickListener {
             val qnt = viewModel.ingredients.value?.get(5)?.quantity
-            makeAddIngredientsDialog("Additives", qnt)
+            makeAddIngredientsDialog(resources.getString(R.string.additives), qnt)
         }
 
         return binding.root

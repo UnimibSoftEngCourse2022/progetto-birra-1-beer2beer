@@ -17,7 +17,7 @@
     <string name="recipeNameError2">The recipe name cannot be empty!</string>
     <string name="recipeNameRequest">Insert recipe name</string>
     <string name="selectIngredients">Select the ingredients:</string>
-    <string name="quantity">Q.ty</string>
+    <string name="quantity" translatable="false">Q.ty</string>
     <string name="recipeDescriptionRequest">Insert here the recipe description:</string>
     <string name="recipeDescription">Recipe description</string>
     <string name="description">Description</string>
@@ -51,20 +51,20 @@
     <string name="capacity">Capacity</string>
     <string name="newEquipment">New Equipment</string>
     <!--Useful-->
-    <string name="appName">BrewDay!</string>
-    <string name="home">Home</string>
-    <string name="cart">Cart</string>
-    <string name="brew">Brew</string>
+    <string name="appName" translatable="false">BrewDay!</string>
+    <string name="home" translatable="false">Home</string>
+    <string name="cart" translatable="false">Cart</string>
+    <string name="brew" translatable="false">Brew</string>
     <string name="recipes">Recipes</string>
     <string name="settings">Settings</string>
-    <string name="plus">+</string>
-    <string name="minus">－</string>
+    <string name="plus" translatable="false">+</string>
+    <string name="minus" translatable="false">－</string>
     <string name="save">Save</string>
     <string name="discard">Discard</string>
     <string name="line">line</string>
-    <string name="unitOfMeasure">L</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="capacityInL">cap. L</string>
+    <string name="unitOfMeasure" translatable="false">L</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="capacityInL" translatable="false">cap. L</string>
     <string name="recipe">Recipe</string>
     <string name="date">Date</string>
     <string name="recipeInstancesTextView">Recipe instances:</string>
