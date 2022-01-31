@@ -58,4 +58,9 @@ class RecipeRepository (
         liveData(Dispatchers.IO){
             emitSource((dao.getRecipeInstances()))
         }
+
+    fun getRecipeIngredients(recipe: Int): LiveData<List<RecipeIngredients>> =
+        liveData(Dispatchers.IO){
+            emitSource((dao.getRecipeIngredients(recipe)))
+        }
 }

@@ -53,7 +53,11 @@
         android:id="@+id/brewFragment"
         android:name="com.example.beer2beer.fragments.BrewFragment"
         android:label="@string/brew"
-        tools:layout="@layout/fragment_brew" />
+        tools:layout="@layout/fragment_brew">
+        <action
+            android:id="@+id/action_home_to_recipeDetail"
+            app:destination="@id/recipeDetailFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/recipesFragment"

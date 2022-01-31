@@ -35,5 +35,5 @@ interface RecipeDao {
             "FROM recipe AS r INNER JOIN recipehasingredient AS ri ON r.id = ri.recipe " +
             "INNER JOIN ingredient as i on ri.ingredient = i.name " +
             "WHERE r.id = :recipe")
-    fun getRecipeIngredients(recipe: Int): List<RecipeIngredients>
+    fun getRecipeIngredients(recipe: Int): LiveData<List<RecipeIngredients>>
 }
