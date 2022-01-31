@@ -15,6 +15,9 @@
     <string name="recipeNameError">Inserisci un nome per la nuova ricetta</string>
     <string name="recipeNameError2">Il nome della ricetta non deve essere vuoto!</string>
     <string name="recipeNameRequest">Inserisci nome ricetta</string>
+    <string name="recipe">Ricetta</string>
+    <string name="date">Data</string>
+    <string name="recipeInstances">Instanze ricetta</string>
     <string name="selectIngredients">Seleziona gli ingredienti:</string>
     <string name="recipeDescriptionRequest">Inserisci la descrizione della ricetta:</string>
     <string name="recipeDescription">Descrizione ricetta</string>
