@@ -9,7 +9,7 @@ progetto-birra-1-beer2beer
 ### 1. Installazione
 
 É possibile installare il file eseguibile APK direttamente su un dispositivo Android 
-(versione ****** o successive), dando in precedenza i permessi per poter installare
+(versione 8.0 o successive), dando in precedenza i permessi per poter installare
 applicazioni non provenienti dal PlayStore.
 In alternativa `e possibile usare direttamente l’emulatore presente all’interno dell’IDE
 Android Studio.
