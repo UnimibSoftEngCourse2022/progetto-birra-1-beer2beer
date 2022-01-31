@@ -181,7 +181,16 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
         }
         return result.toList()
     }
-    fun createRecipeInstance(recipeInstance: RecipeInstance){
+    fun createRecipeInstance(recipeInstance: RecipeInstance): Boolean{
+        var equipmentCapacity = 0.0
+        equipment.value?.forEach {
+            equipmentCapacity += it.capacity
+        }
+
+        if (recipeInstance.quantity > equipmentCapacity)
+            return false
+
         recipeRepository.createInstance(recipeInstance)
+        return true
     }
 }

@@ -43,8 +43,6 @@ class AddRecipeInstanceDialogFragment(val recipeId: Int) : DialogFragment() {
             false
         )
 
-
-
         return activity?.let {
             val builder = AlertDialog.Builder(it, R.style.CustomAlertDialog)
 

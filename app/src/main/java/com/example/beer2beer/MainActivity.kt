@@ -3,6 +3,7 @@ package com.example.beer2beer
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.ViewModelProvider
@@ -109,6 +110,7 @@ class MainActivity : AppCompatActivity(),
 
         val recipeInstance = RecipeInstance(0, recipeId, today, note, quantity)
 
-        viewModel.createRecipeInstance(recipeInstance)
+        if (!viewModel.createRecipeInstance(recipeInstance))
+            Toast.makeText(applicationContext, resources.getString(R.string.overMaxCapacityError), Toast.LENGTH_LONG).show()
     }
 }
