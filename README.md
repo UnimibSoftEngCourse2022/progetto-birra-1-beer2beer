@@ -17,9 +17,13 @@ Android Studio.
 - Scaricare il codice dell’applicazione da git
   - Get from VCS
   - Inserire dati di accesso
-      - Inserire link al repository \
+      - Inserire link al repository 
+          ```
           https://github.com/UnimibSoftEngCourse2022/progetto-birra-1-beer2beer.git
+          ```
+          ```
           git@github.com:UnimibSoftEngCourse2022/progetto-birra-1-beer2beer.git
+          ```
 - Creare un device per l’emulatore
   - Tools > Device Manager
   - Virtual > Create device
