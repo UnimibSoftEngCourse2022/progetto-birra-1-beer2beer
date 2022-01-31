@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="viewModel"
             type="com.example.beer2beer.SharedViewModel" />
@@ -22,83 +21,87 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="8dp">
+                android:orientation="vertical"
+                android:gravity="center">
 
                 <TextView
                     android:id="@+id/recipeNameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="16dp"
+                    android:padding="16dp"
+                    tools:text="@string/recipeName"
                     android:textSize="28sp"
-                    tools:text="Recipe name" />
+                    android:textColor="@color/textBrown" />
 
                 <TextView
                     android:id="@+id/recipeDescriptionTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/recipeNameTextView"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:text="@string/description" />
+                    android:paddingStart="16dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/textBrown"
+                    android:text="@string/description"
+                    tools:ignore="RtlSymmetry" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/ingredientsRecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/recipeDescriptionTextView"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="10dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:itemCount="1"
                     tools:listitem="@layout/recipe_ingredient_item">
-
                 </androidx.recyclerview.widget.RecyclerView>
 
-                <TextView
-                    android:id="@+id/recipeInstancesTextView"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/ingredientsRecyclerView"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/recipeInstancesTextView"
-                    android:textColor="#546E7A" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/recipeInstancesTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="16dp"
+                        android:paddingTop="16dp"
+                        android:textSize="18sp"
+                        android:textColor="@color/textBrown"
+                        android:text="@string/recipeInstancesTextView"
+                        tools:ignore="RtlSymmetry"/>
+
+                    <androidx.coordinatorlayout.widget.CoordinatorLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/addInstanceFab"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end|top"
+                            android:layout_marginEnd="18dp"
+                            android:backgroundTint="@android:color/transparent"
+                            android:outlineProvider="none"
+                            android:clickable="true"
+                            app:tint="@color/plusPage"
+                            app:backgroundTint="@android:color/transparent"
+                            app:srcCompat="@drawable/ic_baseline_add_24"
+                            android:contentDescription="@string/addInstanceFabCD"
+                            tools:ignore="ImageContrastCheck" />
+                    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+                </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recipeInstancesRecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/recipeInstancesTextView"
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="10dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:itemCount="3"
                     tools:listitem="@layout/recipe_instance_item" />
-
-            </RelativeLayout>
+            </LinearLayout>
         </ScrollView>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/addInstanceFab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:contentDescription="@string/addInstanceFabCD"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/ic_baseline_add_24"
-            tools:ignore="ImageContrastCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </layout>
