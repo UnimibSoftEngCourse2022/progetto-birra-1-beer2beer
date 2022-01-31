@@ -69,6 +69,7 @@
     <string name="date">Date</string>
     <string name="recipeInstances">Recipe instances</string>
     <string name="addRecipeInstance">Add a recipe instance</string>
+    <string name="recipeInstancesTextView">Recipe Instance:</string>
     <string name="howManyLiters">How many liters do you want to brew?</string>
     <string name="insertLiter">Insert liters</string>
     <string name="instanceNote">Insert the notes you have on this instance</string>
