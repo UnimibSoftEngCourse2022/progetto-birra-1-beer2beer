@@ -12,6 +12,7 @@ import com.example.beer2beer.adapters.RecipeIngredientsAdapter
 import com.example.beer2beer.adapters.RecipeInstanceAdapter
 import com.example.beer2beer.databinding.FragmentRecipeDetailBinding
 import com.example.beer2beer.dialogs.AddRecipeInstanceDialogFragment
+import com.example.beer2beer.dialogs.EditRecipeInstanceDialogFragment
 
 class RecipeDetailFragment : Fragment() {
     private lateinit var binding: FragmentRecipeDetailBinding
@@ -48,6 +49,10 @@ class RecipeDetailFragment : Fragment() {
             instancesAdapter.submitList(viewModel.filterRecipeInstancesList(recipeInstancesList, recipeId))
         }
         binding.recipeInstancesRecyclerView.adapter = instancesAdapter
+        instancesAdapter.onItemClick = { recipeInstance ->
+            val dialog = EditRecipeInstanceDialogFragment(recipeInstance)
+            dialog.show(childFragmentManager, "RecipeInstanceDialog")
+        }
 
         return binding.root
     }

@@ -38,9 +38,9 @@ class RecipeRepository (
         }
     }
 
-    fun updateRecipe(recipe: Recipe) {
+    fun updateRecipeInstance(recipeId: Int, newNote: String) {
         coroutineContext.launch(Dispatchers.IO) {
-            dao.update(recipe)
+            dao.updateRecipeInstance(recipeId, newNote)
         }
     }
 

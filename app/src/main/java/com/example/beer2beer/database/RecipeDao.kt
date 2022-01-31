@@ -19,6 +19,9 @@ interface RecipeDao {
     @Insert(onConflict = REPLACE)
     fun insertIngredient(recipeHasIngredient: RecipeHasIngredient)
 
+    @Query("UPDATE recipeinstance SET note = :newNote WHERE id = :id")
+    fun updateRecipeInstance(id: Int, newNote: String)
+
     @Update
     fun update(recipe: Recipe)
 
@@ -34,9 +37,11 @@ interface RecipeDao {
     @Query("SELECT * FROM recipeinstance")
     fun getRecipeInstances(): LiveData<List<RecipeInstance>>
 
-    @Query("SELECT ri.ratio AS ratio, i.name AS name, i.quantity AS quantity " +
-            "FROM recipe AS r INNER JOIN recipehasingredient AS ri ON r.id = ri.recipe " +
-            "INNER JOIN ingredient as i on ri.ingredient = i.name " +
-            "WHERE r.id = :recipe")
+    @Query(
+        "SELECT ri.ratio AS ratio, i.name AS name, i.quantity AS quantity " +
+                "FROM recipe AS r INNER JOIN recipehasingredient AS ri ON r.id = ri.recipe " +
+                "INNER JOIN ingredient as i on ri.ingredient = i.name " +
+                "WHERE r.id = :recipe"
+    )
     fun getRecipeIngredients(recipe: Int): List<RecipeIngredients>
 }

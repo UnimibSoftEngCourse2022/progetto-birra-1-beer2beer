@@ -12,10 +12,17 @@ import com.example.beer2beer.database.entities.RecipeHasIngredient
 import com.example.beer2beer.database.entities.RecipeInstance
 
 class RecipeInstanceAdapter : ListAdapter<RecipeInstance, RecipeInstanceAdapter.RecipeInstanceViewHolder>(RecipeInstanceDiffcallback()) {
-    class RecipeInstanceViewHolder(view: View) : RecyclerView.ViewHolder(view){
+    var onItemClick: ((RecipeInstance) -> Unit)? = null
+    inner class RecipeInstanceViewHolder(view: View) : RecyclerView.ViewHolder(view){
         val instanceDateTextView: TextView = view.findViewById(R.id.dateTextView)
         val quantityTextView: TextView = view.findViewById(R.id.instanceQuantityTextView)
         val noteTextView: TextView = view.findViewById(R.id.noteTextView)
+
+        init {
+            itemView.setOnClickListener {
+                onItemClick?.invoke(getItem(adapterPosition))
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeInstanceViewHolder {
@@ -24,7 +31,7 @@ class RecipeInstanceAdapter : ListAdapter<RecipeInstance, RecipeInstanceAdapter.
     }
 
     override fun onBindViewHolder(holder: RecipeInstanceViewHolder, position: Int) {
-        holder.instanceDateTextView.text = getItem(position).date.toString()
+        holder.instanceDateTextView.text = getItem(position).date
         holder.quantityTextView.text = getItem(position).quantity.toString()
         holder.noteTextView.text = getItem(position).note
     }

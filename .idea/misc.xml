@@ -11,6 +11,7 @@
         <entry key="app/src/main/res/layout/dialog_add_ingredients.xml" value="0.33" />
         <entry key="app/src/main/res/layout/dialog_add_recipe_instance.xml" value="0.33" />
         <entry key="app/src/main/res/layout/dialog_edit_equipment.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/dialog_edit_recipe_instance.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/equipment_item.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_add_recipe.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_brew.xml" value="0.18" />

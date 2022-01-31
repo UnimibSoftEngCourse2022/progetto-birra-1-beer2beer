@@ -193,4 +193,8 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
         recipeRepository.createInstance(recipeInstance)
         return true
     }
+
+    fun updateRecipeInstance(instanceId: Int, newNote: String){
+        recipeRepository.updateRecipeInstance(instanceId, newNote)
+    }
 }
