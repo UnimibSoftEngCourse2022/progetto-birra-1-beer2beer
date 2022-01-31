@@ -198,7 +198,8 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
 
     fun updateRecipeInstance(instanceId: Int, newNote: String){
         recipeRepository.updateRecipeInstance(instanceId, newNote)
-
+    }
+    
     // SETTINGS
     fun resetDatabase(){
         equipmentRepository.deleteAllEquipment()
