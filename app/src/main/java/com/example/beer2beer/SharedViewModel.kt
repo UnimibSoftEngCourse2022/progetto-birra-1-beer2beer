@@ -1,6 +1,7 @@
 package com.example.beer2beer
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
@@ -60,6 +61,7 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
 
     // This function transform the raw quantities in relative quantities
     fun processQuantities(quantities: DoubleArray): DoubleArray {
+
         var total = 0.0
         quantities.forEachIndexed { index, q ->
             // Se sto processando l'acqua, la converto in grammi
@@ -158,7 +160,7 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
 
     //EQUIPMENTS
 
-    fun createEquipment(name: String, category: String, capacity: Double) {
+    fun createEquipment(category: String, name: String, capacity: Double) {
         val equipment = Equipment(0, category, name, capacity)
         equipmentRepository.createEquipment(equipment)
     }

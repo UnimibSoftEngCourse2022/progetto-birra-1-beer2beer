@@ -73,6 +73,8 @@ class AddRecipeFragment : Fragment() {
                     size += quantity
                 }
 
+                Log.d("TAG", "onCreateView: $size $maxSize")
+
                 if(size <= maxSize) {
                     viewModel.createNewRecipe(
                         ingredientNames,
