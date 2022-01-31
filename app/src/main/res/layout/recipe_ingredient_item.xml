@@ -14,7 +14,7 @@
         card_view:cardCornerRadius="20dp"
         card_view:cardUseCompatPadding="true">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
@@ -23,7 +23,6 @@
                 android:id="@+id/ingredientNameTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:fontFamily="sans-serif-medium"
                 android:padding="16dp"
                 android:textColor="@color/textBrown"
@@ -34,7 +33,8 @@
                 android:id="@+id/quantityTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_toStartOf="@id/unitOfMeasureRecipeIngredientTextView"
+                android:padding="16dp"
                 android:textColor="#455A64"
                 tools:text="Q.ty" />
 
@@ -42,10 +42,11 @@
                 android:id="@+id/unitOfMeasureRecipeIngredientTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_alignParentEnd="true"
+                android:padding="16dp"
                 android:textColor="#455A64"
                 tools:text="L" />
-        </LinearLayout>
+        </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
 </FrameLayout>
