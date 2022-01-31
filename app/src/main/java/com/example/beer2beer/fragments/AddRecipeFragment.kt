@@ -25,15 +25,18 @@ class AddRecipeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         recipesFragmentSetup(inflater, container)
-        
-        viewModel.equipment.observe(viewLifecycleOwner) {_ ->
-            //ISSUE
+
+        var maxSize = 0.0
+        viewModel.equipment.observe(viewLifecycleOwner) {equipmentList ->
+            equipmentList.forEach { equipment ->
+                maxSize += equipment.capacity
+            }
         }
 
-        binding.ingredientsRecyclerView.adapter = adapter
         viewModel.ingredients.observe(viewLifecycleOwner) { ingredientsList ->
             adapter.submitList(ingredientsList)
         }
+        binding.ingredientsRecyclerView.adapter = adapter
 
         binding.saveRecipeButton.setOnClickListener {
             val quantities = adapter.ingredientQuantities
@@ -67,10 +70,6 @@ class AddRecipeFragment : Fragment() {
                 val recipeDescription = binding.descriptionEditText.text.toString()
 
                 //Equipment
-                var maxSize = 0.0
-                viewModel.equipment.value?.forEach { equipment ->
-                    maxSize += equipment.capacity
-                }
 
                 var size = 0.0
                 relativeQuantities.forEach { quantity ->

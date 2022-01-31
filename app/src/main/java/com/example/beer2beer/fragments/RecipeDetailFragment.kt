@@ -30,7 +30,6 @@ class RecipeDetailFragment : Fragment() {
         val recipeName = args.recipeName
 
         binding.recipeNameTextView.text = recipeName
-        //Todo: binda il nome della ricetta alla textview
 
         viewModel.recipeHasIngredient.observe(viewLifecycleOwner){ recipeIngredientsList ->
             //TODO: Filtra in base al nome della ricetta!
