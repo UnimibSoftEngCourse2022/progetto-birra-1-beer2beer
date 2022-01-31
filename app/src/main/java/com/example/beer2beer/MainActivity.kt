@@ -2,6 +2,7 @@ package com.example.beer2beer
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen
@@ -81,7 +82,7 @@ class MainActivity : AppCompatActivity(), AddIngredientsDialogFragment.DialogLis
 
         binding.bottomNavigationView.background = null
         binding.fabBrew.setOnClickListener {
-            if(d != R.id.brewFragment)
+            if(d != R.id.recipeDetailFragment)
                 navController.navigate(R.id.action_global_brew)
         }
     }
