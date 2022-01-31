@@ -24,7 +24,9 @@ class RecipeIngredientsAdapter : ListAdapter<RecipeHasIngredient, RecipeIngredie
 
     override fun onBindViewHolder(holder: RecipeIngredientsViewHolder, position: Int) {
         holder.ingredientNameTextView.text = getItem(position).ingredient
-        holder.quantityTextView.text = getItem(position).ratio.toString()
+
+        val formattedQuantity = String.format("%.2f", getItem(position).ratio)
+        holder.quantityTextView.text = formattedQuantity
         if (getItem(position).ingredient == "Water")
             holder.unitOfMeasureTextView.text = "L"
         else
