@@ -6,11 +6,13 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.beer2beer.database.AppDatabase
 import com.example.beer2beer.database.entities.Equipment
 import com.example.beer2beer.database.entities.Recipe
 import com.example.beer2beer.database.entities.RecipeHasIngredient
 import com.example.beer2beer.database.entities.RecipeIngredients
+import com.example.beer2beer.database.entities.RecipeInstance
 import com.example.beer2beer.repository.EquipmentRepository
 import com.example.beer2beer.repository.IngredientRepository
 import com.example.beer2beer.repository.RecipeRepository
@@ -19,8 +21,11 @@ import kotlinx.coroutines.launch
 import org.apache.commons.math3.optim.MaxIter
 import org.apache.commons.math3.optim.linear.*
 import org.apache.commons.math3.optim.nonlinear.scalar.GoalType
+import kotlin.coroutines.coroutineContext
 
 class SharedViewModel(application: Application) : AndroidViewModel(application) {
+
+    private val DEFAULT_MAX_ITER = MaxIter(100)
 
     // get the Database instance
     private val db = AppDatabase.getInstance(getApplication<Application>().applicationContext)
@@ -29,7 +34,7 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     private val ingredientRepository = IngredientRepository(db.ingredientDao(), viewModelScope)
     private val equipmentRepository = EquipmentRepository(db.equipmentDao(), viewModelScope)
 
-
+    // get all necessary lists
     val recipes = recipeRepository.getAllRecipes()
     val ingredients = ingredientRepository.getAllIngredients()
     val equipment = equipmentRepository.getAllEquipments()
@@ -84,6 +89,69 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
         return recipeRepository.getRecipeIngredients(id)
     }
 
+    fun whatShouldIBrewToday(): String {
+
+        var bestRecipe: Recipe? = null
+        var bestQuantity = 0.0
+        val ss = SimplexSolver()
+
+        viewModelScope.launch(Dispatchers.IO) {
+            recipes.value?.forEach { recipe ->
+                val recipeIngredients = db.recipeDao().getRecipeIngredients(recipe.id)
+                val constraint = ArrayList<LinearConstraint>()
+                val coeff = DoubleArray(recipeIngredients.size + 1)
+
+                for (i in recipeIngredients.indices) {
+                    coeff[i] = -recipeIngredients.get(i).ratio
+                    val c = DoubleArray(recipeIngredients.size + 1)
+                    c.fill(0.0)
+                    c[i] = 1.0
+                    if(recipeIngredients.get(i).name == "Water"){
+                        constraint.add(
+                            LinearConstraint(
+                                c,
+                                Relationship.LEQ,
+                                recipeIngredients.get(i).quantity * 1000
+                            )
+                        )
+                    }else{
+                        constraint.add(
+                            LinearConstraint(
+                                c,
+                                Relationship.LEQ,
+                                recipeIngredients.get(i).quantity
+                            )
+                        )
+                    }
+
+                }
+
+                coeff[coeff.lastIndex] = 1.0
+                constraint.add(LinearConstraint(coeff, Relationship.EQ, 0.0))
+
+                val c = DoubleArray(recipeIngredients.size + 1)
+                c.fill(0.0)
+                c[c.lastIndex] = 1.0
+
+                val fObb = LinearObjectiveFunction(c, 0.0)
+                val constr = LinearConstraintSet(constraint)
+
+                val solution =
+                    ss.optimize(
+                        DEFAULT_MAX_ITER, fObb, constr,
+                        GoalType.MAXIMIZE, NonNegativeConstraint(true)
+                    ).value
+
+                if (bestRecipe == null || solution > bestQuantity) {
+                    bestRecipe = recipe
+                    bestQuantity = solution
+                }
+            }
+        }
+
+        return bestRecipe?.name ?: ""
+    }
+
     fun updateIngredient(name: String, newQuantity: Double) {
         ingredientRepository.updateIngredient(name, newQuantity)
         viewModelScope.launch(Dispatchers.IO) {
@@ -110,7 +178,6 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     // RECIPE DETAIL
 
     val recipeHasIngredient = recipeRepository.getRecipeHasIngredients()
-    //TODO: Accetta il nome della ricetta come parametro.
     fun filterIngredientsList(ingList: List<RecipeHasIngredient>, recipeId: Int): List<RecipeHasIngredient>{
         val result = mutableListOf<RecipeHasIngredient>()
         ingList.forEach {
@@ -121,4 +188,36 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     }
 
     val recipeInstances = recipeRepository.getRecipeInstances()
+    fun filterRecipeInstancesList(insList: List<RecipeInstance>, recipeId: Int): List<RecipeInstance>{
+        val result = mutableListOf<RecipeInstance>()
+        insList.forEach {
+            if (it.recipe == recipeId)
+                result.add(it)
+        }
+        return result.toList()
+    }
+    fun createRecipeInstance(recipeInstance: RecipeInstance): Boolean{
+        var equipmentCapacity = 0.0
+        equipment.value?.forEach {
+            equipmentCapacity += it.capacity
+        }
+
+        if (recipeInstance.quantity > equipmentCapacity)
+            return false
+
+        recipeRepository.createInstance(recipeInstance)
+        return true
+    }
+
+    fun updateRecipeInstance(instanceId: Int, newNote: String){
+        recipeRepository.updateRecipeInstance(instanceId, newNote)
+    }
+
+    // SETTINGS
+    fun resetDatabase(){
+        equipmentRepository.deleteAllEquipment()
+        recipeRepository.deleteAllRecipe()
+        ingredientRepository.resetIngredients()
+
+    }
 }

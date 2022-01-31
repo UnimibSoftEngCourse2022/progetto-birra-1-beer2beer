@@ -26,21 +26,33 @@ class RecipeRepository (
         return dao.insert(recipe)
     }
 
+    fun createInstance(recipeInstance: RecipeInstance){
+        coroutineContext.launch(Dispatchers.IO){
+            dao.insertInstance(recipeInstance)
+        }
+    }
+
     fun insertIngredients(recipeHasIngredient: RecipeHasIngredient) {
         coroutineContext.launch(Dispatchers.IO) {
             dao.insertIngredient(recipeHasIngredient)
         }
     }
 
-    fun updateRecipe(recipe: Recipe) {
+    fun updateRecipeInstance(recipeId: Int, newNote: String) {
         coroutineContext.launch(Dispatchers.IO) {
-            dao.update(recipe)
+            dao.updateRecipeInstance(recipeId, newNote)
         }
     }
 
     fun deleteRecipe(id: Int) {
         coroutineContext.launch(Dispatchers.IO) {
             dao.delete(id)
+        }
+    }
+
+    fun deleteAllRecipe(){
+        coroutineContext.launch(Dispatchers.IO){
+            dao.deleteAll()
         }
     }
 

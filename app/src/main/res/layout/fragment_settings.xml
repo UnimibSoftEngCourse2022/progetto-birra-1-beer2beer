@@ -14,7 +14,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/homeTextView"
+            android:id="@+id/settingsTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="16dp"
@@ -42,7 +42,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/settingsTextView"
+                    android:id="@+id/hiNameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="@string/hiName"
