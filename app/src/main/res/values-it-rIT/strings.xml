@@ -11,6 +11,7 @@
     <string name="logo">Immagine Logo</string>
     <string name="recipeName">Nome ricetta</string>
     <string name="addRecipe">aggiungi ricetta</string>
+    <string name="addRecipeInstance">Aggiungi instanza ricetta</string>
     <string name="InsertNewRecipe">Inserisci una nuova ricetta</string>
     <string name="recipeNameError">Inserisci un nome per la nuova ricetta</string>
     <string name="recipeNameError2">Il nome della ricetta non deve essere vuoto!</string>
