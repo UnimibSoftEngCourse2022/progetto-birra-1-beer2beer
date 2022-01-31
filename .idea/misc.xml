@@ -3,13 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/giaco/OneDrive/Desktop/progetto-birra-1-beer2beer/app/src/main/res/layout/fragment_add_recipe.xml" value="0.24615384615384617" />
-        <entry key="..\:/Users/giaco/OneDrive/Desktop/progetto-birra-1-beer2beer/app/src/main/res/layout/fragment_brew.xml" value="0.24615384615384617" />
-        <entry key="..\:/Users/giaco/OneDrive/Desktop/progetto-birra-1-beer2beer/app/src/main/res/layout/fragment_get_started.xml" value="0.25" />
-        <entry key="..\:/Users/giaco/OneDrive/Desktop/progetto-birra-1-beer2beer/app/src/main/res/layout/fragment_recipe_detail.xml" value="0.25" />
-        <entry key="..\:/Users/giaco/OneDrive/Desktop/progetto-birra-1-beer2beer/app/src/main/res/layout/recipe_ingredient_item.xml" value="0.25" />
-        <entry key="..\:/Users/giaco/OneDrive/Desktop/progetto-birra-1-beer2beer/app/src/main/res/layout/recipe_item.xml" value="0.1" />
-        <entry key="..\:/Users/giaco/OneDrive/Desktop/progetto-birra-1-beer2beer/app/src/main/res/layout/spinner_dropdown_item.xml" value="0.25" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.371875" />
         <entry key="app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.1953125" />
         <entry key="app/src/main/res/drawable/ic_brewday_logo.xml" value="0.371875" />
