@@ -17,7 +17,7 @@ import org.apache.commons.math3.optim.linear.*
 import org.apache.commons.math3.optim.nonlinear.scalar.GoalType
 
 class BrewFragment : Fragment() {
-    private lateinit var  binding: FragmentBrewBinding
+    private lateinit var binding: FragmentBrewBinding
     private val viewModel: SharedViewModel by activityViewModels()
 
     private var bestRecipe: Recipe? = null
@@ -54,71 +54,80 @@ class BrewFragment : Fragment() {
         viewModel.recipes.observe(viewLifecycleOwner) { recipes ->
             recipes.forEach { recipe ->
 
-                viewModel.getRecipeIngredients(recipe.id).observe(viewLifecycleOwner) {recipeIngredients ->
-                    val constraint = ArrayList<LinearConstraint>()
-                    val coeff = DoubleArray(recipeIngredients.size + 1)
+                viewModel.getRecipeIngredients(recipe.id)
+                    .observe(viewLifecycleOwner) { recipeIngredients ->
+                        val constraint = ArrayList<LinearConstraint>()
+                        val coeff = DoubleArray(recipeIngredients.size + 1)
 
-                    for (i in recipeIngredients.indices) {
-                        coeff[i] = -recipeIngredients.get(i).ratio
-                        val c = DoubleArray(recipeIngredients.size + 1)
-                        c.fill(0.0)
-                        c[i] = 1.0
-                        if (recipeIngredients.get(i).name == "Water") {
-                            constraint.add(
-                                LinearConstraint(
-                                    c,
-                                    Relationship.LEQ,
-                                    recipeIngredients.get(i).quantity * 1000
+                        for (i in recipeIngredients.indices) {
+                            coeff[i] = -recipeIngredients.get(i).ratio
+                            val c = DoubleArray(recipeIngredients.size + 1)
+                            c.fill(0.0)
+                            c[i] = 1.0
+                            if (recipeIngredients.get(i).name == "Water") {
+                                constraint.add(
+                                    LinearConstraint(
+                                        c,
+                                        Relationship.LEQ,
+                                        recipeIngredients.get(i).quantity * 1000
+                                    )
                                 )
-                            )
-                        } else {
-                            constraint.add(
-                                LinearConstraint(
-                                    c,
-                                    Relationship.LEQ,
-                                    recipeIngredients.get(i).quantity
+                            } else {
+                                constraint.add(
+                                    LinearConstraint(
+                                        c,
+                                        Relationship.LEQ,
+                                        recipeIngredients.get(i).quantity
+                                    )
                                 )
-                            )
+                            }
+
                         }
 
+                        coeff[coeff.lastIndex] = 1.0
+                        constraint.add(LinearConstraint(coeff, Relationship.EQ, 0.0))
+
+                        val c = DoubleArray(recipeIngredients.size + 1)
+                        c.fill(0.0)
+                        c[c.lastIndex] = 1.0
+
+                        val fObb = LinearObjectiveFunction(c, 0.0)
+                        val constr = LinearConstraintSet(constraint)
+
+                        val solution =
+                            ss.optimize(
+                                DEFAULT_MAX_ITER, fObb, constr,
+                                GoalType.MAXIMIZE, NonNegativeConstraint(true)
+                            ).value
+
+                        if (bestRecipe == null || solution > bestQuantity) {
+                            bestRecipe = recipe
+                            bestQuantity = solution
+                        }
                     }
-
-                    coeff[coeff.lastIndex] = 1.0
-                    constraint.add(LinearConstraint(coeff, Relationship.EQ, 0.0))
-
-                    val c = DoubleArray(recipeIngredients.size + 1)
-                    c.fill(0.0)
-                    c[c.lastIndex] = 1.0
-
-                    val fObb = LinearObjectiveFunction(c, 0.0)
-                    val constr = LinearConstraintSet(constraint)
-
-                    val solution =
-                        ss.optimize(
-                            DEFAULT_MAX_ITER, fObb, constr,
-                            GoalType.MAXIMIZE, NonNegativeConstraint(true)
-                        ).value
-
-                    if (bestRecipe == null || solution > bestQuantity) {
-                        bestRecipe = recipe
-                        bestQuantity = solution
-                    }
-                }
             }
         }
+        executeResult()
+    }
 
+    private fun executeResult() {
         val handler = Handler()
 
         val runnable: Runnable = object : Runnable {
             override fun run() {
                 if (bestRecipe == null) {
                     handler.post(this)
-                }
-                else{
+                } else {
                     Log.d("Brew", "onCreateView: $bestRecipe")
 
                     val action =
-                        bestRecipe?.let { BrewFragmentDirections.actionHomeToRecipeDetail(it.id, it.name, it.description) }
+                        bestRecipe?.let {
+                            BrewFragmentDirections.actionHomeToRecipeDetail(
+                                it.id,
+                                it.name,
+                                it.description
+                            )
+                        }
 
                     if (action != null) {
                         findNavController().navigate(action)
