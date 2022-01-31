@@ -33,10 +33,10 @@ class AddEquipmentFragment : Fragment() {
             "Misuratore"
         )
 
-
         binding.quantityEditText.setText(0.0.toString())
 
-        binding.spinner.adapter = context?.let { ArrayAdapter(it, R.layout.spinner_dropdown_item, categories) }
+        binding.spinner.adapter =
+            context?.let { ArrayAdapter(it, R.layout.spinner_dropdown_item, categories) }
 
         var quantity = 0.0
         binding.addButton.setOnClickListener {
@@ -60,14 +60,14 @@ class AddEquipmentFragment : Fragment() {
         }
 
         binding.saveEquipmentButton.setOnClickListener {
-            if(binding.equipmentNameEditText.text.isBlank())
+            if (binding.equipmentNameEditText.text.isBlank())
                 binding.equipmentNameEditText.error = "Insert equipment name"
             else {
                 viewModel.createEquipment(
-                        binding.spinner.selectedItem.toString(),
-                        binding.equipmentNameEditText.text.toString(),
-                        quantity
-                    )
+                    binding.spinner.selectedItem.toString(),
+                    binding.equipmentNameEditText.text.toString(),
+                    quantity
+                )
                 val action = AddEquipmentFragmentDirections.actionAddEquipmentToHome()
                 findNavController().navigate(action)
             }

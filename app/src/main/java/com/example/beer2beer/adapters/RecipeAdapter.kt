@@ -12,6 +12,7 @@ import com.example.beer2beer.database.entities.Recipe
 
 class RecipeAdapter() : ListAdapter<Recipe, RecipeAdapter.RecipeViewHolder>(RecipeDiffcallback()) {
     var onItemClick: ((Recipe) -> Unit)? = null
+
     inner class RecipeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val recipeNameTextView: TextView = view.findViewById(R.id.RecipeNameTextView)
 
@@ -30,10 +31,9 @@ class RecipeAdapter() : ListAdapter<Recipe, RecipeAdapter.RecipeViewHolder>(Reci
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
         holder.recipeNameTextView.text = getItem(position).name
     }
-
 }
 
-class RecipeDiffcallback : DiffUtil.ItemCallback<Recipe>(){
+class RecipeDiffcallback : DiffUtil.ItemCallback<Recipe>() {
     override fun areItemsTheSame(oldItem: Recipe, newItem: Recipe): Boolean {
         return oldItem.id == newItem.id
     }

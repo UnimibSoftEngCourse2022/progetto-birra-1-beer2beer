@@ -39,14 +39,24 @@ class RecipeDetailFragment : Fragment() {
             dialog.show(childFragmentManager, "AddInstanceDialog")
         }
 
-        viewModel.recipeHasIngredient.observe(viewLifecycleOwner){ recipeIngredientsList ->
-            ingredientsAdapter.submitList(viewModel.filterIngredientsList(recipeIngredientsList, recipeId))
+        viewModel.recipeHasIngredient.observe(viewLifecycleOwner) { recipeIngredientsList ->
+            ingredientsAdapter.submitList(
+                viewModel.filterIngredientsList(
+                    recipeIngredientsList,
+                    recipeId
+                )
+            )
         }
         binding.ingredientsRecyclerView.adapter = ingredientsAdapter
 
 
-        viewModel.recipeInstances.observe(viewLifecycleOwner){ recipeInstancesList ->
-            instancesAdapter.submitList(viewModel.filterRecipeInstancesList(recipeInstancesList, recipeId))
+        viewModel.recipeInstances.observe(viewLifecycleOwner) { recipeInstancesList ->
+            instancesAdapter.submitList(
+                viewModel.filterRecipeInstancesList(
+                    recipeInstancesList,
+                    recipeId
+                )
+            )
         }
         binding.recipeInstancesRecyclerView.adapter = instancesAdapter
         instancesAdapter.onItemClick = { recipeInstance ->

@@ -14,7 +14,7 @@ import com.example.beer2beer.SharedViewModel
 import com.example.beer2beer.database.entities.Equipment
 import com.example.beer2beer.databinding.DialogEditEquipmentBinding
 
-class EditEquipmentDialogFragment (private val position: Int) : DialogFragment() {
+class EditEquipmentDialogFragment(private val position: Int) : DialogFragment() {
 
     // Use this instance of the interface to deliver action events
     private val viewModel: SharedViewModel by activityViewModels()
@@ -28,7 +28,8 @@ class EditEquipmentDialogFragment (private val position: Int) : DialogFragment()
         val equipmentCategory = viewModel.equipment.value?.get(position)?.category
 
         // Set up the binding object
-        binding = DataBindingUtil.inflate(layoutInflater, R.layout.dialog_edit_equipment, null, false)
+        binding =
+            DataBindingUtil.inflate(layoutInflater, R.layout.dialog_edit_equipment, null, false)
 
         // Set up the info to display in the dialog
         binding.equipmentNameEditText.setText(equipmentName)
@@ -56,10 +57,11 @@ class EditEquipmentDialogFragment (private val position: Int) : DialogFragment()
             "Misuratore"
         )
 
-        binding.spinner.adapter = context?.let { ArrayAdapter(it, R.layout.spinner_dropdown_item, categories) }
-        
-        for(i in 0..3){
-            if(categories[i] == equipmentCategory) {
+        binding.spinner.adapter =
+            context?.let { ArrayAdapter(it, R.layout.spinner_dropdown_item, categories) }
+
+        for (i in 0..3) {
+            if (categories[i] == equipmentCategory) {
                 Log.d("TAG", "onCreateDialog: " + equipmentCategory)
                 binding.spinner.setSelection(i)
                 break
@@ -82,7 +84,8 @@ class EditEquipmentDialogFragment (private val position: Int) : DialogFragment()
                             it1.id,
                             binding.spinner.selectedItem.toString(),
                             binding.equipmentNameEditText.text.toString(),
-                            quantity)
+                            quantity
+                        )
                     }
 
                     if (equipment != null) {

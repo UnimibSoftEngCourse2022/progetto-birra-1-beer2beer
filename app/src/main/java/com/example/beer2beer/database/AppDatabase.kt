@@ -18,12 +18,13 @@ import java.util.concurrent.Executors
 //@TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun recipeDao(): RecipeDao
-    abstract fun ingredientDao (): IngredientDao
-    abstract fun equipmentDao (): EquipmentDao
+    abstract fun ingredientDao(): IngredientDao
+    abstract fun equipmentDao(): EquipmentDao
 
     companion object {
 
-        @Volatile private var INSTANCE: AppDatabase? = null
+        @Volatile
+        private var INSTANCE: AppDatabase? = null
 
         fun getInstance(context: Context): AppDatabase =
             INSTANCE ?: synchronized(this) {
@@ -31,8 +32,10 @@ abstract class AppDatabase : RoomDatabase() {
             }
 
         private fun buildDatabase(context: Context) =
-            Room.databaseBuilder(context.applicationContext,
-                AppDatabase::class.java, "BeerDatabase")
+            Room.databaseBuilder(
+                context.applicationContext,
+                AppDatabase::class.java, "BeerDatabase"
+            )
                 // prepopulate the database after onCreate was called
                 .addCallback(object : Callback() {
                     override fun onCreate(db: SupportSQLiteDatabase) {
@@ -44,7 +47,7 @@ abstract class AppDatabase : RoomDatabase() {
                         }
                     }
 
-                    fun populateIngredients(dao: IngredientDao?){
+                    fun populateIngredients(dao: IngredientDao?) {
                         dao?.insert(Ingredient("Water", "L", 0.0))
                         dao?.insert(Ingredient("Malts", "g", 0.0))
                         dao?.insert(Ingredient("Hops", "g", 0.0))

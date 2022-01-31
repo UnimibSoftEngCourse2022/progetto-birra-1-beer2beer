@@ -2,7 +2,6 @@ package com.example.beer2beer
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -55,7 +54,10 @@ class MainActivity : AppCompatActivity(),
 
     private fun mainActivitySetup() {
         //viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(application))[SharedViewModel::class.java]
-        viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application))[SharedViewModel::class.java]
+        viewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.AndroidViewModelFactory.getInstance(application)
+        )[SharedViewModel::class.java]
 
         // Setup binding object to inflate the activity
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -68,7 +70,8 @@ class MainActivity : AppCompatActivity(),
     }
 
     private fun setupBottomNavigationView() {
-        val navHostFragment = this.supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
+        val navHostFragment =
+            this.supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
         val navController = navHostFragment.navController
 
         navView = binding.bottomNavigationView
@@ -77,7 +80,7 @@ class MainActivity : AppCompatActivity(),
         var d = 0
         navController.addOnDestinationChangedListener { _, destination, _ ->
             d = destination.id
-            if (destination.id == R.id.welcomeFragment || destination.id == R.id.getStartedFragment){
+            if (destination.id == R.id.welcomeFragment || destination.id == R.id.getStartedFragment) {
                 binding.fabBrew.visibility = View.GONE
                 binding.bottomAppBar.visibility = View.GONE
                 binding.bottomNavigationView.visibility = View.GONE
@@ -90,13 +93,14 @@ class MainActivity : AppCompatActivity(),
 
         binding.bottomNavigationView.background = null
         binding.fabBrew.setOnClickListener {
-            if(d != R.id.recipeDetailFragment)
+            if (d != R.id.recipeDetailFragment)
                 navController.navigate(R.id.action_global_brew)
         }
     }
 
-    private fun isUsernameIn() : Boolean {
-        val sharedPreferences = this.getSharedPreferences("com.example.beer2beer", Context.MODE_PRIVATE)
+    private fun isUsernameIn(): Boolean {
+        val sharedPreferences =
+            this.getSharedPreferences("com.example.beer2beer", Context.MODE_PRIVATE)
         val username = sharedPreferences.getString("username", "")!!
         return username.isNotEmpty()
     }
@@ -113,7 +117,11 @@ class MainActivity : AppCompatActivity(),
         val recipeInstance = RecipeInstance(0, recipeId, today, note, quantity)
 
         if (!viewModel.createRecipeInstance(recipeInstance))
-            Toast.makeText(applicationContext, resources.getString(R.string.overMaxCapacityError), Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                applicationContext,
+                resources.getString(R.string.overMaxCapacityError),
+                Toast.LENGTH_LONG
+            ).show()
     }
 
     override fun onEditRecipeInstance(instanceId: Int, newDescription: String) {

@@ -10,15 +10,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.beer2beer.R
 import com.example.beer2beer.database.entities.RecipeHasIngredient
 
-class RecipeIngredientsAdapter : ListAdapter<RecipeHasIngredient, RecipeIngredientsAdapter.RecipeIngredientsViewHolder>(RecipeHasIngredientsDiffcallback()){
-    class RecipeIngredientsViewHolder(view: View) : RecyclerView.ViewHolder(view){
+class RecipeIngredientsAdapter :
+    ListAdapter<RecipeHasIngredient, RecipeIngredientsAdapter.RecipeIngredientsViewHolder>(
+        RecipeHasIngredientsDiffcallback()
+    ) {
+    class RecipeIngredientsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val ingredientNameTextView: TextView = view.findViewById(R.id.ingredientNameTextView)
         val quantityTextView: TextView = view.findViewById(R.id.quantityTextView)
-        val unitOfMeasureTextView: TextView = view.findViewById(R.id.unitOfMeasureRecipeIngredientTextView)
+        val unitOfMeasureTextView: TextView =
+            view.findViewById(R.id.unitOfMeasureRecipeIngredientTextView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeIngredientsViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.recipe_ingredient_item, parent, false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.recipe_ingredient_item, parent, false)
         return RecipeIngredientsViewHolder(view)
     }
 
@@ -34,12 +39,18 @@ class RecipeIngredientsAdapter : ListAdapter<RecipeHasIngredient, RecipeIngredie
     }
 }
 
-class RecipeHasIngredientsDiffcallback : DiffUtil.ItemCallback<RecipeHasIngredient>(){
-    override fun areItemsTheSame(oldItem: RecipeHasIngredient, newItem: RecipeHasIngredient): Boolean {
+class RecipeHasIngredientsDiffcallback : DiffUtil.ItemCallback<RecipeHasIngredient>() {
+    override fun areItemsTheSame(
+        oldItem: RecipeHasIngredient,
+        newItem: RecipeHasIngredient
+    ): Boolean {
         return oldItem.ingredient == newItem.ingredient
     }
 
-    override fun areContentsTheSame(oldItem: RecipeHasIngredient, newItem: RecipeHasIngredient): Boolean {
+    override fun areContentsTheSame(
+        oldItem: RecipeHasIngredient,
+        newItem: RecipeHasIngredient
+    ): Boolean {
         return oldItem == newItem
     }
 }

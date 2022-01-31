@@ -23,7 +23,6 @@ class IngredientAdapter :
         val subButton: Button = view.findViewById(R.id.subButton)
     }
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IngredientViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.ingredient_item, parent, false)
@@ -31,7 +30,7 @@ class IngredientAdapter :
     }
 
     var ingredientQuantities = DoubleArray(6)
-    var ingredientNames = Array(6){"it = $it"}
+    var ingredientNames = Array(6) { "it = $it" }
 
     override fun onBindViewHolder(holder: IngredientViewHolder, position: Int) {
         ingredientNames[position] = getItem(position).name

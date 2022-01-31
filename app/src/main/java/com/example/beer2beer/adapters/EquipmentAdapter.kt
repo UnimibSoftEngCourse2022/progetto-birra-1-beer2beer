@@ -14,7 +14,8 @@ import com.example.beer2beer.database.entities.Equipment
 import com.example.beer2beer.databinding.EquipmentItemBinding
 import com.example.beer2beer.dialogs.EditEquipmentDialogFragment
 
-class EquipmentAdapter(private val childFragmentManager: FragmentManager) : ListAdapter<Equipment, EquipmentAdapter.EquipmentViewHolder>(EquipmentDiffCallback()) {
+class EquipmentAdapter(private val childFragmentManager: FragmentManager) :
+    ListAdapter<Equipment, EquipmentAdapter.EquipmentViewHolder>(EquipmentDiffCallback()) {
     class EquipmentViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val equipmentNameTextView: TextView = view.findViewById(R.id.equipmentNameTextView)
         val equipmentCapacityTextView: TextView = view.findViewById(R.id.capacityTextView)
@@ -22,7 +23,8 @@ class EquipmentAdapter(private val childFragmentManager: FragmentManager) : List
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EquipmentViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.equipment_item, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.equipment_item, parent, false)
         return EquipmentViewHolder(view)
     }
 
@@ -37,11 +39,9 @@ class EquipmentAdapter(private val childFragmentManager: FragmentManager) : List
             dialog.show(childFragmentManager, "EditEquipmentDialog")
         }
     }
-
-
 }
 
-class EquipmentDiffCallback : DiffUtil.ItemCallback<Equipment>(){
+class EquipmentDiffCallback : DiffUtil.ItemCallback<Equipment>() {
     override fun areItemsTheSame(oldItem: Equipment, newItem: Equipment): Boolean {
         return oldItem.id == newItem.id
     }
@@ -49,5 +49,4 @@ class EquipmentDiffCallback : DiffUtil.ItemCallback<Equipment>(){
     override fun areContentsTheSame(oldItem: Equipment, newItem: Equipment): Boolean {
         return oldItem == newItem
     }
-
 }
