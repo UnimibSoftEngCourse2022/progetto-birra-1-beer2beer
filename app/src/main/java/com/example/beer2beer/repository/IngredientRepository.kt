@@ -31,6 +31,12 @@ class IngredientRepository (
         }
     }
 
+    fun resetIngredients(){
+        coroutineContext.launch(Dispatchers.IO){
+            dao.reset()
+        }
+    }
+
     fun getAllIngredients(): LiveData<List<Ingredient>> =
         liveData(Dispatchers.IO) {
             emitSource(dao.getAll())

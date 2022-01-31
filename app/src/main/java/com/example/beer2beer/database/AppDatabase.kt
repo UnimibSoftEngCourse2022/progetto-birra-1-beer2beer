@@ -37,16 +37,20 @@ abstract class AppDatabase : RoomDatabase() {
                 .addCallback(object : Callback() {
                     override fun onCreate(db: SupportSQLiteDatabase) {
                         super.onCreate(db)
+                        val dao = getInstance(context).ingredientDao()
                         // insert the data on the IO Thread
                         Executors.newSingleThreadExecutor().execute {
-                            val dao = getInstance(context).ingredientDao()
-                            dao.insert(Ingredient("Water", "L", 0.0))
-                            dao.insert(Ingredient("Malts", "g", 0.0))
-                            dao.insert(Ingredient("Hops", "g", 0.0))
-                            dao.insert(Ingredient("Yeast", "g", 0.0))
-                            dao.insert(Ingredient("Sugars", "g", 0.0))
-                            dao.insert(Ingredient("Additives", "g", 0.0))
+                            populateIngredients(dao)
                         }
+                    }
+
+                    fun populateIngredients(dao: IngredientDao?){
+                        dao?.insert(Ingredient("Water", "L", 0.0))
+                        dao?.insert(Ingredient("Malts", "g", 0.0))
+                        dao?.insert(Ingredient("Hops", "g", 0.0))
+                        dao?.insert(Ingredient("Yeast", "g", 0.0))
+                        dao?.insert(Ingredient("Sugars", "g", 0.0))
+                        dao?.insert(Ingredient("Additives", "g", 0.0))
                     }
                 })
                 .build()

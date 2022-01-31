@@ -3,6 +3,7 @@ package com.example.beer2beer
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.beer2beer.database.AppDatabase
 import com.example.beer2beer.database.entities.Equipment
 import com.example.beer2beer.database.entities.Recipe
@@ -16,6 +17,7 @@ import kotlinx.coroutines.launch
 import org.apache.commons.math3.optim.MaxIter
 import org.apache.commons.math3.optim.linear.*
 import org.apache.commons.math3.optim.nonlinear.scalar.GoalType
+import kotlin.coroutines.coroutineContext
 
 class SharedViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -28,7 +30,7 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     private val ingredientRepository = IngredientRepository(db.ingredientDao(), viewModelScope)
     private val equipmentRepository = EquipmentRepository(db.equipmentDao(), viewModelScope)
 
-
+    // get all necessary lists
     val recipes = recipeRepository.getAllRecipes()
     val ingredients = ingredientRepository.getAllIngredients()
     val equipment = equipmentRepository.getAllEquipments()
@@ -196,5 +198,12 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
 
     fun updateRecipeInstance(instanceId: Int, newNote: String){
         recipeRepository.updateRecipeInstance(instanceId, newNote)
+
+    // SETTINGS
+    fun resetDatabase(){
+        equipmentRepository.deleteAllEquipment()
+        recipeRepository.deleteAllRecipe()
+        ingredientRepository.resetIngredients()
+        
     }
 }
