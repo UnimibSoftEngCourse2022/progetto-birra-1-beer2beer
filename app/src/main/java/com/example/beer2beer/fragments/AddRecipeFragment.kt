@@ -25,6 +25,10 @@ class AddRecipeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         recipesFragmentSetup(inflater, container)
+        
+        viewModel.equipment.observe(viewLifecycleOwner) {_ ->
+            //ISSUE
+        }
 
         binding.ingredientsRecyclerView.adapter = adapter
         viewModel.ingredients.observe(viewLifecycleOwner) { ingredientsList ->
