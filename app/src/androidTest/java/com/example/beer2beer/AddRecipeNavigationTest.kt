@@ -18,7 +18,6 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.beer2beer.adapters.IngredientAdapter
 import com.example.beer2beer.database.AppDatabase
-import com.example.beer2beer.database.entities.RecipeIngredients
 import com.example.beer2beer.fragments.AddRecipeFragment
 import org.hamcrest.Matcher
 import org.junit.Rule
