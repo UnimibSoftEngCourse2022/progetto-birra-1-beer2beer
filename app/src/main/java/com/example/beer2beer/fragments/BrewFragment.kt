@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.example.beer2beer.R
 import com.example.beer2beer.SharedViewModel
 import com.example.beer2beer.database.entities.Recipe
 import com.example.beer2beer.databinding.FragmentBrewBinding
@@ -60,16 +61,16 @@ class BrewFragment : Fragment() {
                         val coeff = DoubleArray(recipeIngredients.size + 1)
 
                         for (i in recipeIngredients.indices) {
-                            coeff[i] = -recipeIngredients.get(i).ratio
+                            coeff[i] = -recipeIngredients[i].ratio
                             val c = DoubleArray(recipeIngredients.size + 1)
                             c.fill(0.0)
                             c[i] = 1.0
-                            if (recipeIngredients.get(i).name == "Water") {
+                            if (recipeIngredients[i].name == resources.getString(R.string.water)) {
                                 constraint.add(
                                     LinearConstraint(
                                         c,
                                         Relationship.LEQ,
-                                        recipeIngredients.get(i).quantity * 1000
+                                        recipeIngredients[i].quantity * 1000
                                     )
                                 )
                             } else {
@@ -77,7 +78,7 @@ class BrewFragment : Fragment() {
                                     LinearConstraint(
                                         c,
                                         Relationship.LEQ,
-                                        recipeIngredients.get(i).quantity
+                                        recipeIngredients[i].quantity
                                     )
                                 )
                             }

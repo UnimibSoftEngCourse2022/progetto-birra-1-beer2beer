@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.beer2beer.R
-import com.example.beer2beer.database.entities.RecipeHasIngredient
 import com.example.beer2beer.database.entities.RecipeInstance
 
 class RecipeInstanceAdapter :

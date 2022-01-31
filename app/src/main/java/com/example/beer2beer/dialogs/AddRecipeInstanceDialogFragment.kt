@@ -4,12 +4,10 @@ import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
-import androidx.core.text.isDigitsOnly
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import com.example.beer2beer.R
 import com.example.beer2beer.databinding.DialogAddRecipeInstanceBinding
-import java.lang.Exception
 
 class AddRecipeInstanceDialogFragment(val recipeId: Int) : DialogFragment() {
     // Use this instance of the interface to deliver action events
