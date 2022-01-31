@@ -32,8 +32,6 @@ class SettingsFragment : Fragment() {
             sharedPreferences.edit().clear().apply()
             viewModel.resetDatabase()
             this.requireActivity().finishAffinity()
-
-            activity?.deleteDatabase("BeerDatabase")
         }
 
         return binding.root
