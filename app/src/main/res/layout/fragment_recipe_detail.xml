@@ -52,13 +52,21 @@
                 </androidx.recyclerview.widget.RecyclerView>
 
                 <TextView
-                    android:id="@+id/recipeInstancesTextView"
+                    android:id="@+id/descrizioneTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/ingredientsRecyclerView"
+                    android:layout_marginTop="42dp"
+                    android:text="@string/description" />
+
+                <TextView
+                    android:id="@+id/recipeInstancesTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/descrizioneTextView"
                     android:layout_alignParentStart="true"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="101dp"
                     android:text="@string/recipeInstancesTextView"
                     android:textColor="#546E7A" />
 
@@ -67,10 +75,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/recipeInstancesTextView"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="6dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:itemCount="3"
                     tools:listitem="@layout/recipe_instance_item" />
+
             </RelativeLayout>
         </ScrollView>
 
