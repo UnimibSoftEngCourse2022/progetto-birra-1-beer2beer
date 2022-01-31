@@ -118,7 +118,7 @@ class BrewFragment : Fragment() {
                     Log.d("Brew", "onCreateView: $bestRecipe")
 
                     val action =
-                        bestRecipe?.let { BrewFragmentDirections.actionHomeToRecipeDetail(it.id, it.name) }
+                        bestRecipe?.let { BrewFragmentDirections.actionHomeToRecipeDetail(it.id, it.name, it.description) }
 
                     if (action != null) {
                         findNavController().navigate(action)

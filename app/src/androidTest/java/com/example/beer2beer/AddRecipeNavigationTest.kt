@@ -75,7 +75,7 @@ class AddRecipeNavigationTest {
 
                 if (recipe != null) {
                     val ingredients = recipeDao.getRecipeIngredients(recipe.id)
-                    ingredients.forEach{ingredient ->
+                    ingredients.value?.forEach{ingredient ->
                         if (ingredient.name == "Water"){
                             assert(ingredient.ratio == 1.0)
                         } else {
@@ -93,7 +93,7 @@ class AddRecipeNavigationTest {
 
     }
 
-    private fun clickChildViewWithId(id: Int): ViewAction? {
+    private fun clickChildViewWithId(id: Int): ViewAction {
         return object : ViewAction {
             override fun getConstraints(): Matcher<View>? {
                 return null

@@ -1,18 +1,11 @@
 package com.example.beer2beer
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.beer2beer.database.AppDatabase
-import com.example.beer2beer.database.entities.Equipment
-import com.example.beer2beer.database.entities.Recipe
-import com.example.beer2beer.database.entities.RecipeHasIngredient
-import com.example.beer2beer.database.entities.RecipeIngredients
-import com.example.beer2beer.database.entities.RecipeInstance
+import com.example.beer2beer.database.entities.*
 import com.example.beer2beer.repository.EquipmentRepository
 import com.example.beer2beer.repository.IngredientRepository
 import com.example.beer2beer.repository.RecipeRepository
@@ -21,7 +14,6 @@ import kotlinx.coroutines.launch
 import org.apache.commons.math3.optim.MaxIter
 import org.apache.commons.math3.optim.linear.*
 import org.apache.commons.math3.optim.nonlinear.scalar.GoalType
-import kotlin.coroutines.coroutineContext
 
 class SharedViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -97,9 +89,9 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
 
         viewModelScope.launch(Dispatchers.IO) {
             recipes.value?.forEach { recipe ->
-                val recipeIngredients = db.recipeDao().getRecipeIngredients(recipe.id)
+                val recipeIngredients = db.recipeDao().getRecipeIngredients(recipe.id).value
                 val constraint = ArrayList<LinearConstraint>()
-                val coeff = DoubleArray(recipeIngredients.size + 1)
+                val coeff = DoubleArray(recipeIngredients!!.size + 1)
 
                 for (i in recipeIngredients.indices) {
                     coeff[i] = -recipeIngredients.get(i).ratio
