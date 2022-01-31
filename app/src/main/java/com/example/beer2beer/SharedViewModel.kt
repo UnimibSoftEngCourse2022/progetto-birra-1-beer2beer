@@ -81,69 +81,6 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
         return recipeRepository.getRecipeIngredients(id)
     }
 
-    fun whatShouldIBrewToday(): String {
-
-        var bestRecipe: Recipe? = null
-        var bestQuantity = 0.0
-        val ss = SimplexSolver()
-
-        viewModelScope.launch(Dispatchers.IO) {
-            recipes.value?.forEach { recipe ->
-                val recipeIngredients = db.recipeDao().getRecipeIngredients(recipe.id).value
-                val constraint = ArrayList<LinearConstraint>()
-                val coeff = DoubleArray(recipeIngredients!!.size + 1)
-
-                for (i in recipeIngredients.indices) {
-                    coeff[i] = -recipeIngredients.get(i).ratio
-                    val c = DoubleArray(recipeIngredients.size + 1)
-                    c.fill(0.0)
-                    c[i] = 1.0
-                    if(recipeIngredients.get(i).name == "Water"){
-                        constraint.add(
-                            LinearConstraint(
-                                c,
-                                Relationship.LEQ,
-                                recipeIngredients.get(i).quantity * 1000
-                            )
-                        )
-                    }else{
-                        constraint.add(
-                            LinearConstraint(
-                                c,
-                                Relationship.LEQ,
-                                recipeIngredients.get(i).quantity
-                            )
-                        )
-                    }
-
-                }
-
-                coeff[coeff.lastIndex] = 1.0
-                constraint.add(LinearConstraint(coeff, Relationship.EQ, 0.0))
-
-                val c = DoubleArray(recipeIngredients.size + 1)
-                c.fill(0.0)
-                c[c.lastIndex] = 1.0
-
-                val fObb = LinearObjectiveFunction(c, 0.0)
-                val constr = LinearConstraintSet(constraint)
-
-                val solution =
-                    ss.optimize(
-                        DEFAULT_MAX_ITER, fObb, constr,
-                        GoalType.MAXIMIZE, NonNegativeConstraint(true)
-                    ).value
-
-                if (bestRecipe == null || solution > bestQuantity) {
-                    bestRecipe = recipe
-                    bestQuantity = solution
-                }
-            }
-        }
-
-        return bestRecipe?.name ?: ""
-    }
-
     fun updateIngredient(name: String, newQuantity: Double) {
         ingredientRepository.updateIngredient(name, newQuantity)
         viewModelScope.launch(Dispatchers.IO) {
