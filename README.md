@@ -27,7 +27,7 @@ Android Studio.
 - Creare un device per l’emulatore
   - Tools > Device Manager
   - Virtual > Create device
-  - Scegliere un dispositivo a scelta (scegliere una versione di android ***** o
+  - Scegliere un dispositivo a scelta (scegliere una versione di android 8.0 o
 successive)
 - Assicurarsi di aver selezionato il dispositivo appena creato e premere sulla freccia
 verde ”play”
