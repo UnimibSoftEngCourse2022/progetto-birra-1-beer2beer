@@ -28,9 +28,11 @@ class RecipeDetailFragment : Fragment() {
 
         val recipeId = args.recipeId
 
+        //Todo: binda il nome della ricetta alla textview
+
         viewModel.recipeHasIngredient.observe(viewLifecycleOwner){ recipeIngredientsList ->
             //TODO: Filtra in base al nome della ricetta!
-            ingredientsAdapter.submitList(recipeIngredientsList)
+            ingredientsAdapter.submitList(viewModel.filterIngredientsList(recipeIngredientsList, recipeId))
         }
         binding.ingredientsRecyclerView.adapter = ingredientsAdapter
 

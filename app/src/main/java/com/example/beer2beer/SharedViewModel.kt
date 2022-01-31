@@ -167,10 +167,10 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
 
     val recipeHasIngredient = recipeRepository.getRecipeHasIngredients()
     //TODO: Accetta il nome della ricetta come parametro.
-    fun filterIngredientsList(ingList: List<RecipeHasIngredient>): List<RecipeHasIngredient>{
+    fun filterIngredientsList(ingList: List<RecipeHasIngredient>, recipeId: Int): List<RecipeHasIngredient>{
         val result = mutableListOf<RecipeHasIngredient>()
         ingList.forEach {
-            if (it.ratio > 0.0)
+            if (it.ratio > 0.0 && it.recipe == recipeId)
                 result.add(it)
         }
         return result.toList()

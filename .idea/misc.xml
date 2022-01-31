@@ -20,6 +20,7 @@
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_welcome.xml" value="0.33" />
         <entry key="app/src/main/res/layout/ingredient_item.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/recipe_ingredient_item.xml" value="0.2046875" />
         <entry key="app/src/main/res/layout/recipe_item.xml" value="0.35144927536231885" />
         <entry key="app/src/main/res/layout/spinner_dropdown_item.xml" value="0.32608695652173914" />
         <entry key="app/src/main/res/layout/welcome_fragment.xml" value="0.25" />
