@@ -52,7 +52,7 @@
                 </androidx.recyclerview.widget.RecyclerView>
 
                 <TextView
-                    android:id="@+id/descrizioneTextView"
+                    android:id="@+id/recipeDescriptionTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/ingredientsRecyclerView"
@@ -63,7 +63,7 @@
                     android:id="@+id/recipeInstancesTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/descrizioneTextView"
+                    android:layout_below="@+id/recipeDescriptionTextView"
                     android:layout_alignParentStart="true"
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="101dp"

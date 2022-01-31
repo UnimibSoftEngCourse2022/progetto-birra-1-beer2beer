@@ -75,7 +75,6 @@ class AddRecipeFragment : Fragment() {
                 binding.recipeNameEditText.error = "Equipment' s capacity not enough"
         }
 
-
         return binding.root
     }
 

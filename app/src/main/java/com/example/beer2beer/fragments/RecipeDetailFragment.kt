@@ -28,8 +28,10 @@ class RecipeDetailFragment : Fragment() {
 
         val recipeId = args.recipeId
         val recipeName = args.recipeName
+        val recipeDescription = args.recipeDescription
 
         binding.recipeNameTextView.text = recipeName
+        binding.recipeDescriptionTextView.text = recipeDescription
 
         binding.addInstanceFab.setOnClickListener {
             val dialog = AddRecipeInstanceDialogFragment(recipeId)
@@ -46,7 +48,6 @@ class RecipeDetailFragment : Fragment() {
             instancesAdapter.submitList(viewModel.filterRecipeInstancesList(recipeInstancesList, recipeId))
         }
         binding.recipeInstancesRecyclerView.adapter = instancesAdapter
-
 
         return binding.root
     }

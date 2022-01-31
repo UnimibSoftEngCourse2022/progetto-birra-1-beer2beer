@@ -113,5 +113,8 @@
         <argument
             android:name="recipeName"
             app:argType="string" />
+        <argument
+            android:name="recipeDescription"
+            app:argType="string" />
     </fragment>
 </navigation>
