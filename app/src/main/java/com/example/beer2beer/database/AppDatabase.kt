@@ -6,6 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.example.beer2beer.R
 import com.example.beer2beer.database.entities.*
 import java.util.concurrent.Executors
 
@@ -43,17 +44,19 @@ abstract class AppDatabase : RoomDatabase() {
                         val dao = getInstance(context).ingredientDao()
                         // insert the data on the IO Thread
                         Executors.newSingleThreadExecutor().execute {
+
                             populateIngredients(dao)
+
                         }
                     }
 
                     fun populateIngredients(dao: IngredientDao?) {
-                        dao?.insert(Ingredient("Water", "L", 0.0))
-                        dao?.insert(Ingredient("Malts", "g", 0.0))
-                        dao?.insert(Ingredient("Hops", "g", 0.0))
-                        dao?.insert(Ingredient("Yeast", "g", 0.0))
-                        dao?.insert(Ingredient("Sugars", "g", 0.0))
-                        dao?.insert(Ingredient("Additives", "g", 0.0))
+                        dao?.insert(Ingredient(context.resources.getString(R.string.water), "L", 0.0))
+                        dao?.insert(Ingredient(context.resources.getString(R.string.malts), "g", 0.0))
+                        dao?.insert(Ingredient(context.resources.getString(R.string.hops), "g", 0.0))
+                        dao?.insert(Ingredient(context.resources.getString(R.string.yeasts), "g", 0.0))
+                        dao?.insert(Ingredient(context.resources.getString(R.string.sugar), "g", 0.0))
+                        dao?.insert(Ingredient(context.resources.getString(R.string.additives), "g", 0.0))
                     }
                 })
                 .build()
