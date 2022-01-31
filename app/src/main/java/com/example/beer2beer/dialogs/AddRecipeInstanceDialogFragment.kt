@@ -53,7 +53,7 @@ class AddRecipeInstanceDialogFragment(val recipeId: Int) : DialogFragment() {
 
                     if (binding.litersEditText.text.toString().isEmpty())
                         binding.howManyLTextView.error =
-                            resources.getString(R.string.litersEditTextError)
+                            resources.getString(R.string.litersError)
                     else {
                         quantity = binding.litersEditText.text.toString().toDouble()
                         listener.onDialogRecipeInstanceSaveClick(recipeId, note, quantity)

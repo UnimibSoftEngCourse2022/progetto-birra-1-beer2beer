@@ -69,7 +69,7 @@
                         android:paddingTop="16dp"
                         android:textSize="18sp"
                         android:textColor="@color/textBrown"
-                        android:text="@string/recipeInstancesTextView"
+                        android:text="@string/recipeInstances"
                         tools:ignore="RtlSymmetry"/>
 
                     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -88,7 +88,7 @@
                             app:tint="@color/plusPage"
                             app:backgroundTint="@android:color/transparent"
                             app:srcCompat="@drawable/ic_baseline_add_24"
-                            android:contentDescription="@string/addInstanceFabCD"
+                            android:contentDescription="@string/addRecipeInstance"
                             tools:ignore="ImageContrastCheck" />
                     </androidx.coordinatorlayout.widget.CoordinatorLayout>
                 </LinearLayout>

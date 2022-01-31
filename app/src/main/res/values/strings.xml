@@ -64,16 +64,17 @@
     <string name="line">line</string>
     <string name="unitOfMeasure">L</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--Instance recipe related-->
     <string name="capacityInL">cap. L</string>
     <string name="recipe">Recipe</string>
     <string name="date">Date</string>
-    <string name="recipeInstancesTextView">Recipe instances:</string>
-    <string name="addInstanceFabCD">Add a recipe instance</string>
-    <string name="howManyLTextView">How many liters do you want to brew?</string>
-    <string name="litersEditTextHint">Insert liters</string>
-    <string name="instanceNoteTextView">Insert the notes you have on this instance</string>
-    <string name="noteEditText">Insert your notes here.</string>
-    <string name="litersEditTextError">Insert a valid quantity.</string>
+    <string name="recipeInstances">Recipe instances</string>
+    <string name="addRecipeInstance">Add a recipe instance</string>
+    <string name="howManyLiters">How many liters do you want to brew?</string>
+    <string name="insertLiter">Insert liters</string>
+    <string name="instanceNote">Insert the notes you have on this instance</string>
+    <string name="note">Insert your notes here.</string>
+    <string name="litersError">Insert a valid quantity.</string>
     <string name="overMaxCapacityError">The quantity specified is greater than the total equipment capacity!</string>
-    <string name="liters">L</string>
+    <string name="descriptionInstance">Descrizione istanza molto lunga</string>
 </resources>
