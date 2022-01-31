@@ -59,8 +59,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/recipeInstancesTextView"
                 android:layout_marginTop="8dp"
-                tools:listitem="@layout/recipe_instance_item"
-                tools:itemCount="3"/>
+                tools:itemCount="3"
+                tools:listitem="@layout/recipe_instance_item" />
         </RelativeLayout>
     </ScrollView>
 
