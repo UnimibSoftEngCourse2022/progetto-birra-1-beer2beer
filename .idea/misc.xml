@@ -3,26 +3,30 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/giaco/OneDrive/Desktop/progetto-birra-1-beer2beer/app/src/main/res/layout/fragment_add_recipe.xml" value="0.24615384615384617" />
+        <entry key="..\:/Users/giaco/OneDrive/Desktop/progetto-birra-1-beer2beer/app/src/main/res/layout/fragment_get_started.xml" value="0.25" />
+        <entry key="..\:/Users/giaco/OneDrive/Desktop/progetto-birra-1-beer2beer/app/src/main/res/layout/fragment_recipe_detail.xml" value="0.25" />
+        <entry key="..\:/Users/giaco/OneDrive/Desktop/progetto-birra-1-beer2beer/app/src/main/res/layout/recipe_ingredient_item.xml" value="0.25" />
+        <entry key="..\:/Users/giaco/OneDrive/Desktop/progetto-birra-1-beer2beer/app/src/main/res/layout/recipe_item.xml" value="0.1" />
+        <entry key="..\:/Users/giaco/OneDrive/Desktop/progetto-birra-1-beer2beer/app/src/main/res/layout/spinner_dropdown_item.xml" value="0.25" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.371875" />
         <entry key="app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.1953125" />
         <entry key="app/src/main/res/drawable/ic_brewday_logo.xml" value="0.371875" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.371875" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.29483695652173914" />
-        <entry key="app/src/main/res/layout/dialog_add_ingredients.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/equipment_item.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_add_recipe.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_brew.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/fragment_cart.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_cart.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_get_started.xml" value="0.3432971014492754" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_recipe_detail.xml" value="0.32608695652173914" />
+        <entry key="app/src/main/res/layout/fragment_recipe_instance.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_recipes.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_welcome.xml" value="0.33" />
         <entry key="app/src/main/res/layout/ingredient_item.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/recipe_ingredient_item.xml" value="0.2046875" />
+        <entry key="app/src/main/res/layout/recipe_ingredient_item.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/recipe_instance_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/recipe_item.xml" value="0.35144927536231885" />
-        <entry key="app/src/main/res/layout/spinner_dropdown_item.xml" value="0.32608695652173914" />
         <entry key="app/src/main/res/layout/welcome_fragment.xml" value="0.25" />
         <entry key="app/src/main/res/menu/bottom_navigation_view.xml" value="0.35572916666666665" />
       </map>

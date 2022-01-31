@@ -109,7 +109,9 @@
         tools:layout="@layout/fragment_recipe_detail">
         <argument
             android:name="recipeId"
-            app:argType="integer"
-            android:defaultValue="0" />
+            app:argType="integer" />
+        <argument
+            android:name="recipeName"
+            app:argType="string" />
     </fragment>
 </navigation>

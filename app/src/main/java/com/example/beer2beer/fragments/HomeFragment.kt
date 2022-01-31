@@ -31,8 +31,7 @@ class HomeFragment : Fragment() {
         }
         binding.homeRecyclerView.adapter = adapter
         adapter.onItemClick = { recipe ->
-            val action = HomeFragmentDirections.actionHomeToRecipeDetail()
-            action.recipeId = recipe.id
+            val action = HomeFragmentDirections.actionHomeToRecipeDetail(recipe.id, recipe.name)
             findNavController().navigate(action)
         }
 
