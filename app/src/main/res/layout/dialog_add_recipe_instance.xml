@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
@@ -11,57 +10,72 @@
             type="com.example.beer2beer.dialogs.AddRecipeInstanceDialogFragment" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/shade2">
 
         <TextView
             android:id="@+id/howManyLTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/howManyLTextView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_gravity="start"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:paddingStart="16dp"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/textBrown"
+            android:text="@string/howManyLiters"
+            tools:ignore="RtlSymmetry" />
 
         <EditText
             android:id="@+id/litersEditText"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:ems="10"
-            android:hint="@string/litersEditTextHint"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:textSize="14sp"
+            android:textColor="@color/textBrown"
+            android:textColorHint="@color/textHint"
+            android:background="@android:color/transparent"
+            android:hint="@string/insertLiter"
             android:importantForAutofill="no"
             android:inputType="numberDecimal"
-            android:minHeight="48dp"
-            app:layout_constraintStart_toStartOf="@+id/howManyLTextView"
-            app:layout_constraintTop_toBottomOf="@+id/howManyLTextView"
-            tools:ignore="TextContrastCheck" />
+            android:minHeight="48dp" />
 
         <TextView
             android:id="@+id/instanceNoteTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/instanceNoteTextView"
-            app:layout_constraintStart_toStartOf="@+id/litersEditText"
-            app:layout_constraintTop_toBottomOf="@+id/litersEditText" />
+            android:layout_gravity="start"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:paddingStart="16dp"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/textBrown"
+            android:text="@string/instanceNote"
+            tools:ignore="RtlSymmetry" />
 
         <EditText
             android:id="@+id/noteEditText"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
+            android:layout_marginTop="10dp"
             android:ems="10"
-            android:gravity="start|top"
-            android:hint="@string/noteEditText"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:textSize="14sp"
+            android:textColor="@color/textBrown"
+            android:textColorHint="@color/textHint"
+            android:background="@android:color/transparent"
+            android:hint="@string/note"
             android:importantForAutofill="no"
             android:inputType="textMultiLine"
-            android:minHeight="48dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/instanceNoteTextView"
-            app:layout_constraintTop_toBottomOf="@+id/instanceNoteTextView"
-            tools:ignore="TextContrastCheck" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:minHeight="48dp" />
+    </LinearLayout>
 </layout>
