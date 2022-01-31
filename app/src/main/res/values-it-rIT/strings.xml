@@ -56,4 +56,11 @@
     <string name="recipe">Ricetta</string>
     <string name="date">Data</string>
     <string name="recipeInstancesTextView">Instanze ricetta:</string>
+    <string name="howManyLiters">Quanti litri vuoi fare?</string>
+    <string name="insertLiter">Inserisci litri</string>
+    <string name="instanceNote">Inserisci note che sono nell\' istanza</string>
+    <string name="note">Inserisci note qui</string>
+    <string name="litersError">Inserisci una quantità valida</string>
+    <string name="overMaxCapacityError">La quantità specificata è maggiore della capacità delle attrezzature</string>
+    <string name="descriptionInstance">Descrizione istanza molto lunga</string>
 </resources>
