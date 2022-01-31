@@ -75,4 +75,5 @@
     <string name="noteEditText">Insert your notes here.</string>
     <string name="litersEditTextError">Insert a valid quantity.</string>
     <string name="overMaxCapacityError">The quantity specified is greater than the total equipment capacity!</string>
+    <string name="liters">L</string>
 </resources>
