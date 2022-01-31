@@ -6,7 +6,6 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class RecipeIngredients(
-
     val name: String,
     val ratio: Double,
     val quantity: Double
