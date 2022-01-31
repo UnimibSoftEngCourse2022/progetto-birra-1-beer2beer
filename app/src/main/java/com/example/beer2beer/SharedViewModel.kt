@@ -7,6 +7,7 @@ import com.example.beer2beer.database.AppDatabase
 import com.example.beer2beer.database.entities.Equipment
 import com.example.beer2beer.database.entities.Recipe
 import com.example.beer2beer.database.entities.RecipeHasIngredient
+import com.example.beer2beer.database.entities.RecipeInstance
 import com.example.beer2beer.repository.EquipmentRepository
 import com.example.beer2beer.repository.IngredientRepository
 import com.example.beer2beer.repository.RecipeRepository
@@ -142,10 +143,6 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
 
     fun updateIngredient(name: String, newQuantity: Double) {
         ingredientRepository.updateIngredient(name, newQuantity)
-        viewModelScope.launch(Dispatchers.IO) {
-            db.ingredientDao().update(name, newQuantity)
-        }
-
     }
 
     //EQUIPMENTS
@@ -166,7 +163,6 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     // RECIPE DETAIL
 
     val recipeHasIngredient = recipeRepository.getRecipeHasIngredients()
-    //TODO: Accetta il nome della ricetta come parametro.
     fun filterIngredientsList(ingList: List<RecipeHasIngredient>, recipeId: Int): List<RecipeHasIngredient>{
         val result = mutableListOf<RecipeHasIngredient>()
         ingList.forEach {
@@ -177,4 +173,15 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     }
 
     val recipeInstances = recipeRepository.getRecipeInstances()
+    fun filterRecipeInstancesList(insList: List<RecipeInstance>, recipeId: Int): List<RecipeInstance>{
+        val result = mutableListOf<RecipeInstance>()
+        insList.forEach {
+            if (it.recipe == recipeId)
+                result.add(it)
+        }
+        return result.toList()
+    }
+    fun createRecipeInstance(recipeInstance: RecipeInstance){
+        recipeRepository.createInstance(recipeInstance)
+    }
 }

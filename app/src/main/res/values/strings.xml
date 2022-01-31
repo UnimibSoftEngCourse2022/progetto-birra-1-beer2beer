@@ -68,4 +68,10 @@
     <string name="recipe">Recipe</string>
     <string name="date">Date</string>
     <string name="recipeInstancesTextView">Recipe instances:</string>
+    <string name="addInstanceFabCD">Add a recipe instance</string>
+    <string name="howManyLTextView">How many liters do you want to brew?</string>
+    <string name="litersEditTextHint">Insert liters</string>
+    <string name="instanceNoteTextView">Insert the notes you have on this instance</string>
+    <string name="noteEditText">Insert your notes here.</string>
+    <string name="litersEditTextError">Insert a valid quantity.</string>
 </resources>

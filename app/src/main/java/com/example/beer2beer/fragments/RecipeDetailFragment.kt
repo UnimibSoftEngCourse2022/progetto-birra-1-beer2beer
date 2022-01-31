@@ -10,8 +10,8 @@ import androidx.navigation.fragment.navArgs
 import com.example.beer2beer.SharedViewModel
 import com.example.beer2beer.adapters.RecipeIngredientsAdapter
 import com.example.beer2beer.adapters.RecipeInstanceAdapter
-import com.example.beer2beer.database.entities.Recipe
 import com.example.beer2beer.databinding.FragmentRecipeDetailBinding
+import com.example.beer2beer.dialogs.AddRecipeInstanceDialogFragment
 
 class RecipeDetailFragment : Fragment() {
     private lateinit var binding: FragmentRecipeDetailBinding
@@ -30,17 +30,20 @@ class RecipeDetailFragment : Fragment() {
         val recipeName = args.recipeName
 
         binding.recipeNameTextView.text = recipeName
-        //Todo: binda il nome della ricetta alla textview
+
+        binding.addInstanceFab.setOnClickListener {
+            val dialog = AddRecipeInstanceDialogFragment(recipeId)
+            dialog.show(childFragmentManager, "AddInstanceDialog")
+        }
 
         viewModel.recipeHasIngredient.observe(viewLifecycleOwner){ recipeIngredientsList ->
-            //TODO: Filtra in base al nome della ricetta!
             ingredientsAdapter.submitList(viewModel.filterIngredientsList(recipeIngredientsList, recipeId))
         }
         binding.ingredientsRecyclerView.adapter = ingredientsAdapter
 
 
         viewModel.recipeInstances.observe(viewLifecycleOwner){ recipeInstancesList ->
-            instancesAdapter.submitList(recipeInstancesList)
+            instancesAdapter.submitList(viewModel.filterRecipeInstancesList(recipeInstancesList, recipeId))
         }
         binding.recipeInstancesRecyclerView.adapter = instancesAdapter
 

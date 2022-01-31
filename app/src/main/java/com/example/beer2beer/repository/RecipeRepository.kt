@@ -26,6 +26,12 @@ class RecipeRepository (
         return dao.insert(recipe)
     }
 
+    fun createInstance(recipeInstance: RecipeInstance){
+        coroutineContext.launch(Dispatchers.IO){
+            dao.insertInstance(recipeInstance)
+        }
+    }
+
     fun insertIngredients(recipeHasIngredient: RecipeHasIngredient) {
         coroutineContext.launch(Dispatchers.IO) {
             dao.insertIngredient(recipeHasIngredient)

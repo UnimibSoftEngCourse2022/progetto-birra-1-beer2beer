@@ -14,6 +14,9 @@ interface RecipeDao {
     fun insert(recipe: Recipe): Long
 
     @Insert(onConflict = REPLACE)
+    fun insertInstance(recipeInstance: RecipeInstance)
+
+    @Insert(onConflict = REPLACE)
     fun insertIngredient(recipeHasIngredient: RecipeHasIngredient)
 
     @Update
