@@ -9,7 +9,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.example.beer2beer.R
 import com.example.beer2beer.SharedViewModel
 import com.example.beer2beer.adapters.EquipmentAdapter
 import com.example.beer2beer.databinding.FragmentRecipesBinding
@@ -32,7 +31,6 @@ class RecipesFragment : Fragment() {
             adapter.submitList(equipmentList)
         }
         binding.equipmentRecyclerView.adapter = adapter
-
 
         binding.addEquipmentFab.setOnClickListener {
             val action = RecipesFragmentDirections.actionRecipesToAddEquipment()

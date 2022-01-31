@@ -1,24 +1,16 @@
 package com.example.beer2beer
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.beer2beer.database.AppDatabase
-import com.example.beer2beer.database.entities.Equipment
-import com.example.beer2beer.database.entities.Recipe
-import com.example.beer2beer.database.entities.RecipeHasIngredient
-import com.example.beer2beer.database.entities.RecipeIngredients
+import com.example.beer2beer.database.entities.*
 import com.example.beer2beer.repository.EquipmentRepository
 import com.example.beer2beer.repository.IngredientRepository
 import com.example.beer2beer.repository.RecipeRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import org.apache.commons.math3.optim.MaxIter
-import org.apache.commons.math3.optim.linear.*
-import org.apache.commons.math3.optim.nonlinear.scalar.GoalType
 
 class SharedViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -29,11 +21,10 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     private val ingredientRepository = IngredientRepository(db.ingredientDao(), viewModelScope)
     private val equipmentRepository = EquipmentRepository(db.equipmentDao(), viewModelScope)
 
-
+    // get all necessary lists
     val recipes = recipeRepository.getAllRecipes()
     val ingredients = ingredientRepository.getAllIngredients()
     val equipment = equipmentRepository.getAllEquipments()
-
 
 
     //RECIPES
@@ -60,11 +51,11 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     fun processQuantities(quantities: DoubleArray): DoubleArray {
         var total = 0.0
         quantities.forEachIndexed { index, q ->
-            // Se sto processando l'acqua, la converto in grammi
-            if (index == 0)
-                total += q * 1000
+            // Converts water into grams
+            total += if (index == 0)
+                q * 1000
             else
-                total += q
+                q
         }
         val relativeQuantities = DoubleArray(quantities.size)
         quantities.forEachIndexed { index, q ->
@@ -110,8 +101,10 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     // RECIPE DETAIL
 
     val recipeHasIngredient = recipeRepository.getRecipeHasIngredients()
-    //TODO: Accetta il nome della ricetta come parametro.
-    fun filterIngredientsList(ingList: List<RecipeHasIngredient>, recipeId: Int): List<RecipeHasIngredient>{
+    fun filterIngredientsList(
+        ingList: List<RecipeHasIngredient>,
+        recipeId: Int
+    ): List<RecipeHasIngredient> {
         val result = mutableListOf<RecipeHasIngredient>()
         ingList.forEach {
             if (it.ratio > 0.0 && it.recipe == recipeId)
@@ -121,4 +114,40 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     }
 
     val recipeInstances = recipeRepository.getRecipeInstances()
+    fun filterRecipeInstancesList(
+        insList: List<RecipeInstance>,
+        recipeId: Int
+    ): List<RecipeInstance> {
+        val result = mutableListOf<RecipeInstance>()
+        insList.forEach {
+            if (it.recipe == recipeId)
+                result.add(it)
+        }
+        return result.toList()
+    }
+
+    fun createRecipeInstance(recipeInstance: RecipeInstance): Boolean {
+        var equipmentCapacity = 0.0
+        equipment.value?.forEach {
+            equipmentCapacity += it.capacity
+        }
+
+        if (recipeInstance.quantity > equipmentCapacity)
+            return false
+
+        recipeRepository.createInstance(recipeInstance)
+        return true
+    }
+
+    fun updateRecipeInstance(instanceId: Int, newNote: String) {
+        recipeRepository.updateRecipeInstance(instanceId, newNote)
+    }
+
+    // SETTINGS
+    fun resetDatabase() {
+        equipmentRepository.deleteAllEquipment()
+        recipeRepository.deleteAllRecipe()
+        ingredientRepository.resetIngredients()
+
+    }
 }

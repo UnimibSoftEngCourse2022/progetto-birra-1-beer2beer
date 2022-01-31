@@ -11,7 +11,7 @@ import com.example.beer2beer.SharedViewModel
 import com.example.beer2beer.databinding.FragmentSettingsBinding
 
 class SettingsFragment : Fragment() {
-    private lateinit var  binding: FragmentSettingsBinding
+    private lateinit var binding: FragmentSettingsBinding
     private val viewModel: SharedViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -22,9 +22,15 @@ class SettingsFragment : Fragment() {
 
         settingsFragmentSetup(inflater, container)
 
+        val sharedPreferences = this.requireActivity()
+            .getSharedPreferences("com.example.beer2beer", Context.MODE_PRIVATE)
+        val name = sharedPreferences.getString("username", "NoName")
+        val hiName = "Hi $name!"
+        binding.hiNameTextView.text = hiName
+
         binding.buttonClearName.setOnClickListener {
-            val sharedPreferences = this.requireActivity().getSharedPreferences("com.example.beer2beer", Context.MODE_PRIVATE)
             sharedPreferences.edit().clear().apply()
+            viewModel.resetDatabase()
             this.requireActivity().finishAffinity()
 
             activity?.deleteDatabase("BeerDatabase")

@@ -8,7 +8,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class EquipmentRepository (
+class EquipmentRepository(
     private val dao: EquipmentDao,
     private val coroutineContext: CoroutineScope
 ) {
@@ -28,6 +28,12 @@ class EquipmentRepository (
     fun deleteEquipment(equipment: Equipment) {
         coroutineContext.launch(Dispatchers.IO) {
             dao.delete(equipment.id)
+        }
+    }
+
+    fun deleteAllEquipment() {
+        coroutineContext.launch(Dispatchers.IO) {
+            dao.deleteAll()
         }
     }
 

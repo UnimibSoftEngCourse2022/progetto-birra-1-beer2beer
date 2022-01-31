@@ -13,7 +13,7 @@ import com.example.beer2beer.databinding.FragmentCartBinding
 import com.example.beer2beer.dialogs.AddIngredientsDialogFragment
 
 class CartFragment : Fragment() {
-    private lateinit var  binding: FragmentCartBinding
+    private lateinit var binding: FragmentCartBinding
     private val viewModel: SharedViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -25,7 +25,7 @@ class CartFragment : Fragment() {
         cartFragmentSetup(inflater, container)
 
         // Bind ingredients quantities
-        viewModel.ingredients.observe(viewLifecycleOwner){
+        viewModel.ingredients.observe(viewLifecycleOwner) {
             val ingList = viewModel.ingredients.value
             binding.waterQtyTextView.text = ingList?.get(0)?.quantity.toString()
             binding.maltsQtyTextView.text = ingList?.get(1)?.quantity.toString()

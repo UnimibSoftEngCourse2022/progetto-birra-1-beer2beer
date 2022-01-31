@@ -16,15 +16,16 @@ import java.util.concurrent.Executors
     version = 1,
     exportSchema = true
 )
-@TypeConverters(Converters::class)
+//@TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun recipeDao(): RecipeDao
-    abstract fun ingredientDao (): IngredientDao
-    abstract fun equipmentDao (): EquipmentDao
+    abstract fun ingredientDao(): IngredientDao
+    abstract fun equipmentDao(): EquipmentDao
 
     companion object {
 
-        @Volatile private var INSTANCE: AppDatabase? = null
+        @Volatile
+        private var INSTANCE: AppDatabase? = null
 
         fun getInstance(context: Context): AppDatabase =
             INSTANCE ?: synchronized(this) {
@@ -32,22 +33,30 @@ abstract class AppDatabase : RoomDatabase() {
             }
 
         private fun buildDatabase(context: Context) =
-            Room.databaseBuilder(context.applicationContext,
-                AppDatabase::class.java, "BeerDatabase")
+            Room.databaseBuilder(
+                context.applicationContext,
+                AppDatabase::class.java, "BeerDatabase"
+            )
                 // prepopulate the database after onCreate was called
                 .addCallback(object : Callback() {
                     override fun onCreate(db: SupportSQLiteDatabase) {
                         super.onCreate(db)
+                        val dao = getInstance(context).ingredientDao()
                         // insert the data on the IO Thread
                         Executors.newSingleThreadExecutor().execute {
-                            val dao = getInstance(context).ingredientDao()
-                            dao.insert(Ingredient(context.resources.getString(R.string.water), "L", 0.0))
-                            dao.insert(Ingredient(context.resources.getString(R.string.malts), "g", 0.0))
-                            dao.insert(Ingredient(context.resources.getString(R.string.hops), "g", 0.0))
-                            dao.insert(Ingredient(context.resources.getString(R.string.yeasts), "g", 0.0))
-                            dao.insert(Ingredient(context.resources.getString(R.string.sugar), "g", 0.0))
-                            dao.insert(Ingredient(context.resources.getString(R.string.additives), "g", 0.0))
+
+                            populateIngredients(dao)
+
                         }
+                    }
+
+                    fun populateIngredients(dao: IngredientDao?) {
+                        dao?.insert(Ingredient(context.resources.getString(R.string.water), "L", 0.0))
+                        dao?.insert(Ingredient(context.resources.getString(R.string.malts), "g", 0.0))
+                        dao?.insert(Ingredient(context.resources.getString(R.string.hops), "g", 0.0))
+                        dao?.insert(Ingredient(context.resources.getString(R.string.yeasts), "g", 0.0))
+                        dao?.insert(Ingredient(context.resources.getString(R.string.sugar), "g", 0.0))
+                        dao?.insert(Ingredient(context.resources.getString(R.string.additives), "g", 0.0))
                     }
                 })
                 .build()

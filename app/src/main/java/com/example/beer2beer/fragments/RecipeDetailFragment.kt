@@ -10,8 +10,9 @@ import androidx.navigation.fragment.navArgs
 import com.example.beer2beer.SharedViewModel
 import com.example.beer2beer.adapters.RecipeIngredientsAdapter
 import com.example.beer2beer.adapters.RecipeInstanceAdapter
-import com.example.beer2beer.database.entities.Recipe
 import com.example.beer2beer.databinding.FragmentRecipeDetailBinding
+import com.example.beer2beer.dialogs.AddRecipeInstanceDialogFragment
+import com.example.beer2beer.dialogs.EditRecipeInstanceDialogFragment
 
 class RecipeDetailFragment : Fragment() {
     private lateinit var binding: FragmentRecipeDetailBinding
@@ -28,21 +29,40 @@ class RecipeDetailFragment : Fragment() {
 
         val recipeId = args.recipeId
         val recipeName = args.recipeName
+        val recipeDescription = args.recipeDescription
 
         binding.recipeNameTextView.text = recipeName
+        binding.recipeDescriptionTextView.text = recipeDescription
 
-        viewModel.recipeHasIngredient.observe(viewLifecycleOwner){ recipeIngredientsList ->
-            //TODO: Filtra in base al nome della ricetta!
-            ingredientsAdapter.submitList(viewModel.filterIngredientsList(recipeIngredientsList, recipeId))
+        binding.addInstanceFab.setOnClickListener {
+            val dialog = AddRecipeInstanceDialogFragment(recipeId)
+            dialog.show(childFragmentManager, "AddInstanceDialog")
+        }
+
+        viewModel.recipeHasIngredient.observe(viewLifecycleOwner) { recipeIngredientsList ->
+            ingredientsAdapter.submitList(
+                viewModel.filterIngredientsList(
+                    recipeIngredientsList,
+                    recipeId
+                )
+            )
         }
         binding.ingredientsRecyclerView.adapter = ingredientsAdapter
 
 
-        viewModel.recipeInstances.observe(viewLifecycleOwner){ recipeInstancesList ->
-            instancesAdapter.submitList(recipeInstancesList)
+        viewModel.recipeInstances.observe(viewLifecycleOwner) { recipeInstancesList ->
+            instancesAdapter.submitList(
+                viewModel.filterRecipeInstancesList(
+                    recipeInstancesList,
+                    recipeId
+                )
+            )
         }
         binding.recipeInstancesRecyclerView.adapter = instancesAdapter
-
+        instancesAdapter.onItemClick = { recipeInstance ->
+            val dialog = EditRecipeInstanceDialogFragment(recipeInstance)
+            dialog.show(childFragmentManager, "RecipeInstanceDialog")
+        }
 
         return binding.root
     }
