@@ -3,18 +3,26 @@ package com.example.beer2beer
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.splashscreen.SplashScreen
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import com.example.beer2beer.database.entities.RecipeInstance
 import com.example.beer2beer.databinding.ActivityMainBinding
 import com.example.beer2beer.dialogs.AddIngredientsDialogFragment
+import com.example.beer2beer.dialogs.AddRecipeInstanceDialogFragment
+import com.example.beer2beer.dialogs.EditRecipeInstanceDialogFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
-class MainActivity : AppCompatActivity(), AddIngredientsDialogFragment.DialogListener {
+class MainActivity : AppCompatActivity(),
+    AddIngredientsDialogFragment.AddIngredientsDialogListener,
+    AddRecipeInstanceDialogFragment.AddRecipeInstanceDialogListener,
+    EditRecipeInstanceDialogFragment.EditRecipeInstanceDialogListener {
 
     private lateinit var viewModel: SharedViewModel
     private lateinit var binding: ActivityMainBinding
@@ -92,7 +100,22 @@ class MainActivity : AppCompatActivity(), AddIngredientsDialogFragment.DialogLis
         return username.isNotEmpty()
     }
 
-    override fun onDialogSaveClick(name: String, quantity: Double) {
+    override fun onDialogIngredientSaveClick(name: String, quantity: Double) {
         viewModel.updateIngredient(name, quantity)
+    }
+
+    override fun onDialogRecipeInstanceSaveClick(recipeId: Int, note: String, quantity: Double) {
+        val now = LocalDateTime.now()
+        val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+        val today = now.format(formatter)
+
+        val recipeInstance = RecipeInstance(0, recipeId, today, note, quantity)
+
+        if (!viewModel.createRecipeInstance(recipeInstance))
+            Toast.makeText(applicationContext, resources.getString(R.string.overMaxCapacityError), Toast.LENGTH_LONG).show()
+    }
+
+    override fun onEditRecipeInstance(instanceId: Int, newDescription: String) {
+        viewModel.updateRecipeInstance(instanceId, newDescription)
     }
 }

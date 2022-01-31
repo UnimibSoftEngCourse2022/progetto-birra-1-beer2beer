@@ -26,10 +26,10 @@ class AddRecipeFragment : Fragment() {
     ): View {
         recipesFragmentSetup(inflater, container)
 
-        binding.ingredientsRecyclerView.adapter = adapter
         viewModel.ingredients.observe(viewLifecycleOwner) { ingredientsList ->
             adapter.submitList(ingredientsList)
         }
+        binding.ingredientsRecyclerView.adapter = adapter
 
         binding.saveRecipeButton.setOnClickListener {
             val quantities = adapter.ingredientQuantities
@@ -43,7 +43,7 @@ class AddRecipeFragment : Fragment() {
             var passed = true
             if (binding.recipeNameEditText.text.isBlank()) {
                 binding.recipeNameEditText.error =
-                    resources.getString(R.string.recipeNameEditTextError)
+                    resources.getString(R.string.recipeNameError2)
                 passed = false
             }
             var isAllZero = true
@@ -52,7 +52,7 @@ class AddRecipeFragment : Fragment() {
                     isAllZero = false
             if (isAllZero) {
                 binding.selectIngredientsTextView.error =
-                    resources.getString(R.string.selectIngredientsTextViewError)
+                    resources.getString(R.string.selectIngredientsError)
                 passed = false
             }
 
@@ -62,31 +62,17 @@ class AddRecipeFragment : Fragment() {
                 val recipeName = binding.recipeNameEditText.text.toString()
                 val recipeDescription = binding.descriptionEditText.text.toString()
 
-                //Equipment
-                var maxSize = 0.0
-                viewModel.equipment.value?.forEach { equipment ->
-                    maxSize += equipment.capacity
-                }
+                viewModel.createNewRecipe(
+                    ingredientNames,
+                    relativeQuantities,
+                    recipeName,
+                    recipeDescription
+                )
 
-                var size = 0.0
-                relativeQuantities.forEach { quantity ->
-                    size += quantity
-                }
-
-                if(size <= maxSize) {
-                    viewModel.createNewRecipe(
-                        ingredientNames,
-                        relativeQuantities,
-                        recipeName,
-                        recipeDescription
-                    )
-
-                    val action = AddRecipeFragmentDirections.actionAddRecipeToHome()
-                    findNavController().navigate(action)
-                }
-                else
-                    binding.recipeNameEditText.error = "Equipment' s capacity not enough"
-            }
+                val action = AddRecipeFragmentDirections.actionAddRecipeToHome()
+                findNavController().navigate(action)
+            } else
+                binding.recipeNameEditText.error = "Equipment' s capacity not enough"
         }
 
         return binding.root

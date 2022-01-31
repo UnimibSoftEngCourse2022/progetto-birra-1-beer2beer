@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -10,121 +10,112 @@
             type="com.example.beer2beer.SharedViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/shade2">
 
-        <ScrollView
+        <EditText
+            android:id="@+id/equipmentNameEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="@string/equipmentNameRequest"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:padding="8dp"
+            android:textColor="@color/textBrown"
+            android:textColorHint="@color/textHint"
+            android:textSize="22sp"
+            android:background="@android:color/transparent"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/selectCategoryTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:focusable="true"
+            android:clickable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="start"
+            android:paddingStart="16dp"
+            android:text="@string/category"
+            android:textColor="@color/textBrown"
+            android:textSize="18sp"
+            tools:ignore="RtlSymmetry" />
+
+        <Spinner
+            android:id="@+id/spinner"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="wrap_content"
+            android:padding="14dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:popupBackground="@drawable/ic_dropdown_list_background"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/capacityTextView"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:focusable="true"
+                android:clickable="true"
+                android:focusableInTouchMode="true"
+                android:paddingStart="16dp"
+                android:text="@string/capacity"
+                android:textColor="@color/textBrown"
+                android:textSize="18sp"
+                android:layout_weight="1"
+                tools:ignore="RtlSymmetry" />
+
+            <Button
+                android:id="@+id/subButton"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="@string/minus"
+                app:cornerRadius="30dp" />
+
+            <EditText
+                android:id="@+id/quantityEditText"
+                android:layout_width="48dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:ems="10"
+                android:hint="@string/quantity"
+                android:importantForAutofill="no"
+                android:inputType="numberDecimal"
+                android:minHeight="48dp"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:background="@drawable/radius_30_background">
+                android:textColor="@color/textBrown"
+                android:textColorHint="@color/textHint"
+                android:textSize="14sp"
+                android:background="@android:color/transparent"/>
 
-                <EditText
-                    android:id="@+id/equipmentNameEditText"
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:ems="10"
-                    android:gravity="center"
-                    android:hint="@string/equipmentNameEditTextHint"
-                    android:importantForAutofill="no"
-                    android:inputType="textPersonName"
-                    android:minHeight="48dp"
-                    android:padding="16dp"
-                    android:textColor="@color/textBrown"
-                    android:textColorHighlight="@color/textBrown"
-                    android:textColorHint="@color/textBrown"
-                    android:textSize="22sp"
-                    android:background="@android:color/transparent"
-                    android:layout_gravity="center"/>
+            <Button
+                android:id="@+id/addButton"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@string/plus"
+                app:cornerRadius="30dp" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/selectCategoryTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="10dp"
-                    android:focusable="true"
-                    android:clickable="true"
-                    android:focusableInTouchMode="true"
-                    android:gravity="start"
-                    android:padding="16dp"
-                    android:text="@string/category"
-                    android:textColor="@color/textBrown"
-                    android:textSize="18sp" />
-
-                <Spinner
-                    android:id="@+id/spinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="14dp"
-                    android:popupBackground="@drawable/ic_dropdown_list_background"/>
-
-                <TextView
-                    android:id="@+id/capacityTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="10dp"
-                    android:focusable="true"
-                    android:clickable="true"
-                    android:focusableInTouchMode="true"
-                    android:gravity="start"
-                    android:padding="16dp"
-                    android:text="@string/capacity"
-                    android:textColor="@color/textBrown"
-                    android:textSize="18sp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:background="@color/shade2">
-
-                    <Button
-                        android:id="@+id/subButton"
-                        android:layout_width="48dp"
-                        android:layout_height="wrap_content"
-
-                        android:text="@string/minus"
-                        app:cornerRadius="30dp" />
-
-                    <EditText
-                        android:id="@+id/quantityEditText"
-                        android:layout_width="48dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:ems="10"
-                        android:hint="@string/quantityEditText"
-                        android:importantForAutofill="no"
-                        android:inputType="numberDecimal"
-                        android:minHeight="48dp"
-                        android:gravity="center"
-                        android:textColor="@color/textBrown"
-                        android:textColorHint="@color/textBrown"
-                        android:textSize="14sp"
-                        android:background="@android:color/transparent"/>
-
-                    <Button
-                        android:id="@+id/addButton"
-                        android:layout_width="48dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:text="@string/plus"
-                        app:cornerRadius="30dp" />
-                </LinearLayout>
-            </LinearLayout>
-        </ScrollView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/shade3"
+            android:contentDescription="@string/line" />
+    </LinearLayout>
 </layout>

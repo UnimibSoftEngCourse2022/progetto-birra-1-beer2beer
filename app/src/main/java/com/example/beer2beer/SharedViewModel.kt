@@ -2,23 +2,19 @@ package com.example.beer2beer
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.beer2beer.database.AppDatabase
 import com.example.beer2beer.database.entities.Equipment
 import com.example.beer2beer.database.entities.Recipe
 import com.example.beer2beer.database.entities.RecipeHasIngredient
+import com.example.beer2beer.database.entities.RecipeInstance
 import com.example.beer2beer.repository.EquipmentRepository
 import com.example.beer2beer.repository.IngredientRepository
 import com.example.beer2beer.repository.RecipeRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import org.apache.commons.math3.linear.OpenMapRealVector
-import org.apache.commons.math3.linear.RealVector
 import org.apache.commons.math3.optim.MaxIter
-import org.apache.commons.math3.optim.OptimizationData
 import org.apache.commons.math3.optim.linear.*
 import org.apache.commons.math3.optim.nonlinear.scalar.GoalType
 import kotlin.coroutines.coroutineContext
@@ -141,10 +137,7 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
                     bestRecipe = recipe
                     bestQuantity = solution
                 }
-
             }
-
-
         }
 
         return bestRecipe?.name ?: ""
@@ -152,10 +145,6 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
 
     fun updateIngredient(name: String, newQuantity: Double) {
         ingredientRepository.updateIngredient(name, newQuantity)
-        viewModelScope.launch(Dispatchers.IO) {
-            db.ingredientDao().update(name, newQuantity)
-        }
-
     }
 
     //EQUIPMENTS
@@ -173,12 +162,49 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
         equipmentRepository.updateEquipment(equipment)
     }
 
+    // RECIPE DETAIL
 
+    val recipeHasIngredient = recipeRepository.getRecipeHasIngredients()
+    fun filterIngredientsList(ingList: List<RecipeHasIngredient>, recipeId: Int): List<RecipeHasIngredient>{
+        val result = mutableListOf<RecipeHasIngredient>()
+        ingList.forEach {
+            if (it.ratio > 0.0 && it.recipe == recipeId)
+                result.add(it)
+        }
+        return result.toList()
+    }
+
+    val recipeInstances = recipeRepository.getRecipeInstances()
+    fun filterRecipeInstancesList(insList: List<RecipeInstance>, recipeId: Int): List<RecipeInstance>{
+        val result = mutableListOf<RecipeInstance>()
+        insList.forEach {
+            if (it.recipe == recipeId)
+                result.add(it)
+        }
+        return result.toList()
+    }
+    fun createRecipeInstance(recipeInstance: RecipeInstance): Boolean{
+        var equipmentCapacity = 0.0
+        equipment.value?.forEach {
+            equipmentCapacity += it.capacity
+        }
+
+        if (recipeInstance.quantity > equipmentCapacity)
+            return false
+
+        recipeRepository.createInstance(recipeInstance)
+        return true
+    }
+
+    fun updateRecipeInstance(instanceId: Int, newNote: String){
+        recipeRepository.updateRecipeInstance(instanceId, newNote)
+    }
+    
     // SETTINGS
-
     fun resetDatabase(){
         equipmentRepository.deleteAllEquipment()
         recipeRepository.deleteAllRecipe()
         ingredientRepository.resetIngredients()
+        
     }
 }

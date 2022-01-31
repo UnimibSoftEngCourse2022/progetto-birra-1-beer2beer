@@ -32,30 +32,33 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.beer2beer.fragments.HomeFragment"
-        android:label="@string/homeTextView"
+        android:label="@string/home"
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_home_to_addRecipe"
             app:destination="@id/addRecipeFragment" />
+        <action
+            android:id="@+id/action_home_to_recipeDetail"
+            app:destination="@id/recipeDetailFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.example.beer2beer.fragments.CartFragment"
-        android:label="@string/cartTextView"
+        android:label="@string/cart"
         tools:layout="@layout/fragment_cart">
     </fragment>
 
     <fragment
         android:id="@+id/brewFragment"
         android:name="com.example.beer2beer.fragments.BrewFragment"
-        android:label="@string/brewTextView"
+        android:label="@string/brew"
         tools:layout="@layout/fragment_brew" />
 
     <fragment
         android:id="@+id/recipesFragment"
         android:name="com.example.beer2beer.fragments.RecipesFragment"
-        android:label="@string/recipesTextView"
+        android:label="@string/recipes"
         tools:layout="@layout/fragment_recipes" >
         <action
             android:id="@+id/action_recipes_to_addEquipment"
@@ -65,7 +68,7 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.beer2beer.fragments.SettingsFragment"
-        android:label="@string/settingsTextView"
+        android:label="@string/settings"
         tools:layout="@layout/fragment_settings" />
     <action
         android:id="@+id/action_global_home"
@@ -98,5 +101,20 @@
             app:destination="@id/recipesFragment"
             app:popUpTo="@id/addEquipmentFragment"
             app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/recipeDetailFragment"
+        android:name="com.example.beer2beer.fragments.RecipeDetailFragment"
+        android:label="RecipeDetailFragment"
+        tools:layout="@layout/fragment_recipe_detail">
+        <argument
+            android:name="recipeId"
+            app:argType="integer" />
+        <argument
+            android:name="recipeName"
+            app:argType="string" />
+        <argument
+            android:name="recipeDescription"
+            app:argType="string" />
     </fragment>
 </navigation>

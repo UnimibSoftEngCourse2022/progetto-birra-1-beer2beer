@@ -24,8 +24,8 @@
             app:defaultNavHost="true"
             app:layout_anchorGravity="center"
             app:navGraph="@navigation/nav_graph" />
-        
-        
+
+
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -50,6 +50,7 @@
                     android:layout_gravity="bottom"
                     app:menu="@menu/bottom_navigation_view"
                     app:itemIconTint="@drawable/bottom_navigation_selector"
+                    app:labelVisibilityMode="unlabeled"
                     app:backgroundTint="@color/background"/>
 
             </com.google.android.material.bottomappbar.BottomAppBar>
@@ -58,7 +59,7 @@
                 android:id="@+id/fab_brew"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/app_name"
+                android:contentDescription="@string/appName"
                 android:backgroundTint="@color/fab"
                 android:src="@drawable/ic_baseline_lightbulb_24"
                 app:layout_anchor="@id/bottom_app_bar" />

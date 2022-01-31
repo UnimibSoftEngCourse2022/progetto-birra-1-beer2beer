@@ -11,8 +11,15 @@ import com.example.beer2beer.R
 import com.example.beer2beer.database.entities.Recipe
 
 class RecipeAdapter() : ListAdapter<Recipe, RecipeAdapter.RecipeViewHolder>(RecipeDiffcallback()) {
-    class RecipeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    var onItemClick: ((Recipe) -> Unit)? = null
+    inner class RecipeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val recipeNameTextView: TextView = view.findViewById(R.id.RecipeNameTextView)
+
+        init {
+            itemView.setOnClickListener {
+                onItemClick?.invoke(getItem(adapterPosition))
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {

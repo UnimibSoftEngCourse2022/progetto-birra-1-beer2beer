@@ -33,7 +33,6 @@ class RecipesFragment : Fragment() {
         }
         binding.equipmentRecyclerView.adapter = adapter
 
-
         binding.addEquipmentFab.setOnClickListener {
             val action = RecipesFragmentDirections.actionRecipesToAddEquipment()
             findNavController().navigate(action)

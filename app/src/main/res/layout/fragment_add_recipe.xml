@@ -37,14 +37,13 @@
                     android:layout_marginTop="10dp"
                     android:ems="10"
                     android:gravity="center"
-                    android:hint="@string/recipeNameEditTextHint"
+                    android:hint="@string/recipeNameRequest"
                     android:importantForAutofill="no"
                     android:inputType="textPersonName"
                     android:minHeight="48dp"
                     android:padding="16dp"
                     android:textColor="@color/textBrown"
-                    android:textColorHighlight="@color/textBrown"
-                    android:textColorHint="@color/textBrown"
+                    android:textColorHint="@color/textHint"
                     android:textSize="22sp"
                     android:background="@android:color/transparent"
                     android:layout_gravity="center"/>
@@ -94,13 +93,13 @@
                     android:layout_margin="8dp"
                     android:ems="10"
                     android:gravity="start|top"
-                    android:hint="@string/descriptionEditTextHint"
+                    android:hint="@string/recipeDescription"
                     android:importantForAutofill="no"
                     android:inputType="textMultiLine"
                     android:minHeight="38dp"
                     android:padding="16dp"
                     android:textColor="@color/textBrown"
-                    android:textColorHint="@color/textBrown"
+                    android:textColorHint="@color/textHint"
                     android:textSize="14sp" />
 
                 <Button
@@ -109,7 +108,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="32dp"
                     android:padding="10dp"
-                    android:text="@string/saveRecipeButton"
+                    android:text="@string/save"
                     app:cornerRadius="30dp" />
             </LinearLayout>
         </ScrollView>

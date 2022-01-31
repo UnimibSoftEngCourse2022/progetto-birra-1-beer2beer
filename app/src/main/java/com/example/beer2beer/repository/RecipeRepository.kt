@@ -10,6 +10,8 @@ import androidx.room.Database
 import com.example.beer2beer.database.RecipeDao
 import com.example.beer2beer.database.entities.Recipe
 import com.example.beer2beer.database.entities.RecipeHasIngredient
+import com.example.beer2beer.database.entities.RecipeIngredients
+import com.example.beer2beer.database.entities.RecipeInstance
 import com.google.android.gms.common.api.Response
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
@@ -24,15 +26,21 @@ class RecipeRepository (
         return dao.insert(recipe)
     }
 
+    fun createInstance(recipeInstance: RecipeInstance){
+        coroutineContext.launch(Dispatchers.IO){
+            dao.insertInstance(recipeInstance)
+        }
+    }
+
     fun insertIngredients(recipeHasIngredient: RecipeHasIngredient) {
         coroutineContext.launch(Dispatchers.IO) {
             dao.insertIngredient(recipeHasIngredient)
         }
     }
 
-    fun updateRecipe(recipe: Recipe) {
+    fun updateRecipeInstance(recipeId: Int, newNote: String) {
         coroutineContext.launch(Dispatchers.IO) {
-            dao.update(recipe)
+            dao.updateRecipeInstance(recipeId, newNote)
         }
     }
 
@@ -51,5 +59,15 @@ class RecipeRepository (
     fun getAllRecipes(): LiveData<List<Recipe>> =
         liveData(Dispatchers.IO) {
             emitSource(dao.getAll())
+        }
+
+    fun getRecipeHasIngredients(): LiveData<List<RecipeHasIngredient>> =
+        liveData(Dispatchers.IO){
+            emitSource(dao.getRecipeHasIngredients())
+        }
+
+    fun getRecipeInstances(): LiveData<List<RecipeInstance>> =
+        liveData(Dispatchers.IO){
+            emitSource((dao.getRecipeInstances()))
         }
 }

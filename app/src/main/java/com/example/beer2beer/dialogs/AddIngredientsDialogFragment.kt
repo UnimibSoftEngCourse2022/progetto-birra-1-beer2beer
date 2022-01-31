@@ -4,7 +4,6 @@ import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
-import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import com.example.beer2beer.R
@@ -13,9 +12,9 @@ import com.example.beer2beer.databinding.DialogAddIngredientsBinding
 class AddIngredientsDialogFragment(private val ingredientName: String, private val ingredientQuantity: Double) : DialogFragment() {
 
     // Use this instance of the interface to deliver action events
-    internal lateinit var listener: DialogListener
-    interface DialogListener {
-        fun onDialogSaveClick(name: String, quantity: Double)
+    internal lateinit var listener: AddIngredientsDialogListener
+    interface AddIngredientsDialogListener {
+        fun onDialogIngredientSaveClick(name: String, quantity: Double)
     }
 
     // Override the Fragment.onAttach() method to instantiate the DialogListener
@@ -24,7 +23,7 @@ class AddIngredientsDialogFragment(private val ingredientName: String, private v
         // Verify that the host activity implements the callback interface
         try {
             // Instantiate the NoticeDialogListener so we can send events to the host
-            listener = context as DialogListener
+            listener = context as AddIngredientsDialogListener
         } catch (e: ClassCastException){
             // The activity doesn't implement the interface, throw exception
             throw ClassCastException(("$context must implement DialogListener"))
@@ -60,16 +59,16 @@ class AddIngredientsDialogFragment(private val ingredientName: String, private v
             val builder = AlertDialog.Builder(it, R.style.CustomAlertDialog)
 
             builder.setView(binding.root)
-                .setPositiveButton(R.string.saveDialogButton) { _, _ ->
+                .setPositiveButton(R.string.save) { _, _ ->
                     val quantity: Double
                     if (binding.quantityEditText.text.toString().isEmpty())
                         quantity = 0.0
                     else
                         quantity = binding.quantityEditText.text.toString().toDouble()
 
-                    listener.onDialogSaveClick(ingredientName, quantity)
+                    listener.onDialogIngredientSaveClick(ingredientName, quantity)
                 }
-                .setNegativeButton(R.string.discardDialogButton) { _, _ ->
+                .setNegativeButton(R.string.discard) { _, _ ->
                     dialog?.cancel()
                 }
             builder.create()

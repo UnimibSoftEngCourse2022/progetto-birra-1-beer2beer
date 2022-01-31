@@ -10,6 +10,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.example.beer2beer.R
 import com.example.beer2beer.SharedViewModel
 import com.example.beer2beer.databinding.FragmentAddEquipmentBinding
 
@@ -35,7 +36,7 @@ class AddEquipmentFragment : Fragment() {
 
         binding.quantityEditText.setText(0.0.toString())
 
-        binding.spinner.adapter = context?.let { ArrayAdapter(it, android.R.layout.simple_spinner_dropdown_item, categories) }
+        binding.spinner.adapter = context?.let { ArrayAdapter(it, R.layout.spinner_dropdown_item, categories) }
 
         var quantity = 0.0
         binding.addButton.setOnClickListener {

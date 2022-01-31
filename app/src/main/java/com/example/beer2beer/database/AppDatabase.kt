@@ -15,7 +15,7 @@ import java.util.concurrent.Executors
     version = 1,
     exportSchema = true
 )
-@TypeConverters(Converters::class)
+//@TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun recipeDao(): RecipeDao
     abstract fun ingredientDao (): IngredientDao
